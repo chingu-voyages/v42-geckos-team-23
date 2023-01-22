@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './Button'
 
 const Navbar = () => {
 
@@ -36,9 +37,9 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <button className="flex items-center bg-red-500 text-white rounded-full px-10 py-2 md:px-3 md:py-3" type="submit">
-                <img className="pr-1 md:pr-0" src="src/assets/search-icon.svg" />
-                <p className="md:hidden">Search</p></button>      
+              <Button>
+              <img className="pr-1 md:pr-0" src="src/assets/search-icon.svg" />
+              <span className="md:hidden">Search</span></Button>
           </form>
         </div>
       </div>
