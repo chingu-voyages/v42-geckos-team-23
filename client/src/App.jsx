@@ -1,9 +1,13 @@
 import Restaurants from "./components/Restaurants"
+import Footer from "./components/Footer"
 
 function App() {
 
   return (
-    <Restaurants />
+    <div className="">
+        <Restaurants />
+        <Footer />
+    </div>
   )
 }
 
