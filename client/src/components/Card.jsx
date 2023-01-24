@@ -17,8 +17,8 @@ const Card = ({name, location, rating}) => {
                     ))}
                 </address>
             </div>
-            <div className="w-2/5 text-right">
-                <p className="">Restaurant</p>
+            <div className="flex flex-col items-end w-2/5">
+                <p className="flex-grow-0">Restaurant</p>
                 <ReactStars
                     value={rating}
                     edit={false}
