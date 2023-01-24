@@ -1,9 +1,9 @@
-import Restaurants from "./components/Restaurants"
+import Results from "./components/Results"
 
 function App() {
 
   return (
-    <Restaurants />
+    <Results />
   )
 }
 

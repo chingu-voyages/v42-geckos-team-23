@@ -1,4 +1,4 @@
-import Rating from "./Rating";
+import ReactStars from 'react-stars';
 import ArrowButton from "./ArrowButton";
 
 const Card = ({name, location, rating}) => {
@@ -19,7 +19,11 @@ const Card = ({name, location, rating}) => {
             </div>
             <div className="w-2/5 text-right">
                 <p className="">Restaurant</p>
-                <Rating rating={rating} />
+                <ReactStars
+                    value={rating}
+                    edit={false}
+                    color2={'#ffd700'}
+                />
             </div>
 
             <div className="card-actions justify-end absolute top-4 right-4">
