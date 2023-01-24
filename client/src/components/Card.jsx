@@ -1,4 +1,4 @@
-import ReactStars from 'react-stars';
+import ReactStars from 'react-stars'
 import ArrowButton from "./ArrowButton";
 
 const Card = ({name, location, rating}) => {
