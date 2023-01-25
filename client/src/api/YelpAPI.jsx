@@ -10,8 +10,9 @@ const getDetailsByIdFromYelpApi = (id) => {
         .then((res) => res.json())
 }
 
-const getReivewsFromYelpApi = () => {
-    // fetch();
+const getReviewsFromYelpApi = (id) => {
+    return fetch(`/api/yelp/${id}/reviews`)
+        .then((res => res.json()))
 }
 
-export { getBusinessesFromYelpApi, getDetailsByIdFromYelpApi, getReivewsFromYelpApi }
+export { getBusinessesFromYelpApi, getDetailsByIdFromYelpApi, getReviewsFromYelpApi }

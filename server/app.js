@@ -8,11 +8,6 @@ const app = express();
 
 require('dotenv').config();
 
-// TODO: remove this
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
-});
-
 app.get('/api/yelp', (req, res) => {
   const term = req.query.term;
   const categories = req.query.categories;
@@ -54,6 +49,24 @@ app.get('/api/yelp/:id', (req, res) => {
       res.json(response.data)
       // id, name, image_url, url, phone or display_phone, review_count, categories[], 
       // rating, display_address, photos[]
+    })
+    .catch(error => {
+      res.json(error)
+    });
+});
+
+app.get('/api/yelp/:id/reviews', (req, res) => {
+  const id = req.params['id']
+
+  axios
+    .get(`https://api.yelp.com/v3/businesses/${id}/reviews`, {
+      headers: {
+        Authorization: `Bearer ${process.env.YELP_API_KEY}`
+      }
+    })
+    .then(response => {
+      res.json(response.data.reviews)
+      // text, rating, time_created, user.name, user.image_url, 
     })
     .catch(error => {
       res.json(error)
