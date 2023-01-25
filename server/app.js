@@ -6,8 +6,6 @@ const axios = require('axios');
 
 const app = express();
 
-// const { URLSearchParams } = require('url');
-
 require('dotenv').config();
 
 app.get("/api", (req, res) => {
@@ -15,9 +13,6 @@ app.get("/api", (req, res) => {
 });
 
 app.get('/api/yelp', (req, res) => {
-  // var params = new URLSearchParams('user=abc&q=xyz');
-  // console.log(params.get('user'));
-  // console.log(params.get('q'));
   const term = req.query.term;
   const categories = req.query.categories;
   const open_now = req.query.open_now;
@@ -41,7 +36,7 @@ app.get('/api/yelp', (req, res) => {
     })
     .then(response => {
       // res.json(response.data);
-      res.json({ name: response.data.businesses[0].name });
+      res.json(response.data.businesses[0].name);
     })
     .catch(error => {
       res.json(error);
