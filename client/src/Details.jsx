@@ -1,9 +1,11 @@
 import React from 'react'
 
+import Navbar from './components/Navbar'
+
 function Page1() {
     return (
         <div>
-            <h1>Page1 Test Page</h1>
+            <Navbar />
         </div>
     )
 }
