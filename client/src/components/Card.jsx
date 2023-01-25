@@ -22,7 +22,7 @@ const Card = ({ name, location, rating }) => {
                     <ReactStars
                         value={rating}
                         edit={false}
-                        color2={'#ffd700'}
+                        color2={'#FC0706'}
                     />
                 </div>
 
