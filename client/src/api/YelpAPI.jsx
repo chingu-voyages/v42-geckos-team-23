@@ -1,11 +1,13 @@
 const getBusinessesFromYelpApi = (location) => {
     // TODO: implement input validation before api call
-    return fetch(`/api/yelp?location=${location}`)
+    // TODO: add category param, and dog friendly? dogs allowed? events?
+    return fetch(`/api/yelp?location=${location}&term=dog+friendly`)
         .then((res) => res.json())
 }
 
-const getDetailsByIdFromYelpApi = () => {
-    // fetch();
+const getDetailsByIdFromYelpApi = (id) => {
+    return fetch(`/api/yelp/${id}`)
+        .then((res) => res.json())
 }
 
 const getReivewsFromYelpApi = () => {

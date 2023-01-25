@@ -16,8 +16,6 @@ app.get("/api", (req, res) => {
 app.get('/api/yelp', (req, res) => {
   const term = req.query.term;
   const categories = req.query.categories;
-  const open_now = req.query.open_now;
-  const sort_by = req.query.sort_by;
   const location = req.query.location;
   const limit = req.query.limit;
 
@@ -29,18 +27,36 @@ app.get('/api/yelp', (req, res) => {
       params: {
         term,
         categories,
-        open_now,
-        sort_by,
         location,
         limit
       }
     })
     .then(response => {
-      // res.json(response.data);
-      res.json(response.data.businesses[0].name);
+      res.json(response.data.businesses[0]);
+      // id, name, image_url, url, categories[], rating, price, display_address 
+      // res.json([response.data.businesses[0].name, response.data.businesses[0].id]);
     })
     .catch(error => {
       res.json(error);
+    });
+});
+
+app.get('/api/yelp/:id', (req, res) => {
+  const id = req.params['id']
+
+  axios
+    .get(`https://api.yelp.com/v3/businesses/${id}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.YELP_API_KEY}`
+      }
+    })
+    .then(response => {
+      res.json(response.data)
+      // id, name, image_url, url, phone or display_phone, review_count, categories[], 
+      // rating, display_address, photos[]
+    })
+    .catch(error => {
+      res.json(error)
     });
 });
 

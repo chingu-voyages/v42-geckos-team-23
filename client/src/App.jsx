@@ -11,14 +11,19 @@ function App() {
 
   // TODO: Move a function calling to where a user clicks a search button
   useEffect(() => {
-    getBusinessesFromYelpApi(ctx.location)
-      .then(data => ctx.setApiData(data))
+    // getBusinessesFromYelpApi(ctx.location)
+    //   .then(data => console.log(data))
+    //   // .then(data => ctx.setApiData(data))
+    //   .catch(err => console.log(err))
+
+    getDetailsByIdFromYelpApi(ctx.id)
+      .then(data => console.log(data))
       .catch(err => console.log(err))
   }, []);
 
   return (
     <div>
-      <p>{!ctx.apiData ? "Loading..." : ctx.apiData}</p>
+      {/* <p>{!ctx.apiData ? "Loading..." : ctx.apiData}</p> */}
       <Navbar />
       <PopUp />
       <Results />

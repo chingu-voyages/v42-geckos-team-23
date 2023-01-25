@@ -11,9 +11,10 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
     }
 
     // state: 
-    const [location, setLocation] = useState('98155')
+    const [location, setLocation] = useState('98052')
     const [category, setCategory] = useState('')
     const [apiData, setApiData] = useState('')
+    const [id, setId] = useState('ptobCLHPk5dzuBEIjWumAw')
 
     return (
         <Context.Provider value={{
@@ -24,7 +25,9 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
             category,
             setCategory,
             apiData,
-            setApiData
+            setApiData,
+            id,
+            setId,
         }}>
             {children}
         </Context.Provider>
