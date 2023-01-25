@@ -10,6 +10,7 @@ function App() {
             <Navbar />
             <PopUp />
             <Results />
+            <a href={`/page1`}>Test Link to Page 1</a> 
         </div>
     )
 }
