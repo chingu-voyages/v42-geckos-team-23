@@ -3,19 +3,22 @@ import Navbar from './components/Navbar'
 import PopUp from './components/PopUp'
 import Results from './components/Results'
 import Footer from './components/Footer'
-// import { Context } from '../Context'
-import { getBusinessesAPI, getDetailsByIdAPI, getReivewsAPI } from './api/YelpAPI'
+import { Context } from '../Context'
+import { getBusinessesFromYelpApi, getDetailsByIdFromYelpApi, getReivewsFromYelpApi } from './api/YelpAPI'
 
 function App() {
-  const [data, setData] = useState('');
+  const ctx = useContext(Context)
 
+  // TODO: Move a function calling to where a user clicks a search button
   useEffect(() => {
-    getBusinessesAPI();
+    getBusinessesFromYelpApi(ctx.location)
+      .then(data => ctx.setApiData(data))
+      .catch(err => console.log(err))
   }, []);
 
   return (
     <div>
-      <p>{!data ? "Loading..." : data}</p>
+      <p>{!ctx.apiData ? "Loading..." : ctx.apiData}</p>
       <Navbar />
       <PopUp />
       <Results />

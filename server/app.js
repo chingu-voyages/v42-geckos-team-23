@@ -8,6 +8,7 @@ const app = express();
 
 require('dotenv').config();
 
+// TODO: remove this
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
