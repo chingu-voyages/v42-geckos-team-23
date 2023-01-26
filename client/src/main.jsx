@@ -5,8 +5,8 @@ import { ContextProvider } from '../Context'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import App from './App'
-import Details from './Details'
-import ErrorPage from './error-page'
+import Details from './pages/Details'
+import ErrorPage from './pages/Error'
 
 const router = createBrowserRouter([
     {
