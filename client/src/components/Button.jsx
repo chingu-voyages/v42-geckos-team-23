@@ -30,7 +30,10 @@ const Button = ({ variant, color = 'red', children }) => {
     const getBusinessesHandler = (e) => {
         e.preventDefault()
         getBusinessesFromYelpApi(ctx.location)
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                ctx.setIsSearchBtnClicked(true)
+            })
             // .then(data => ctx.setApiData(data))
             .catch(err => console.log(err))
     }

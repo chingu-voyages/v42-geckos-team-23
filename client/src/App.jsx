@@ -22,9 +22,8 @@ function App() {
   return (
     <div>
       <Navbar />
-      <PopUp />
-      {/* TODO: conditional rendering */}
-      <Results />
+      {!ctx.isSearchBtnClicked && <PopUp />}
+      {ctx.isSearchBtnClicked && <Results />}
       <Footer />
     </div>
   )

@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import Pagination from './Pagination'
-
-import { businesses } from '../constants'
 import Card from './Card'
+import { businesses } from '../constants'
 
 const createDuplicateData = () => {
     let data = []

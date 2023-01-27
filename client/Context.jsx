@@ -15,6 +15,7 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
     const [category, setCategory] = useState('')
     const [apiData, setApiData] = useState('')
     const [id, setId] = useState('ptobCLHPk5dzuBEIjWumAw')
+    const [isSearchBtnClicked, setIsSearchBtnClicked] = useState(false)
 
     return (
         <Context.Provider value={{
@@ -28,6 +29,8 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
             setApiData,
             id,
             setId,
+            isSearchBtnClicked,
+            setIsSearchBtnClicked
         }}>
             {children}
         </Context.Provider>
