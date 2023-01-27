@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Context } from '../../Context'
-import { getBusinessesFromYelpApi, getDetailsByIdFromYelpApi, getReviewsFromYelpApi } from '../api/YelpAPI'
+import { getBusinessesFromYelpApi } from '../api/YelpAPI'
 
 const Button = ({ variant, color = 'red', children }) => {
     const ctx = useContext(Context)
@@ -31,10 +31,10 @@ const Button = ({ variant, color = 'red', children }) => {
         e.preventDefault()
         getBusinessesFromYelpApi(ctx.location)
             .then(data => {
-                console.log(data)
+                ctx.setResultsList([...data])
                 ctx.setIsSearchBtnClicked(true)
             })
-            // .then(data => ctx.setApiData(data))
+
             .catch(err => console.log(err))
     }
 
