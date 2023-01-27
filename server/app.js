@@ -27,9 +27,8 @@ app.get('/api/yelp', (req, res) => {
       }
     })
     .then(response => {
-      res.json(response.data.businesses[0]);
-      // id, name, image_url, url, categories[], rating, price, display_address 
-      // res.json([response.data.businesses[0].name, response.data.businesses[0].id]);
+      res.json(response.data.businesses);
+      // id, name, image_url, rating, price, location.display_address
     })
     .catch(error => {
       res.json(error);

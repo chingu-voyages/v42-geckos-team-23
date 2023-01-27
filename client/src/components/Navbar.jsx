@@ -22,7 +22,6 @@ const Navbar = () => {
                     <form className="flex flex-col items-center gap-4 md:flex-row md:gap-1 lg:gap-4">
                         <ZipCodeInput variant="navbar" />
                         <CategoryInputs variant="navbar" />
-
                         <Button variant="navbar">
                             <img
                                 className="pr-1 md:pr-0"

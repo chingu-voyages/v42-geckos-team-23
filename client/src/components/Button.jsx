@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../../Context'
+import { getBusinessesFromYelpApi } from '../api/YelpAPI'
 
 const Button = ({ variant, color = 'red', children }) => {
+    const ctx = useContext(Context)
+
     const classes = []
     if (color === 'red') {
         classes.push('bg-red-500', 'text-white')
@@ -23,8 +27,18 @@ const Button = ({ variant, color = 'red', children }) => {
         btnClasses = popupBtnClasses
     }
 
+    const getBusinessesHandler = (e) => {
+        e.preventDefault()
+        getBusinessesFromYelpApi(ctx.location)
+            .then(data => {
+                ctx.setResultsList([...data])
+                ctx.setIsSearchBtnClicked(true)
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
-        <button className={`${btnClasses} ${classes.join(' ')}`} type="submit">
+        <button className={`${btnClasses} ${classes.join(' ')}`} onClick={getBusinessesHandler}>
             {children}
         </button>
     )

@@ -10,7 +10,7 @@ const Pagination = ({ numberOfPages, currentPage, setCurrentPage }) => {
             setCurrentPage(currentPage + 1)
         }
     }
-    console.log(currentPage)
+    // console.log(currentPage)
     return (
         <div className="btn-group bg-transparent">
             <button className="btn-ghost btn-md btn" onClick={prevPage}>

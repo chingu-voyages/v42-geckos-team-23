@@ -5,7 +5,7 @@ import Button from './Button'
 
 const PopUp = () => {
     return (
-        <div class="bg-white mx-auto w-[500px] rounded-lg drop-shadow-md p-8">
+        <div className="bg-white mx-auto w-[500px] rounded-lg drop-shadow-md p-8">
             <div>
                 <h1 className="text-black font-mono font-semibold text-4xl pb-8 text-center">
                     Welcome to GoPup!
