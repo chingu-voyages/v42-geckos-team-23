@@ -1,13 +1,14 @@
 import React from 'react'
-
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
-function Page1() {
+function Details() {
     return (
         <div>
             <Navbar />
+            <Footer />
         </div>
     )
 }
 
-export default Page1
+export default Details

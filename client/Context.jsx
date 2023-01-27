@@ -11,7 +11,7 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
     }
 
     // state: 
-    const [location, setLocation] = useState('98052')
+    const [location, setLocation] = useState('')
     const [category, setCategory] = useState('')
     const [apiData, setApiData] = useState('')
     const [id, setId] = useState('ptobCLHPk5dzuBEIjWumAw')

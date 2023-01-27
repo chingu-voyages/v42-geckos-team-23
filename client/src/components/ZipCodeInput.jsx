@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../../Context'
 
 const ZipCodeInput = ({ variant = 'popup' }) => {
-    const [zipCode, setZipCode] = React.useState('')
+    const ctx = useContext(Context)
 
     const navbarClasses =
         'bg-gray-200 text-center rounded-full px-2 py-2 md:px-0 md:w-[150px] md:mr-1 lg:mr-0 lg:w-[200px] lg:px-2'
@@ -16,8 +17,8 @@ const ZipCodeInput = ({ variant = 'popup' }) => {
                 className={`${inputClasses}`}
                 type="text"
                 placeholder="enter a zip code"
-                value={zipCode}
-                onChange={(e) => setZipCode(e.target.value)}
+                value={ctx.location}
+                onChange={(e) => ctx.setLocation(e.target.value)}
             />
         </div>
     )
