@@ -4,7 +4,6 @@ import PopUp from './components/PopUp'
 import Results from './components/Results'
 import Footer from './components/Footer'
 import { Context } from '../Context'
-import { getDetailsByIdFromYelpApi, getReviewsFromYelpApi } from './api/YelpAPI'
 
 function App() {
   const ctx = useContext(Context)

@@ -34,7 +34,6 @@ const Button = ({ variant, color = 'red', children }) => {
                 ctx.setResultsList([...data])
                 ctx.setIsSearchBtnClicked(true)
             })
-
             .catch(err => console.log(err))
     }
 
