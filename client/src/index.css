@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .card-body {
     --padding-card: 1rem;
 }
@@ -19,4 +20,13 @@
 
 .btn-active {
     @apply border border-blue-500 bg-blue-500 text-white;
+}
+
+@layer base {
+    h1 {
+        @apply text-2xl;
+    }
+    h2 {
+        @apply text-xl;
+    }
 }
