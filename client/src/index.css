@@ -2,24 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .card-body {
     --padding-card: 1rem;
-}
-
-.rc-pagination {
-    @apply flex gap-2;
-}
-
-.rc-pagination-prev {
-    @apply border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 p-4;
-}
-.rc-pagination-item {
-    @apply border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 p-4;
-}
-
-.btn-active {
-    @apply border border-blue-500 bg-blue-500 text-white;
 }
 
 @layer base {
