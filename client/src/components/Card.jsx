@@ -1,12 +1,17 @@
-import ReactStars from 'react-stars'
 import ArrowButton from './ArrowButton'
+import { Rating } from 'react-simple-star-rating'
 
 const Card = ({ name, location, rating, image_url, price }) => {
     const address = location.display_address
+    
     return (
         <div className="card w-80 bg-base-100 shadow-xl sm:w-96">
-            <figure className="relative">
-                <img src={image_url} alt="dog placeholder" />
+            <figure className="relative h-72">
+                <img
+                    className="h-full w-full object-cover"
+                    src={image_url}
+                    alt="dog placeholder"
+                />
             </figure>
             <div className="card-body flex-row justify-between">
                 <div className="w-3/5">
@@ -19,11 +24,16 @@ const Card = ({ name, location, rating, image_url, price }) => {
                 </div>
                 <div className="flex w-2/5 flex-col items-end">
                     {/* TODO: if price is null, take white space. */}
-                    <p className="flex-grow-0">{price}</p>
-                    <ReactStars
-                        value={rating}
-                        edit={false}
-                        color2={'#FC0706'}
+
+                    {price && <p className='flex-grow-0'>{price}</p>}
+
+                    <Rating
+                        initialValue={rating}
+                        readOnly={true}
+                        size={16}
+                        fillColor={'#FC0706'}
+                        allowFraction
+                        SVGstyle={{ display: 'inline-block' }}
                     />
                 </div>
 
