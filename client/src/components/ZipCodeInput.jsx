@@ -5,7 +5,7 @@ const ZipCodeInput = ({ variant = 'popup' }) => {
     const ctx = useContext(Context)
 
     const navbarClasses =
-        'bg-gray-200 text-center rounded-full px-2 py-2 md:px-0 md:w-[150px] md:mr-1 lg:mr-0 lg:w-[200px] lg:px-2'
+        'bg-gray-200 rounded-full px-4 py-2 w-[150px] md:mr-1 lg:mr-0 '
 
     const popUpClasses = 'bg-gray-200 rounded-full py-3 pl-4 w-full mx-auto'
 

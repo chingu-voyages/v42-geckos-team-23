@@ -22,7 +22,7 @@ const CategoryInputs = ({ variant }) => {
                 <input
                     type="radio"
                     id="restaurants-category"
-                    name="restaurants-category"
+                    name="category"
                     value="restaurants"
                     onChange={(e) => setCategory(e.target.value)}
                 />
@@ -35,7 +35,7 @@ const CategoryInputs = ({ variant }) => {
                 <input
                     type="radio"
                     id="events-category"
-                    name="events-category"
+                    name="category"
                     value="events"
                     onChange={(e) => setCategory(e.target.value)}
                 />
@@ -48,7 +48,7 @@ const CategoryInputs = ({ variant }) => {
                 <input
                     type="radio"
                     id="services-category"
-                    name="services-category"
+                    name="category"
                     value="services"
                     onChange={(e) => setCategory(e.target.value)}
                 />
