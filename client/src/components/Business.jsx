@@ -40,12 +40,12 @@ function Business({ id }) {
                             {details.phone}
                         </a>
                     </div>
-                    <div className='my-5 flex items-center'>
+                    {/* <div className='my-5 flex items-center'>
                         <FaYelp />
                         <a className='ml-7' href={details.url}>
                             Go to Yelp page
                         </a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>

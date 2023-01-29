@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const CategoryInputs = ({ variant }) => {
-    const [category, setCategory] = React.useState('')
+    const [category, setCategory] = useState('')
 
     const navbarInputsClasses = 'flex flex-col sm:flex-row sm:items-center'
     const navbarContainerClasses =
