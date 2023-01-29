@@ -1,15 +1,19 @@
 import { FaGreaterThan } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import { getDetailsByIdFromYelpApi, getReviewsFromYelpApi } from '../api/YelpAPI'
+import { useNavigate } from 'react-router-dom'
 
-const ArrowButton = () => {
+const ArrowButton = ({ id }) => {
+    const navigate = useNavigate()
+
+    const clickHandler = (e) => {
+        e.preventDefault()
+
+        navigate(`details/${id}`)
+    }
+
     return (
-        <Link to='details'>
-            <button className="btn-primary btn-circle btn">
-                <FaGreaterThan />
-            </button>
-        </Link>
-
+        <button className="btn-primary btn-circle btn" onClick={clickHandler}>
+            <FaGreaterThan />
+        </button>
     )
 }
 

@@ -1,16 +1,21 @@
-import React from 'react' 
+import React from 'react'
 
-function ReviewCard() {
+function ReviewCard({ user, text, time_created }) {
+    const date = time_created.slice(0, 10)
+
     return (
         <section className='font-nunito w-1/3 pr-6'>
             <div className='flex items-center'>
-                <img className='w-12 h-12 rounded-full' src='https://s3-media2.fl.yelpcdn.com/bphoto/FTQfPJubJEtYeyHqwAsVKw/o.jpg' alt='profile-pic'/>
+                <img className='w-12 h-12 rounded-full'
+                    // TODO: set default image
+                    src={user.image_url}
+                    alt={`${user.name}'s profile picture on Yelp`} />
                 <div className='ml-5'>
-                    <h1 className='text-3xl font-semibold'>dynamic</h1>
-                    <p>dynamic date</p> 
+                    <h1 className='text-3xl font-semibold'>{user.name}</h1>
+                    <p>{date}</p>
                 </div>
             </div>
-            <p className='tracking-widest mt-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p className='tracking-widest mt-3'>{text}</p>
         </section>
     )
 }

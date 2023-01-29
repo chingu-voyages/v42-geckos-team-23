@@ -6,29 +6,22 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
     // variables: 
 
     // functions: 
-    function test() {
-        console.log("context")
-    }
 
     // state: 
     const [location, setLocation] = useState('')
     const [category, setCategory] = useState('')
     const [resultsList, setResultsList] = useState([])
-    const [id, setId] = useState('ptobCLHPk5dzuBEIjWumAw')
     const [isSearchBtnClicked, setIsSearchBtnClicked] = useState(false)
 
     return (
         <Context.Provider value={{
             // insert functions/variables/state you want to use in other components/files:
-            test,
             location,
             setLocation,
             category,
             setCategory,
             resultsList,
             setResultsList,
-            id,
-            setId,
             isSearchBtnClicked,
             setIsSearchBtnClicked
         }}>

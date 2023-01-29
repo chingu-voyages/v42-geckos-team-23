@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
 import { ContextProvider } from '../Context'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import './index.css'
 
 import App from './App'
 import Details from './pages/Details'
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />
     },
     {
-        path:"details",
+        path: "details/:id",
         element: <Details />
     }
 ])

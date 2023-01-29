@@ -47,7 +47,7 @@ app.get('/api/yelp/:id', (req, res) => {
     .then(response => {
       res.json(response.data)
       // id, name, image_url, url, phone or display_phone, review_count, categories[], 
-      // rating, display_address, photos[]
+      // rating, location.display_address, photos[]
     })
     .catch(error => {
       res.json(error)
