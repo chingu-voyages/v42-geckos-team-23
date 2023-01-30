@@ -1,16 +1,16 @@
 import ArrowButton from './ArrowButton'
 import { Rating } from 'react-simple-star-rating'
 
-const Card = ({ name, location, rating, image_url, price }) => {
+const Card = ({ id, name, location, rating, image_url, price }) => {
     const address = location.display_address
-    
+
     return (
         <div className="card w-80 bg-base-100 shadow-xl sm:w-96">
             <figure className="relative h-72">
                 <img
                     className="h-full w-full object-cover"
                     src={image_url}
-                    alt="dog placeholder"
+                    alt={name}
                 />
             </figure>
             <div className="card-body flex-row justify-between">
@@ -38,7 +38,7 @@ const Card = ({ name, location, rating, image_url, price }) => {
                 </div>
 
                 <div className="card-actions absolute top-4  right-4 justify-end">
-                    <ArrowButton />
+                    <ArrowButton id={id} />
                 </div>
             </div>
         </div>
