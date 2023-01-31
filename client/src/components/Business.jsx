@@ -5,6 +5,7 @@ import { FaFlag } from 'react-icons/fa'
 import { BsTelephoneFill } from 'react-icons/bs'
 import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
 import { useEffect } from 'react'
+import Address from './Address'
 
 function Business({ id }) {
     const [details, setDetails] = useState({})
@@ -24,9 +25,7 @@ function Business({ id }) {
                 <div className='ml-16 text-3xl font-semibold'>
                     <div className='my-5 flex items-center'>
                         <FaFlag />
-                        <p className='ml-7'>
-                            {details.location?.display_address}
-                        </p>
+                        <Address location={details.location} className='ml-7' />
                     </div>
                     {/* <div className='my-5 flex items-center'>
                         <BsGlobe2 />
@@ -54,7 +53,7 @@ function Business({ id }) {
 
 export default Business
 
-/* 
+/*
         <div id='map' style='width: 400px; height: 300px;'></div>
         <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYW5kb2JvdCIsImEiOiJjbGRjZTZybXgwOXQ4M29wejIxMWI0NmduIn0.mDJIbiZqOqop2DID64mIwA';
