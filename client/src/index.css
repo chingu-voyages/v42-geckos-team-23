@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-.card-body {
-    --padding-card: 1rem;
+@layer components {
+    .card-body {
+        --padding-card: 1rem;
+    }
+    .overlay {
+        background-color: black;
+        mix-blend-mode: color;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
 }
 
 @layer base {
