@@ -13,7 +13,7 @@ const Button = ({ variant, color = 'red', children }) => {
     }
 
     const navbarBtnClasses =
-        'flex  items-center rounded-full px-10 py-2 md:px-3 md:py-3'
+        'flex items-center rounded-full px-10 py-2 md:px-3 md:py-3'
     const defaultBtnClasses =
         'flex items-center rounded-full px-10 py-2 md:px-3 md:py-3'
     const popupBtnClasses =

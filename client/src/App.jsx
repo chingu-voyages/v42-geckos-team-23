@@ -9,7 +9,7 @@ function App() {
   const ctx = useContext(Context)
 
   return (
-    <div className="min-h-screen flex flex-col justify-between">
+    <div className="min-h-screen font-nunito flex flex-col justify-between">
       <Navbar />
       {!ctx.isSearchBtnClicked && <PopUp />}
       {ctx.isSearchBtnClicked && <Results />}
