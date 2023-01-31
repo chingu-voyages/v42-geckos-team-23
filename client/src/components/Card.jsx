@@ -38,7 +38,7 @@ const Card = ({ id, name, location, rating, image_url, price }) => {
                 </div>
 
                 <div className="card-actions absolute top-4  right-4 justify-end">
-                    <ArrowButton id={id} />
+                    <ArrowButton id={id} direction='next' />
                 </div>
             </div>
         </div>

@@ -1,18 +1,24 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import ArrowButton from './ArrowButton'
 import Carousel from './Carousel'
 
 function Hero() {
-  return (
-      <div className="relative">
-          <h1 className="absolute top-[10%] right-[10%] z-10 text-[70px] leading-tight text-white font-bold font-nunito text-shadow">
-              Take your pets
-              <br />
-              wherever you go!
-          </h1>
+    const arrowButtonRef = useRef()
 
-          <Carousel />
-      </div>
-  )
+    return (
+        <div className="relative">
+            <h1 className="text-shadow absolute top-[10%] right-[10%] z-10 font-nunito text-[70px] font-bold leading-tight text-white">
+                Take your pets
+                <br />
+                wherever you go!
+            </h1>
+            <ArrowButton
+                ref={arrowButtonRef}
+                className="absolute top-[5%] left-[5%] z-10"
+            />
+            <Carousel />
+        </div>
+    )
 }
 
 export default Hero
