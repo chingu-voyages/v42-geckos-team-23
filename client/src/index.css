@@ -2,8 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-.card-body {
-    --padding-card: 1rem;
+@layer components {
+    .card-body {
+        --padding-card: 1rem;
+    }
+    .overlay {
+        background-color: black;
+        mix-blend-mode: color;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.swiper-slide::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3));
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 50rem;
+    object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-inactive-color: transparent;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-height: 1rem;
+    --swiper-pagination-bullet-width: 1rem;
+
+    border: 2px solid white;
+}
+
+.swiper-pagination-bullet-active {
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-color: white;
 }
 
 @layer base {

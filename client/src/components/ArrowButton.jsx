@@ -1,7 +1,8 @@
-import { FaGreaterThan } from 'react-icons/fa'
+import { forwardRef } from 'react'
+import { FaGreaterThan, FaLessThan } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
-const ArrowButton = ({ id }) => {
+const ArrowButton = ({ id, direction = 'prev', className = '' }, ref) => {
     const navigate = useNavigate()
 
     const clickHandler = (e) => {
@@ -9,13 +10,18 @@ const ArrowButton = ({ id }) => {
 
         navigate(`details/${id}`)
     }
+    const baseStyles = 'btn-primary btn-circle btn'
+    const arrowButtonClassName = `${baseStyles} ${className}`
 
     return (
-        <button className="btn-primary btn-circle btn" onClick={clickHandler}>
-            <FaGreaterThan />
+        <button
+            ref={ref}
+            className={arrowButtonClassName}
+            onClick={clickHandler}
+        >
+            {direction === 'prev' ? <FaLessThan /> : <FaGreaterThan />}
         </button>
     )
 }
 
-export default ArrowButton
-
+export default forwardRef(ArrowButton)
