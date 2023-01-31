@@ -9,8 +9,6 @@ import { useEffect } from 'react'
 function Business({ id }) {
     const [details, setDetails] = useState({})
 
-    console.log(import.meta.env.VITE_MAPBOX_API_KEY)
-
     const MAPBOX = import.meta.env.VITE_MAPBOX_API_KEY
 
     mapboxgl.accessToken = MAPBOX;
