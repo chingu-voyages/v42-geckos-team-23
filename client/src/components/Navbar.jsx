@@ -2,6 +2,9 @@ import React from 'react'
 import Button from './Button'
 import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
+import mobileLogo from '../assets/goPup_mobile-logo.png';
+import logo from '../assets/goPup_logo.png';
+import searchIcon from '../assets/search-icon.svg';
 
 const Navbar = () => {
     return (
@@ -9,12 +12,12 @@ const Navbar = () => {
             <div className=" flex flex-col px-8 py-8 items-center justify-between md:flex-row">
                 <img
                     className="w-[175px] pb-8 sm:hidden"
-                    src="src/assets/goPup_mobile-logo.png"
+                    src={mobileLogo}
                     alt="logo"
                 />
                 <img
                     className="sm:w-[150px] hidden sm:block sm:pb-4 "
-                    src="src/assets/goPup_logo.png"
+                    src={logo}
                     alt="logo"
                 />
 
@@ -25,7 +28,7 @@ const Navbar = () => {
                         <Button variant="navbar">
                             <img
                                 className="pr-1 md:pr-0"
-                                src="src/assets/search-icon.svg"
+                                src={searchIcon}
                             />
                             <span className="md:hidden">Search</span>
                         </Button>
