@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
+import Hero from '../components/Hero'
 import Footer from '../components/Footer'
 import Business from '../components/Business'
 import ReviewCard from '../components/ReviewCard'
@@ -19,6 +20,7 @@ function Details() {
     return (
         <>
             <Navbar />
+            <Hero />
             <Business id={id} />
             <section className="relative mx-10 mt-10 mb-20 font-nunito">
                 <h1 className="mb-7 text-4xl font-semibold">Reviews</h1>
