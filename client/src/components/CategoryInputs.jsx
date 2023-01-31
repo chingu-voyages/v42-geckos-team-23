@@ -17,7 +17,7 @@ const CategoryInputs = ({ variant }) => {
         variant === 'navbar' ? navbarContainerClasses : popUpContainerClasses
 
     return (
-        <div className={`${containerClasses} font-mono text-black`}>
+        <div className={`${containerClasses} text-black`}>
             <div className={`${inputClasses}`}>
                 <input
                     type="radio"
