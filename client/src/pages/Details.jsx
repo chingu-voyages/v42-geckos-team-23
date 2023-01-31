@@ -25,10 +25,10 @@ function Details() {
                 <div className='flex justify-start mb-3'>
                     {reviews.map((review) => <ReviewCard key={review.id} {...review} />)}
                 </div>
-                <a className='px-7 py-2 absolute right-0 text-red-500 border-solid rounded-full border-red-500 border-2 active:bg-red-200 active:text-white'
+                <a className='px-7 py-2 absolute right-0 text-red-500 border-solid rounded-full border-red-500 border-2 hover:shadow-sm hover:shadow-red-400 active:bg-red-200 active:text-white'
                     href={reviews[0]?.url}>
                     More Reviews on Yelp
-                </a> //Added optional chaining to prevent error when reviews is empty
+                </a>
             </section>
             <Footer />
         </>

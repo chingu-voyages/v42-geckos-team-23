@@ -4,6 +4,7 @@ import { ContextProvider } from '../Context'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 
+
 import App from './App'
 import Details from './pages/Details'
 import ErrorPage from './pages/Error'
