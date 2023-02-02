@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Context } from '../../Context'
 import { getBusinessesFromYelpApi } from '../api/YelpAPI'
 
-const Button = ({ variant, color = 'red', children }) => {
+const Button = ({ variant, color = 'red', categoryName, children }) => {
     const ctx = useContext(Context)
 
     const classes = []
@@ -30,13 +30,16 @@ const Button = ({ variant, color = 'red', children }) => {
     const getBusinessesHandler = (e) => {
         e.preventDefault()
 
-        ctx.setStatus('loading');
+        ctx.setIsLoading(true);
 
         getBusinessesFromYelpApi(ctx.location, ctx.category)
             .then(data => {
                 ctx.setResultsList([...data])
                 ctx.setIsSearchBtnClicked(true)
-                ctx.setStatus('success');
+                console.log(ctx.categoryName)
+                ctx.setCategoryName(categoryName)
+                ctx.setIsLoading(false);
+
             })
             .catch(err => console.log(err))
     }

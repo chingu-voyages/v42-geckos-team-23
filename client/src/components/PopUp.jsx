@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
 import Button from './Button'
@@ -20,23 +20,25 @@ const customStyles = {
 }
 
 const PopUp = () => {
-    const [modalIsOpen, setModalIsOpen] = React.useState(false)
-    const [hasBeenCalled, setHasBeenCalled] = React.useState(false)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [hasBeenCalled, setHasBeenCalled] = useState(false)
+    const [categoryName, setCategoryName] = useState('')
 
-    function closeModal() {
+    const closeModal = () => {
         setModalIsOpen(false)
     }
 
-    function openModal() {
+    const openModal = () => {
         setModalIsOpen(true)
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (!hasBeenCalled) {
             setHasBeenCalled(true)
             openModal()
         }
     }, [])
+
     return (
         <Modal
             isOpen={modalIsOpen}
@@ -50,15 +52,13 @@ const PopUp = () => {
                 </h1>
                 <div className="mx-4">
                     <ZipCodeInput />
-
                     <div className="mx-4">
                         <h2 className="py-5 font-semibold text-black">
                             What are you looking for?
                         </h2>
-
-                        <CategoryInputs variant="popup" />
+                        <CategoryInputs variant="popup" setCategoryName={setCategoryName} />
                     </div>
-                    <Button variant="popup">
+                    <Button variant="popup" categoryName={categoryName}>
                         <span>Search</span>
                     </Button>
                 </div>

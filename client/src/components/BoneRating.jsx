@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { range } from '../utils/utils'
 
-export default function BoneRating({ rating, max = 5 }) {
-    const [ratingValue] = React.useState(rating)
+const BoneRating = ({ rating, max = 5 }) => {
+    const [ratingValue] = useState(rating)
     const percentage = Math.round((ratingValue / max) * 100)
 
     return (
@@ -24,7 +24,7 @@ export default function BoneRating({ rating, max = 5 }) {
     )
 }
 
-function Bone({ size = 16, color = 'red' }) {
+const Bone = ({ size = 16, color = 'red' }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,3 +37,5 @@ function Bone({ size = 16, color = 'red' }) {
         </svg>
     )
 }
+
+export default BoneRating

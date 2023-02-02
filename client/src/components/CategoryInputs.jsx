@@ -1,8 +1,7 @@
-import React from 'react'
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { Context } from '../../Context'
 
-const CategoryInputs = ({ variant }) => {
+const CategoryInputs = ({ variant, setCategoryName }) => {
     const ctx = useContext(Context)
 
     const navbarInputsClasses = 'flex flex-col sm:flex-row sm:items-center'
@@ -19,7 +18,7 @@ const CategoryInputs = ({ variant }) => {
         variant === 'navbar' ? navbarContainerClasses : popUpContainerClasses
 
     const changeHandler = (e) => {
-        ctx.setCategoryName(e.target.id)
+        setCategoryName(e.target.id)
         ctx.setCategory(e.target.value)
     }
 

@@ -13,7 +13,7 @@ import { slide_images } from '../assets'
 
 SwiperCore.use([EffectFade, Pagination, Navigation, Autoplay])
 
-function Carousel() {
+const Carousel = () => {
     return (
         <Swiper
             spaceBetween={30}

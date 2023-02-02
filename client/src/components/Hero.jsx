@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import ArrowButton from './ArrowButton'
 import Carousel from './Carousel'
 
-function Hero() {
+const Hero = () => {
     const arrowButtonRef = useRef()
 
     return (

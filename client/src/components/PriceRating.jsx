@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { range } from '../utils/utils'
 
-export default function PriceRating({ rating = 0, max = 5 }) {
-    const [ratingValue] = React.useState(rating)
+const PriceRating = ({ rating = 0, max = 5 }) => {
+    const [ratingValue] = useState(rating)
     const percentage = Math.round((ratingValue / max) * 100)
+
     return (
         <div className="relative inline-flex items-center">
             {range(max).map((_, index) => (
@@ -23,7 +24,7 @@ export default function PriceRating({ rating = 0, max = 5 }) {
     )
 }
 
-function Price({ size = 16, color = 'red' }) {
+const Price = ({ size = 16, color = 'red' }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,3 +55,5 @@ function Price({ size = 16, color = 'red' }) {
         </svg>
     )
 }
+
+export default PriceRating

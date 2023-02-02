@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
-import { FaGreaterThan, FaLessThan } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import { FaGreaterThan, FaLessThan } from 'react-icons/fa'
 
 const ArrowButton = ({ id, direction = 'prev', className = '' }, ref) => {
     const navigate = useNavigate()
