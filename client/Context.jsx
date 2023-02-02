@@ -3,15 +3,16 @@ import React, { useState } from 'react';
 const Context = React.createContext()
 
 function ContextProvider({ children }) { // children refers to: <App />, from main.jsx
-    // variables: 
+    // variables:
 
-    // functions: 
+    // functions:
 
-    // state: 
+    // state:
     const [location, setLocation] = useState('')
     const [category, setCategory] = useState('')
     const [resultsList, setResultsList] = useState([])
     const [isSearchBtnClicked, setIsSearchBtnClicked] = useState(false)
+    const [status, setStatus] = useState('idle');
 
     return (
         <Context.Provider value={{
@@ -23,7 +24,9 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
             resultsList,
             setResultsList,
             isSearchBtnClicked,
-            setIsSearchBtnClicked
+            setIsSearchBtnClicked,
+            status,
+            setStatus
         }}>
             {children}
         </Context.Provider>
@@ -32,7 +35,7 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
 
 export { Context, ContextProvider }
 
-/*  
+/*
 
     to access Context from a component, use 'import { Context } from context path'
 
@@ -40,7 +43,7 @@ export { Context, ContextProvider }
         const { variables/functions from Context.jsx } = useContext(Context)
 
         return (
-            jsx here: 
+            jsx here:
         )
     }
 

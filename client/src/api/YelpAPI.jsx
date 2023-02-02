@@ -1,7 +1,8 @@
 const getBusinessesFromYelpApi = (location) => {
     // TODO: implement input validation before api call
     // TODO: add category param, and dog friendly? dogs allowed? events?
-    return fetch(`/api/yelp?location=${location}&term=dog+friendly`)
+    // categories=restaurants,bars 
+    return fetch(`/api/yelp?term=dogs+allowed&categories=restaurants,bars&location=${location}`)
         .then((res) => res.json())
 }
 

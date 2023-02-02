@@ -27,7 +27,6 @@ function Carousel() {
                 delay: 2500,
                 disableOnInteraction: false,
             }}
-            navigation={true}
             className="mySwiper"
         >
             {slide_images.map((img, i) => {
