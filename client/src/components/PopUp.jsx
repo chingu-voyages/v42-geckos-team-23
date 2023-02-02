@@ -1,8 +1,11 @@
 import React from 'react'
+import Modal from 'react-modal'
+
 import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
 import Button from './Button'
-import Modal from 'react-modal'
+import Spinner from './Spinner'
+import { Context } from '../../Context'
 
 const customStyles = {
     content: {
@@ -22,6 +25,7 @@ const customStyles = {
 const PopUp = () => {
     const [modalIsOpen, setModalIsOpen] = React.useState(false)
     const [hasBeenCalled, setHasBeenCalled] = React.useState(false)
+    const ctx = React.useContext(Context)
 
     function closeModal() {
         setModalIsOpen(false)
@@ -58,9 +62,13 @@ const PopUp = () => {
 
                         <CategoryInputs variant="popup" />
                     </div>
-                    <Button variant="popup">
-                        <span>Search</span>
-                    </Button>
+                    {ctx.status === 'loading' ? (
+                        <Spinner />
+                    ) : (
+                        <Button variant="popup">
+                            <span>Search</span>
+                        </Button>
+                    )}
                 </div>
             </div>
         </Modal>

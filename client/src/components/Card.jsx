@@ -5,7 +5,7 @@ import ArrowButton from './ArrowButton'
 
 const Card = ({ id, name, location, rating, image_url, price }) => {
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-[375px] bg-base-100 shadow-xl">
             <figure className="relative h-72">
                 <img
                     className="h-full w-full object-cover"
