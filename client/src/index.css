@@ -66,6 +66,26 @@
     --swiper-pagination-color: white;
 }
 
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner {
+    display: block;
+    width: max-content;
+    margin: auto;
+    color: rgba(180,58,73,1);
+    animation: spin 1000ms linear infinite;
+  }
+  .spinner svg {
+    display: block;
+  }
+
 @layer base {
     h1 {
         @apply text-2xl;

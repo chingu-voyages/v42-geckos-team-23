@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Context } from '../../Context'
 import { getBusinessesFromYelpApi } from '../api/YelpAPI'
 
@@ -29,10 +29,13 @@ const Button = ({ variant, color = 'red', children }) => {
 
     const getBusinessesHandler = (e) => {
         e.preventDefault()
+        ctx.setStatus('loading');
+
         getBusinessesFromYelpApi(ctx.location)
             .then(data => {
                 ctx.setResultsList([...data])
                 ctx.setIsSearchBtnClicked(true)
+                ctx.setStatus('success');
             })
             .catch(err => console.log(err))
     }
