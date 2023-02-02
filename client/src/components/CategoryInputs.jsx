@@ -18,17 +18,22 @@ const CategoryInputs = ({ variant }) => {
     const containerClasses =
         variant === 'navbar' ? navbarContainerClasses : popUpContainerClasses
 
+    const changeHandler = (e) => {
+        ctx.setCategoryName(e.target.id)
+        ctx.setCategory(e.target.value)
+    }
+
     return (
         <div className={`${containerClasses} text-black`}>
             <div className={`${inputClasses}`}>
                 <input
                     type="radio"
-                    id="restaurants-category"
+                    id="Restaurants"
                     name="category"
                     value="restaurants%2Cfood"
-                    onChange={(e) => ctx.setCategory(e.target.value)}
+                    onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="restaurants-category">
+                <label className="px-1" htmlFor="Restaurants">
                     Restaurants
                 </label>
             </div>
@@ -36,12 +41,12 @@ const CategoryInputs = ({ variant }) => {
             <div className={`${inputClasses}`}>
                 <input
                     type="radio"
-                    id="cafes-category"
+                    id="Cafés"
                     name="category"
                     value="cafes%2Ccoffee"
-                    onChange={(e) => ctx.setCategory(e.target.value)}
+                    onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="cafes-category">
+                <label className="px-1" htmlFor="Cafés">
                     Cafés
                 </label>
             </div>
@@ -49,12 +54,12 @@ const CategoryInputs = ({ variant }) => {
             <div className={`${inputClasses}`}>
                 <input
                     type="radio"
-                    id="activities-category"
+                    id="Activities"
                     name="category"
                     value="active"
-                    onChange={(e) => ctx.setCategory(e.target.value)}
+                    onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="activities-category">
+                <label className="px-1" htmlFor="Activities">
                     Activities
                 </label>
             </div>
@@ -62,12 +67,12 @@ const CategoryInputs = ({ variant }) => {
             <div className={`${inputClasses}`}>
                 <input
                     type="radio"
-                    id="hotelstravel-category"
+                    id="Hotels & Travel"
                     name="category"
                     value="hotelstravel"
-                    onChange={(e) => ctx.setCategory(e.target.value)}
+                    onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="hotelstravel-category">
+                <label className="px-1" htmlFor="Hotels & Travel">
                     Hotels & Travel
                 </label>
             </div>
@@ -75,12 +80,12 @@ const CategoryInputs = ({ variant }) => {
             <div className={`${inputClasses}`}>
                 <input
                     type="radio"
-                    id="shopping-category"
+                    id="Shopping"
                     name="category"
                     value="shopping"
-                    onChange={(e) => ctx.setCategory(e.target.value)}
+                    onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="shopping-category">
+                <label className="px-1" htmlFor="Shopping">
                     Shopping
                 </label>
             </div>

@@ -10,6 +10,7 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
     // state:
     const [location, setLocation] = useState('')
     const [category, setCategory] = useState('')
+    const [categoryName, setCategoryName] = useState('')
     const [resultsList, setResultsList] = useState([])
     const [isSearchBtnClicked, setIsSearchBtnClicked] = useState(false)
     const [status, setStatus] = useState('idle');
@@ -21,6 +22,8 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
             setLocation,
             category,
             setCategory,
+            categoryName,
+            setCategoryName,
             resultsList,
             setResultsList,
             isSearchBtnClicked,
