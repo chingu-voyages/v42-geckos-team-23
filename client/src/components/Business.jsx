@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { FaYelp } from 'react-icons/fa'
 import { BsGlobe2 } from 'react-icons/bs'
 import { FaFlag } from 'react-icons/fa'
@@ -10,9 +10,28 @@ import Address from './Address'
 function Business({ id }) {
     const [details, setDetails] = useState({})
 
+    const MAPBOX = import.meta.env.VITE_MAPBOX_API_KEY
+
+    mapboxgl.accessToken = MAPBOX;
+
+    const mapContainer = useRef(null)
+    const map = useRef(null)
+
     useEffect(() => {
         getDetailsByIdFromYelpApi(id)
-            .then(data => setDetails({ ...data }))
+            .then(data => {
+                setDetails({ ...data })
+                let lng = data.coordinates.longitude
+                let lat = data.coordinates.latitude
+
+                if (map.current) return; 
+                map.current = new mapboxgl.Map({
+                    container: mapContainer.current,
+                    style: 'mapbox://styles/mapbox/streets-v12',
+                    center: [lng, lat],
+                    zoom: 17
+                })
+            })
             .catch(err => console.log(err))
     }, [])
 
@@ -20,9 +39,10 @@ function Business({ id }) {
         <section className='m-10 font-nunito'>
             <h1 className='text-5xl font-bold'>{details.name}</h1>
             <div className='flex mt-7'>
-                {/* TODO: google maps */}
-                <p className='w-1/3 bg-teal-100 rounded-xl'>map placeholder</p>
-                <div className='ml-16 text-3xl font-semibold'>
+
+                <div className='border h-80 w-2/5 rounded-2xl' ref={mapContainer}></div>
+                
+                <div className='ml-20 text-3xl font-semibold'>
                     <div className='my-5 flex items-center'>
                         <FaFlag />
                         <Address location={details.location} className='ml-7' />
@@ -52,16 +72,3 @@ function Business({ id }) {
 }
 
 export default Business
-
-/*
-        <div id='map' style='width: 400px; height: 300px;'></div>
-        <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYW5kb2JvdCIsImEiOiJjbGRjZTZybXgwOXQ4M29wejIxMWI0NmduIn0.mDJIbiZqOqop2DID64mIwA';
-            const map = new mapboxgl.Map({
-                container: 'map', // container ID
-                style: 'mapbox://styles/mapbox/streets-v12', // style URL
-                center: [-122.393303, 37.795831], // starting position [lng, lat]
-                zoom: 16, // starting zoom
-            });
-        </script>
-*/
