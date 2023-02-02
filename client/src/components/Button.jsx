@@ -36,7 +36,6 @@ const Button = ({ variant, color = 'red', categoryName, children }) => {
             .then(data => {
                 ctx.setResultsList([...data])
                 ctx.setIsSearchBtnClicked(true)
-                console.log(ctx.categoryName)
                 ctx.setCategoryName(categoryName)
                 ctx.setIsLoading(false);
 
