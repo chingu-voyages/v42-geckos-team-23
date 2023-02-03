@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 
-const Context = React.createContext()
+const Context = createContext()
 
 function ContextProvider({ children }) { // children refers to: <App />, from main.jsx
     // variables:
@@ -10,9 +10,10 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
     // state:
     const [location, setLocation] = useState('')
     const [category, setCategory] = useState('')
+    const [categoryName, setCategoryName] = useState('')
     const [resultsList, setResultsList] = useState([])
     const [isSearchBtnClicked, setIsSearchBtnClicked] = useState(false)
-    const [status, setStatus] = useState('idle');
+    const [isLoading, setIsLoading] = useState(false);
 
     return (
         <Context.Provider value={{
@@ -21,12 +22,14 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
             setLocation,
             category,
             setCategory,
+            categoryName,
+            setCategoryName,
             resultsList,
             setResultsList,
             isSearchBtnClicked,
             setIsSearchBtnClicked,
-            status,
-            setStatus
+            isLoading,
+            setIsLoading
         }}>
             {children}
         </Context.Provider>

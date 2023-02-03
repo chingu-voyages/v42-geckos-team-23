@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Address({ location, className, row = 1 }) {
+const Address = ({ location, className, row = 1 }) => {
     if (location === undefined) return null
 
     let address = location.display_address

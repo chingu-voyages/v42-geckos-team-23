@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../../Context'
 
-const CategoryInputs = ({ variant }) => {
-    const [category, setCategory] = useState('')
+const CategoryInputs = ({ variant, setCategoryName }) => {
+    const ctx = useContext(Context)
 
     const navbarInputsClasses = 'flex flex-col sm:flex-row sm:items-center'
     const navbarContainerClasses =
@@ -16,17 +17,22 @@ const CategoryInputs = ({ variant }) => {
     const containerClasses =
         variant === 'navbar' ? navbarContainerClasses : popUpContainerClasses
 
+    const changeHandler = (e) => {
+        setCategoryName(e.target.id)
+        ctx.setCategory(e.target.value)
+    }
+
     return (
         <div className={`${containerClasses} text-black`}>
             <div className={`${inputClasses}`}>
                 <input
                     type="radio"
-                    id="restaurants-category"
+                    id="Restaurants"
                     name="category"
-                    value="restaurants"
-                    onChange={(e) => setCategory(e.target.value)}
+                    value="restaurants%2Cfood"
+                    onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="restaurants-category">
+                <label className="px-1" htmlFor="Restaurants">
                     Restaurants
                 </label>
             </div>
@@ -34,26 +40,52 @@ const CategoryInputs = ({ variant }) => {
             <div className={`${inputClasses}`}>
                 <input
                     type="radio"
-                    id="events-category"
+                    id="Cafés"
                     name="category"
-                    value="events"
-                    onChange={(e) => setCategory(e.target.value)}
+                    value="cafes%2Ccoffee"
+                    onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="events-category">
-                    Events
+                <label className="px-1" htmlFor="Cafés">
+                    Cafés
                 </label>
             </div>
 
             <div className={`${inputClasses}`}>
                 <input
                     type="radio"
-                    id="services-category"
+                    id="Activities"
                     name="category"
-                    value="services"
-                    onChange={(e) => setCategory(e.target.value)}
+                    value="active"
+                    onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="services-category">
-                    Services
+                <label className="px-1" htmlFor="Activities">
+                    Activities
+                </label>
+            </div>
+
+            <div className={`${inputClasses}`}>
+                <input
+                    type="radio"
+                    id="Hotels & Travel"
+                    name="category"
+                    value="hotelstravel"
+                    onChange={(e) => changeHandler(e)}
+                />
+                <label className="px-1" htmlFor="Hotels & Travel">
+                    Hotels & Travel
+                </label>
+            </div>
+
+            <div className={`${inputClasses}`}>
+                <input
+                    type="radio"
+                    id="Shopping"
+                    name="category"
+                    value="shopping"
+                    onChange={(e) => changeHandler(e)}
+                />
+                <label className="px-1" htmlFor="Shopping">
+                    Shopping
                 </label>
             </div>
         </div>

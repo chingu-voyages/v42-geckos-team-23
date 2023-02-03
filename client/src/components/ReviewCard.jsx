@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ReviewCard({ user, text, time_created }) {
+const ReviewCard = ({ user, text, time_created }) => {
     const date = time_created.slice(0, 10)
 
     return (
