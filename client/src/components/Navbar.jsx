@@ -5,9 +5,20 @@ import CategoryInputs from './CategoryInputs'
 import mobileLogo from '../assets/goPup_mobile-logo.png';
 import logo from '../assets/goPup_logo.png';
 import searchIcon from '../assets/search-icon.svg';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const [categoryName, setCategoryName] = useState('')
+
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const goHome = () => {
+        console.log(location)
+        if (location !== '/') {
+            navigate('/')
+        } 
+    }
 
     return (
         <div className="bg-red-50">
@@ -18,9 +29,10 @@ const Navbar = () => {
                     alt="logo"
                 />
                 <img
-                    className="sm:w-[150px] hidden sm:block sm:pb-4 "
+                    className="sm:w-[150px] hidden sm:block sm:pb-4 hover:cursor-pointer"
                     src={logo}
                     alt="logo"
+                    onClick={goHome}
                 />
 
                 <form className="flex flex-col items-center gap-4 md:flex-row md:gap-1 lg:gap-4">
