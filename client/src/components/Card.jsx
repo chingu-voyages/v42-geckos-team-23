@@ -2,8 +2,11 @@ import PriceRating from './PriceRating'
 import BoneRating from './BoneRating'
 import Address from './Address'
 import ArrowButton from './ArrowButton'
+import defaultCardImage from '../assets/goPup_logo_card.png'
 
 const Card = ({ id, name, location, rating, image_url, price }) => {
+    image_url === null && (image_url = defaultCardImage)
+
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="relative h-72">
