@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
+import React from 'react'
+import { useLocation } from 'react-router-dom'
 import ArrowButton from './ArrowButton'
 import Carousel from './Carousel'
 
 const Hero = () => {
-    const arrowButtonRef = useRef()
+    const location = useLocation()
 
     return (
         <div className="relative z-0">
@@ -12,10 +13,9 @@ const Hero = () => {
                 <br />
                 wherever you go!
             </h1>
-            <ArrowButton
-                ref={arrowButtonRef}
-                className="absolute top-[5%] left-[5%] z-10"
-            />
+            {location.pathname === "/" ? null :
+                <ArrowButton className="absolute top-[5%] left-[5%] z-10" />
+            }
             <Carousel />
         </div>
     )
