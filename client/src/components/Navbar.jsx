@@ -26,6 +26,7 @@ const Navbar = () => {
                     className="w-[175px] pb-8 sm:hidden"
                     src={mobileLogo}
                     alt="logo"
+                    onClick={goHome}
                 />
                 <img
                     className="sm:w-[150px] hidden sm:block sm:pb-4 hover:cursor-pointer"
