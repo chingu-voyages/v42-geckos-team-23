@@ -1,13 +1,14 @@
-import React, { useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import { FaYelp } from 'react-icons/fa'
 import { FaFlag } from 'react-icons/fa'
 import { BsTelephoneFill } from 'react-icons/bs'
 import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
-import { useEffect } from 'react'
 import Address from './Address'
+import { Context } from '../../Context'
 
 const Business = ({ id }) => {
     const [details, setDetails] = useState({})
+    const ctx = useContext(Context)
 
     const MAPBOX = import.meta.env.VITE_MAPBOX_API_KEY
 
@@ -20,9 +21,10 @@ const Business = ({ id }) => {
         getDetailsByIdFromYelpApi(id)
             .then(data => {
                 setDetails({ ...data })
+                ctx.setBusinessImages([...data.photos])
+
                 let lng = data.coordinates.longitude
                 let lat = data.coordinates.latitude
-
                 if (map.current) return;
                 map.current = new mapboxgl.Map({
                     container: mapContainer.current,
