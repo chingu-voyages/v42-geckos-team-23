@@ -36,25 +36,25 @@ const Business = ({ id }) => {
 
     return (
         <section className='m-10 font-nunito'>
-            <h1 className='text-5xl font-bold'>{details.name}</h1>
-            <div className='flex mt-7'>
+            <h1 className='text-4xl md:text-5xl font-bold'>{details.name}</h1>
+            <div className='lg:flex mt-7'>
 
-                <div className='border h-80 w-2/5 rounded-2xl' ref={mapContainer}></div>
+                <div className='border h-80 lg:w-2/5 rounded-2xl' ref={mapContainer}></div>
 
-                <div className='ml-20 text-3xl font-semibold'>
+                <div className='lg:ml-20 text-2xl md:text-3xl font-semibold'>
                     <div className='my-5 flex items-center'>
-                        <FaFlag />
-                        <Address location={details.location} className='ml-7' />
+                        <FaFlag className='shrink-0'/>
+                        <Address className='ml-3 sm:ml-7' location={details.location} />
                     </div>
                     <div className='my-5 flex items-center'>
-                        <BsTelephoneFill />
-                        <a className='ml-7' href="tel:#">
+                        <BsTelephoneFill className='shrink-0'/>
+                        <a className='ml-3 sm:ml-7' href="tel:#">
                             {details.phone}
                         </a>
                     </div>
                     <div className='my-5 flex items-center'>
-                        <FaYelp />
-                        <a className='ml-7' href={details?.url}>
+                        <FaYelp className='shrink-0'/>
+                        <a className='ml-3 sm:ml-7' href={details?.url}>
                             Go to Yelp page
                         </a>
                     </div>
