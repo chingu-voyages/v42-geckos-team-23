@@ -23,8 +23,8 @@ const Details = () => {
             <Hero />
             <Business id={id} />
             <section className="relative mx-10 mt-10 mb-20 font-nunito">
-                <h1 className="mb-7 text-4xl font-semibold">Reviews</h1>
-                <div className="mb-3 flex justify-start">
+                <h1 className="mb-7 text-3xl font-bold">Reviews</h1>
+                <div className="mb-3 sm:flex justify-start">
                     {reviews.map((review) => (
                         <ReviewCard key={review.id} {...review} />
                     ))}

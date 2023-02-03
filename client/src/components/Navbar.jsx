@@ -14,8 +14,7 @@ const Navbar = () => {
     const navigate = useNavigate()
 
     const goHome = () => {
-        console.log(location)
-        if (location !== '/') {
+        if (location.pathname !== '/') {
             navigate('/')
         } 
     }

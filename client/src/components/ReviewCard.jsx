@@ -4,7 +4,7 @@ const ReviewCard = ({ user, text, time_created }) => {
     const date = time_created.slice(0, 10)
 
     return (
-        <section className='font-nunito w-1/3 pr-6'>
+        <section className='mb-4 font-nunito sm:w-1/3 sm:pr-6'>
             <div className='flex items-center'>
                 <img className='w-12 h-12 rounded-full'
                     // TODO: set default image
