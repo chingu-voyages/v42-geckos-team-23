@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
-import Hero from '../components/Hero'
 import Footer from '../components/Footer'
 import Business from '../components/Business'
 import ReviewCard from '../components/ReviewCard'
 import Reviews from '../components/Reviews'
+import ArrowButton from '../components/ArrowButton'
 import { useParams } from 'react-router-dom'
 import { getReviewsFromYelpApi } from '../api/YelpAPI'
 
@@ -18,7 +18,7 @@ const Details = () => {
         } else {
             return reviewsArr.map((review) => (
                 <ReviewCard key={review.id} {...review} />
-            )) 
+            ))
         }
     }
 
@@ -31,7 +31,7 @@ const Details = () => {
     return (
         <>
             <Navbar />
-            <Hero />
+            <ArrowButton className="mt-5 ml-10" />
             <Business id={id} />
             <Reviews reviews={reviews} />
             <Footer />

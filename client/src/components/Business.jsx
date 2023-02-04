@@ -1,14 +1,12 @@
-import React, { useEffect, useState, useRef, useContext } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { FaYelp } from 'react-icons/fa'
 import { FaFlag } from 'react-icons/fa'
 import { BsTelephoneFill } from 'react-icons/bs'
 import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
 import Address from './Address'
-import { Context } from '../../Context'
 
 const Business = ({ id }) => {
     const [details, setDetails] = useState({})
-    const ctx = useContext(Context)
 
     const MAPBOX = import.meta.env.VITE_MAPBOX_API_KEY
 
@@ -21,7 +19,6 @@ const Business = ({ id }) => {
         getDetailsByIdFromYelpApi(id)
             .then(data => {
                 setDetails({ ...data })
-                ctx.setBusinessImages([...data.photos])
 
                 let lng = data.coordinates.longitude
                 let lat = data.coordinates.latitude
@@ -38,24 +35,24 @@ const Business = ({ id }) => {
 
     return (
         <section className='m-10 font-nunito'>
-            <h1 className='text-4xl md:text-5xl font-bold'>{details.name}</h1>
+            <h1 className='text-4xl md:text-5xl font-nunito font-bold'>{details.name}</h1>
+            {/* {ctx.businessDetails.photos} */}
             <div className='lg:flex mt-7'>
-
                 <div className='border h-80 lg:w-2/5 rounded-2xl' ref={mapContainer}></div>
 
                 <div className='lg:ml-20 text-2xl md:text-3xl font-semibold'>
                     <div className='my-5 flex items-center'>
-                        <FaFlag className='shrink-0'/>
+                        <FaFlag className='shrink-0' />
                         <Address className='ml-3 sm:ml-7' location={details.location} />
                     </div>
                     <div className='my-5 flex items-center'>
-                        <BsTelephoneFill className='shrink-0'/>
+                        <BsTelephoneFill className='shrink-0' />
                         <a className='ml-3 sm:ml-7' href="tel:#">
                             {details.phone}
                         </a>
                     </div>
                     <div className='my-5 flex items-center'>
-                        <FaYelp className='shrink-0'/>
+                        <FaYelp className='shrink-0' />
                         <a className='ml-3 sm:ml-7' href={details?.url}>
                             Go to Yelp page
                         </a>
