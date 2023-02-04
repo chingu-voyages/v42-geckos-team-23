@@ -16,14 +16,14 @@ const Navbar = () => {
     const goHome = () => {
         if (location.pathname !== '/') {
             navigate('/')
-        } 
+        }
     }
 
     return (
         <div className="bg-red-50 font-nunito">
             <div className="flex px-3 py-3 lg:px-8 lg:py-8 items-center justify-between md:flex-row">
                 <img
-                    className="w-[55px] sm:hidden"
+                    className="w-[55px] sm:hidden hover:cursor-pointer"
                     src={mobileLogo}
                     alt="logo"
                     onClick={goHome}
