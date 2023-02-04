@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Business from '../components/Business'
-import ReviewCard from '../components/ReviewCard'
 import ArrowButton from '../components/ArrowButton'
 import { useParams } from 'react-router-dom'
 import Reviews from '../components/Reviews'
