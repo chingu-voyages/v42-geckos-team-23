@@ -1,18 +1,13 @@
-import React, { useContext } from 'react'
-import { useLocation } from 'react-router-dom'
+import React from 'react'
 import SwiperCore, { EffectFade, Pagination, Navigation, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
-import { Context } from '../../Context'
-import { imageList } from '../assets'
+import { slide_images } from '../assets'
 
 SwiperCore.use([EffectFade, Pagination, Navigation, Autoplay])
 
 const Carousel = () => {
-    const ctx = useContext(Context)
-    const location = useLocation()
-    const slide_images = location.pathname !== "/" ? ctx.businessImages : imageList
 
     return (
         <Swiper
