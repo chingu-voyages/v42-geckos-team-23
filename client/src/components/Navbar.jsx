@@ -16,12 +16,12 @@ const Navbar = () => {
     const goHome = () => {
         if (location.pathname !== '/') {
             navigate('/')
-        } 
+        }
     }
 
     return (
         <div className="bg-red-50">
-            <div className=" flex flex-col px-8 py-8 items-center justify-between md:flex-row">
+            <div className=" flex flex-col px-8 py-8 items-center justify-between lg:flex-row">
                 <img
                     className="w-[175px] pb-8 sm:hidden"
                     src={mobileLogo}
@@ -34,7 +34,7 @@ const Navbar = () => {
                     onClick={goHome}
                 />
 
-                <form className="flex flex-col items-center gap-4 md:flex-row md:gap-1 lg:gap-4">
+                <form className="flex flex-col items-center gap-4 lg:flex-row md:gap-1 lg:gap-4">
                     <ZipCodeInput variant="navbar" />
                     <CategoryInputs variant="navbar" setCategoryName={setCategoryName} />
                     <Button variant="navbar" categoryName={categoryName}>

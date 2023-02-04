@@ -4,7 +4,7 @@ import { Context } from '../../Context'
 const CategoryInputs = ({ variant, setCategoryName }) => {
     const ctx = useContext(Context)
 
-    const navbarInputsClasses = 'flex flex-col sm:flex-row sm:items-center'
+    const navbarInputsClasses = 'flex sm:flex-row sm:items-center'
     const navbarContainerClasses =
         'flex flex-col gap-4 text-center  sm:flex-row sm:gap-10 md:gap-4'
 
@@ -32,7 +32,7 @@ const CategoryInputs = ({ variant, setCategoryName }) => {
                     value="restaurants%2Cfood"
                     onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="Restaurants">
+                <label className="pl-1" htmlFor="Restaurants">
                     Restaurants
                 </label>
             </div>
@@ -45,7 +45,7 @@ const CategoryInputs = ({ variant, setCategoryName }) => {
                     value="cafes%2Ccoffee"
                     onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="Cafés">
+                <label className="pl-1" htmlFor="Cafés">
                     Cafés
                 </label>
             </div>
@@ -58,7 +58,7 @@ const CategoryInputs = ({ variant, setCategoryName }) => {
                     value="active"
                     onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="Activities">
+                <label className="pl-1" htmlFor="Activities">
                     Activities
                 </label>
             </div>
@@ -71,7 +71,7 @@ const CategoryInputs = ({ variant, setCategoryName }) => {
                     value="hotelstravel"
                     onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="Hotels & Travel">
+                <label className="pl-1" htmlFor="Hotels & Travel">
                     Hotels & Travel
                 </label>
             </div>
@@ -84,7 +84,7 @@ const CategoryInputs = ({ variant, setCategoryName }) => {
                     value="shopping"
                     onChange={(e) => changeHandler(e)}
                 />
-                <label className="px-1" htmlFor="Shopping">
+                <label className="pl-1" htmlFor="Shopping">
                     Shopping
                 </label>
             </div>
