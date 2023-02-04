@@ -35,27 +35,32 @@ const Navbar = () => {
                     onClick={goHome}
                 />
 
-                <form className="hidden lg:flex flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:gap-4">
-                    <ZipCodeInput variant="navbar" />
-                    <CategoryInputs variant="navbar" setCategoryName={setCategoryName} />
-                    <Button variant="navbar" categoryName={categoryName}>
-                        <img
-                            className="pr-1 md:pr-0"
-                            src={searchIcon}
-                        />
-                    </Button>
-                </form>
+                {
+                    '/' === location.pathname &&
+                    <>
+                        <form className="hidden lg:flex flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:gap-4">
+                            <ZipCodeInput variant="navbar" />
+                            <CategoryInputs variant="navbar" setCategoryName={setCategoryName} />
+                            <Button variant="navbar" categoryName={categoryName}>
+                                <img
+                                    className="pr-1 md:pr-0"
+                                    src={searchIcon}
+                                />
+                            </Button>
+                        </form>
 
-                {/* mobile */}
-                <div className="lg:hidden">
-                    <Button variant="navbar-mobile" categoryName={categoryName}>
-                        <p className='mr-2 font-semibold'>New Search</p>
-                        <img
-                            className="pr-0"
-                            src={searchIcon}
-                        />
-                    </Button>
-                </div>
+                        {/* mobile */}
+                        <div className="lg:hidden">
+                            <Button variant="navbar-mobile" categoryName={categoryName}>
+                                <p className='mr-2 font-semibold'>New Search</p>
+                                <img
+                                    className="pr-0"
+                                    src={searchIcon}
+                                />
+                            </Button>
+                        </div>
+                    </>
+                }
             </div>
         </div>
     )
