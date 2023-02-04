@@ -6,7 +6,6 @@ import mobileLogo from '../assets/goPup_mobile-logo.png';
 import logo from '../assets/goPup_logo.png';
 import searchIcon from '../assets/search-icon.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Spin as Hamburger} from 'hamburger-react';
 
 const Navbar = () => {
     const [categoryName, setCategoryName] = useState('')
@@ -21,7 +20,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="bg-red-50">
+        <div className="bg-red-50 font-nunito">
             <div className="flex px-3 py-3 lg:px-8 lg:py-8 items-center justify-between md:flex-row">
                 <img
                     className="w-[55px] sm:hidden"
@@ -49,7 +48,13 @@ const Navbar = () => {
 
                 {/* mobile */}
                 <div className="lg:hidden">
-                    <Hamburger rounded size={28} direction="right"/>
+                    <Button variant="navbar-mobile" categoryName={categoryName}>
+                        <p className='mr-2 font-semibold'>New Search</p>
+                        <img
+                            className="pr-0"
+                            src={searchIcon}
+                        />
+                    </Button>
                 </div>
             </div>
         </div>
