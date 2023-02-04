@@ -1,4 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from "react"
+import ReviewCard from '../components/ReviewCard'
+import { getReviewsFromYelpApi } from '../api/YelpAPI'
+
+const Reviews = ({ id }) => {
+    const [reviews, setReviews] = useState('')
+
+    const renderReviews = (reviewsArr = []) => {
+        if (0 === reviewsArr.length) {
+            return <p className='text-2xl'>Business has no reviews.</p>
+        } else {
+            return reviewsArr.map((review) => (
+                <ReviewCard key={review.id} {...review} />
+            ))
+        }
+    }
+
+    useEffect(() => {
+        getReviewsFromYelpApi(id)
+            .then(data => setReviews(renderReviews(data)))
+            .catch(err => console.log(err))
+    }, [])
 
 const Reviews = ({ reviews }) => {
 
