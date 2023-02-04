@@ -8,7 +8,7 @@ const Card = ({ id, name, location, rating, image_url, price }) => {
     image_url === null && (image_url = defaultCardImage)
 
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card max-w-[384px] bg-base-100 shadow-xl">
             <figure className="relative h-72">
                 <img
                     className="h-full w-full object-cover"
