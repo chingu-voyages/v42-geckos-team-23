@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import Modal from 'react-modal'
+
 import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
 import Button from './Button'
-import Modal from 'react-modal'
+import { Context } from '../../Context'
+import Spinner from './Spinner'
 
 const customStyles = {
     content: {
@@ -23,6 +26,8 @@ const PopUp = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [hasBeenCalled, setHasBeenCalled] = useState(false)
     const [categoryName, setCategoryName] = useState('')
+    const ctx = useContext(Context)
+    console.log(ctx.status)
 
     const closeModal = () => {
         setModalIsOpen(false)
@@ -56,11 +61,17 @@ const PopUp = () => {
                         <h2 className="py-5 font-semibold text-black">
                             What are you looking for?
                         </h2>
-                        <CategoryInputs variant="popup" setCategoryName={setCategoryName} />
+                        <CategoryInputs
+                            variant="popup"
+                            setCategoryName={setCategoryName}
+                        />
                     </div>
-                    <Button variant="popup" categoryName={categoryName}>
-                        <span>Search</span>
-                    </Button>
+                    {ctx.isLoading && <Spinner />}
+                    {!ctx.isLoading && (
+                        <Button variant="popup" categoryName={categoryName}>
+                            <span>Search</span>
+                        </Button>
+                    )}
                 </div>
             </div>
         </Modal>
