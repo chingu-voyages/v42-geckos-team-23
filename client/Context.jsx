@@ -14,6 +14,7 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
     const [resultsList, setResultsList] = useState([])
     const [isSearchBtnClicked, setIsSearchBtnClicked] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
+    
 
     return (
         <Context.Provider value={{

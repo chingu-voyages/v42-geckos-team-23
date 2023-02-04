@@ -25,7 +25,6 @@ const customStyles = {
 const PopUp = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [hasBeenCalled, setHasBeenCalled] = useState(false)
-    const [categoryName, setCategoryName] = useState('')
     const ctx = useContext(Context)
 
     const closeModal = () => {
@@ -62,12 +61,12 @@ const PopUp = () => {
                         </h2>
                         <CategoryInputs
                             variant="popup"
-                            setCategoryName={setCategoryName}
+                            setCategoryName={ctx.setCategoryName}
                         />
                     </div>
                     {ctx.isLoading && <Spinner />}
                     {!ctx.isLoading && (
-                        <Button variant="popup" categoryName={categoryName}>
+                        <Button variant="popup" categoryName={ctx.categoryName}>
                             <span>Search</span>
                         </Button>
                     )}

@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import Button from './Button'
 import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
 import mobileLogo from '../assets/goPup_mobile-logo.png';
 import logo from '../assets/goPup_logo.png';
 import searchIcon from '../assets/search-icon.svg';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Context } from '../../Context'
 
 const Navbar = () => {
-    const [categoryName, setCategoryName] = useState('')
-
+    const ctx = useContext(Context)
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -40,8 +41,8 @@ const Navbar = () => {
                     <>
                         <form className="hidden lg:flex flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:gap-4">
                             <ZipCodeInput variant="navbar" />
-                            <CategoryInputs variant="navbar" setCategoryName={setCategoryName} />
-                            <Button variant="navbar" categoryName={categoryName}>
+                            <CategoryInputs variant="navbar" setCategoryName={ctx.setCategoryName} />
+                            <Button variant="navbar" categoryName={ctx.categoryName}>
                                 <img
                                     className="pr-1 md:pr-0"
                                     src={searchIcon}
@@ -51,7 +52,7 @@ const Navbar = () => {
 
                         {/* mobile */}
                         <div className="lg:hidden">
-                            <Button variant="navbar-mobile" categoryName={categoryName}>
+                            <Button variant="navbar-mobile" categoryName={ctx.categoryName}>
                                 <p className='mr-2 font-semibold'>New Search</p>
                                 <img
                                     className="pr-0"
