@@ -28,13 +28,13 @@ const Reviews = ({ id }) => {
                 {reviews}
             </div>
             {
-                (3 === reviews.length) &&
-                <a
-                    className="absolute right-10 rounded-full border-2 border-solid border-red-500 px-7 py-2 text-red-500 active:bg-red-200 active:text-white hover:cursor-pointer"
-                    href={reviews[0]?.url}
-                >
-                    More Reviews on Yelp
-                </a>
+                (3 === reviews.length) && 
+                    <a
+                        className="absolute right-10 rounded-full border-2 border-solid border-red-500 px-7 py-2 text-red-500 active:bg-red-200 active:text-white hover:cursor-pointer"
+                        href={reviews[0]?.props.url}
+                    >
+                        More Reviews on Yelp
+                    </a>
             }
         </section>
     )
