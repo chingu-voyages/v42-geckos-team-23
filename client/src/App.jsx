@@ -10,7 +10,6 @@ import { Context } from '../Context'
 
 const App = () => {
   const ctx = useContext(Context)
-  console.log(ctx)
 
   return (
     <div className="min-h-screen font-nunito flex flex-col">
