@@ -5,7 +5,7 @@ import { BsTelephoneFill } from 'react-icons/bs'
 import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
 import Address from './Address'
 
-const Business = ({ id }) => {
+const BusinessInfo = ({ id }) => {
     const [details, setDetails] = useState({})
 
     const MAPBOX = import.meta.env.VITE_MAPBOX_API_KEY
@@ -36,7 +36,7 @@ const Business = ({ id }) => {
     return (
         <section className='m-10 font-nunito'>
             <h1 className='text-4xl md:text-5xl font-nunito font-bold'>{details.name}</h1>
-            {/* {ctx.businessDetails.photos} */}
+            <h1 className="mb-7 text-3xl font-bold">Contact</h1>
             <div className='lg:flex mt-7'>
                 <div className='border h-80 lg:w-2/5 rounded-2xl' ref={mapContainer}></div>
 
@@ -63,4 +63,4 @@ const Business = ({ id }) => {
     )
 }
 
-export default Business
+export default BusinessInfo
