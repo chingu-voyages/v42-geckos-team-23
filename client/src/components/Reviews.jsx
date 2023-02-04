@@ -21,8 +21,6 @@ const Reviews = ({ id }) => {
             .catch(err => console.log(err))
     }, [])
 
-const Reviews = ({ reviews }) => {
-
     return (
         <section className="mx-10 mt-10 mb-20 font-nunito">
             <h1 className="mb-7 text-3xl font-bold">Reviews</h1>
