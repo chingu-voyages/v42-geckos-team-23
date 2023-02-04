@@ -24,11 +24,13 @@ const Results = () => {
                         <Card key={Math.random() * 100} {...business} />
                     ))}
             </div>
-            <Pagination
-                numberOfPages={numberOfPages}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-            />
+            {ctx.resultsList > 0 && (
+                <Pagination
+                    numberOfPages={numberOfPages}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
+            )}
         </div>
     )
 }
