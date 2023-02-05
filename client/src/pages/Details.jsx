@@ -23,10 +23,12 @@ const Details = () => {
     return (
         <>
             <Navbar />
-            <ArrowButton className="mt-5 ml-10" />
-            <BusinessPhotos id={id} />
-            <Reviews id={id} />
-            <BusinessInfo id={id} />
+            <div className="xl:container xl:mx-auto">
+                <ArrowButton className="mt-5 ml-10" />
+                <BusinessPhotos id={id} />
+                <Reviews id={id} />
+                <BusinessInfo id={id} />
+            </div>
             <Footer />
         </>
     )
