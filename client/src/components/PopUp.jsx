@@ -6,6 +6,7 @@ import CategoryInputs from './CategoryInputs'
 import Button from './Button'
 import { Context } from '../../Context'
 import Spinner from './Spinner'
+import { getBusinessesFromYelpApi } from  '../api/yelpAPI'
 
 const customStyles = {
     content: {
@@ -42,6 +43,23 @@ const PopUp = () => {
         }
     }, [])
 
+    const getBusinessesHandler = (e, ctx) => {
+        e.preventDefault();
+        ctx.setIsLoading(true);
+
+        getBusinessesFromYelpApi(ctx.location, ctx.category)
+            .then(data => {
+                ctx.setResultsList([...data])
+                ctx.setIsSearchBtnClicked(true)
+                ctx.setResultsTitle(ctx.categoryName)
+                ctx.setIsLoading(false);
+
+            })
+            .catch(err => console.log(err))
+    }
+
+
+
     return (
         <Modal
             isOpen={modalIsOpen}
@@ -49,7 +67,7 @@ const PopUp = () => {
             style={customStyles}
             contentLabel="Zipcode Modal"
         >
-            <div>
+            <form onSubmit={(e) => getBusinessesHandler(e, ctx)}>
                 <h1 className="pb-8 text-center text-4xl font-semibold text-black">
                     Welcome to GoPup!
                 </h1>
@@ -71,7 +89,7 @@ const PopUp = () => {
                         </Button>
                     )}
                 </div>
-            </div>
+            </form>
         </Modal>
     )
 }

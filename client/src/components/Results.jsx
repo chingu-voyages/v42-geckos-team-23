@@ -1,4 +1,5 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, memo } from 'react'
+
 import Pagination from './Pagination'
 import Card from './Card'
 import { Context } from '../../Context'
@@ -15,7 +16,7 @@ const Results = () => {
     return (
         <div className="grid place-content-center space-y-4 py-8">
             <h2 className="text-center text-5xl lg:text-left lg:text-7xl">
-                {ctx.categoryName}
+                {ctx.resultsTitle}
             </h2>
             <div className="container mx-auto grid gap-8 lg:grid-cols-2 xl:grid-cols-3">
                 {ctx.resultsList
@@ -35,4 +36,4 @@ const Results = () => {
     )
 }
 
-export default Results
+export default memo(Results)

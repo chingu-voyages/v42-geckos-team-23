@@ -24,8 +24,6 @@ const CategoryInputs = ({ variant }) => {
         ctx.setCategory(e.target.getAttribute('data-category'))
     }
 
-    console.log(ctx)
-
     return (
         <div className={`${containerClasses} text-black`}>
             <div className={`${inputClasses}`}>
