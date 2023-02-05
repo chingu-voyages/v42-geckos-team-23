@@ -6,6 +6,7 @@ import CategoryInputs from './CategoryInputs'
 import Button from './Button'
 import { Context } from '../../Context'
 import Spinner from './Spinner'
+import { getBusinessesFromYelpApi } from  '../api/yelpAPI'
 
 const customStyles = {
     content: {
@@ -25,7 +26,6 @@ const customStyles = {
 const PopUp = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [hasBeenCalled, setHasBeenCalled] = useState(false)
-    const [categoryName, setCategoryName] = useState('')
     const ctx = useContext(Context)
 
     const closeModal = () => {
@@ -43,6 +43,23 @@ const PopUp = () => {
         }
     }, [])
 
+    const getBusinessesHandler = (e, ctx) => {
+        e.preventDefault();
+        ctx.setIsLoading(true);
+
+        getBusinessesFromYelpApi(ctx.location, ctx.category)
+            .then(data => {
+                ctx.setResultsList([...data])
+                ctx.setIsSearchBtnClicked(true)
+                ctx.setResultsTitle(ctx.categoryName)
+                ctx.setIsLoading(false);
+
+            })
+            .catch(err => console.log(err))
+    }
+
+
+
     return (
         <Modal
             isOpen={modalIsOpen}
@@ -50,7 +67,7 @@ const PopUp = () => {
             style={customStyles}
             contentLabel="Zipcode Modal"
         >
-            <div>
+            <form onSubmit={(e) => getBusinessesHandler(e, ctx)}>
                 <h1 className="pb-8 text-center text-4xl font-semibold text-black">
                     Welcome to GoPup!
                 </h1>
@@ -62,17 +79,17 @@ const PopUp = () => {
                         </h2>
                         <CategoryInputs
                             variant="popup"
-                            setCategoryName={setCategoryName}
+                            setCategoryName={ctx.setCategoryName}
                         />
                     </div>
                     {ctx.isLoading && <Spinner />}
                     {!ctx.isLoading && (
-                        <Button variant="popup" categoryName={categoryName}>
+                        <Button variant="popup" categoryName={ctx.categoryName}>
                             <span>Search</span>
                         </Button>
                     )}
                 </div>
-            </div>
+            </form>
         </Modal>
     )
 }

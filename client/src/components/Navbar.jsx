@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import Button from './Button'
 import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
 import mobileLogo from '../assets/goPup_mobile-logo.png';
 import logo from '../assets/goPup_logo.png';
 import searchIcon from '../assets/search-icon.svg';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Context } from '../../Context'
+import { getBusinessesFromYelpApi } from  '../api/yelpAPI'
 
 const Navbar = () => {
-    const [categoryName, setCategoryName] = useState('')
-
+    const ctx = useContext(Context)
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -17,6 +19,21 @@ const Navbar = () => {
         if (location.pathname !== '/') {
             navigate('/')
         }
+    }
+
+    const getBusinessesHandler = (e, ctx) => {
+        e.preventDefault()
+        ctx.setIsLoading(true);
+
+        getBusinessesFromYelpApi(ctx.location, ctx.category)
+            .then(data => {
+                ctx.setResultsList([...data])
+                ctx.setIsSearchBtnClicked(true)
+                ctx.setResultsTitle(ctx.categoryName)
+                ctx.setIsLoading(false);
+
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -38,10 +55,10 @@ const Navbar = () => {
                 {
                     '/' === location.pathname &&
                     <>
-                        <form className="hidden lg:flex flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:gap-4">
+                        <form className="hidden lg:flex flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:gap-4" onSubmit={(e) => getBusinessesHandler(e, ctx)}>
                             <ZipCodeInput variant="navbar" />
-                            <CategoryInputs variant="navbar" setCategoryName={setCategoryName} />
-                            <Button variant="navbar" categoryName={categoryName}>
+                            <CategoryInputs variant="navbar" setCategoryName={ctx.setCategoryName} />
+                            <Button variant="navbar" categoryName={ctx.categoryName}>
                                 <img
                                     className="pr-1 md:pr-0"
                                     src={searchIcon}
@@ -51,7 +68,7 @@ const Navbar = () => {
 
                         {/* mobile */}
                         <div className="lg:hidden">
-                            <Button variant="navbar-mobile" categoryName={categoryName}>
+                            <Button variant="navbar-mobile" categoryName={ctx.categoryName} type="submit">
                                 <p className='mr-2 font-semibold'>New Search</p>
                                 <img
                                     className="pr-0"
