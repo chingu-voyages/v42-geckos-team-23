@@ -9,8 +9,8 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
 
     // state:
     const [location, setLocation] = useState('')
-    const [category, setCategory] = useState('')
-    const [categoryName, setCategoryName] = useState('')
+    const [category, setCategory] = useState('restaurants%2Cfood')
+    const [categoryName, setCategoryName] = useState('Restaurants')
     const [resultsList, setResultsList] = useState([])
     const [isSearchBtnClicked, setIsSearchBtnClicked] = useState(false)
     const [isLoading, setIsLoading] = useState(false)

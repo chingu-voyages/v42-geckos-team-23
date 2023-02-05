@@ -19,6 +19,7 @@ const ZipCodeInput = ({ variant = 'popup' }) => {
                 placeholder="enter a zip code"
                 value={ctx.location}
                 onChange={(e) => ctx.setLocation(e.target.value)}
+                minLength="5"
             />
         </div>
     )

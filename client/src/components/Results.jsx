@@ -1,4 +1,4 @@
-import { useState, useContext, memo } from 'react'
+import { useState, useContext } from 'react'
 
 import Pagination from './Pagination'
 import Card from './Card'
@@ -36,4 +36,4 @@ const Results = () => {
     )
 }
 
-export default memo(Results)
+export default Results
