@@ -15,12 +15,13 @@ const ZipCodeInput = ({ variant = 'popup' }) => {
         <div>
             <input
                 className={`${inputClasses}`}
-                type="text"
-                placeholder="enter a zip code"
+                placeholder="Enter a zip code"
                 value={ctx.location}
                 onChange={(e) => ctx.setLocation(e.target.value)}
-                minLength={5}
-                maxLength={5}
+                pattern="[0-9]{5}" // 5 digits
+                title="Zip codes must contain 5 digits. e.g. 90210" // error message
+                maxLength="5" // max length of input
+                required
             />
         </div>
     )
