@@ -52,13 +52,13 @@ const PopUp = () => {
                 ctx.setResultsList([...data])
                 ctx.setIsSearchBtnClicked(true)
                 ctx.setResultsTitle(ctx.categoryName)
-                ctx.setIsLoading(false);
+                ctx.setIsLoading(false)
+            })
+            .catch(err => { // if we catch an error that means zip code was "invalid"
+                ctx.setIsLoading(false) // if there is an error, set isLoading to false
 
             })
-            .catch(err => console.log(err))
     }
-
-
 
     return (
         <Modal
