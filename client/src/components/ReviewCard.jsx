@@ -6,7 +6,7 @@ const ReviewCard = ({ user, text, time_created }) => {
     user.image_url === null && (user.image_url = defaultUserProfile)
 
     return (
-        <section className='mb-4 font-nunito sm:w-1/3 sm:pr-6'>
+        <section className='font-nunito space-y-3'>
             <div className='flex items-center'>
                 <img className='w-12 h-12 rounded-full'
                     src={user.image_url}
@@ -16,7 +16,7 @@ const ReviewCard = ({ user, text, time_created }) => {
                     <p>{date}</p>
                 </div>
             </div>
-            <p className='tracking-widest mt-3'>{text}</p>
+            <p className='tracking-widest'>{text}</p>
         </section>
     )
 }

@@ -15,9 +15,9 @@ const BusinessPhotos = ({ id }) => {
     return (
         <section className='m-10 font-nunito'>
             <h1 className="mb-7 text-3xl font-bold">Photos</h1>
-            <div className="my-10 grid xl:grid-cols-3">
+            <div className="my-10 flex flex-col sm:items-baseline gap-4 sm:gap-6 sm:grid sm:grid-cols-3">
                 {details.photos?.map((photo) => (
-                    <div key={photo} className=" w-96 shadow-xl">
+                    <div key={photo} className="flex-1 shadow-xl md:w-full ">
                         <figure className="relative h-72">
                             <img
                                 className="h-full w-full object-cover"
