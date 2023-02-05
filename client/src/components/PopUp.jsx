@@ -7,6 +7,7 @@ import Button from './Button'
 import { Context } from '../../Context'
 import Spinner from './Spinner'
 import { getBusinessesFromYelpApi } from  '../api/yelpAPI'
+import { getBusinessesHandler } from '../utils/utils'
 
 const customStyles = {
     content: {
@@ -42,23 +43,6 @@ const PopUp = () => {
             openModal()
         }
     }, [])
-
-    const getBusinessesHandler = (e, ctx) => {
-        e.preventDefault();
-        ctx.setIsLoading(true);
-
-        getBusinessesFromYelpApi(ctx.location, ctx.category)
-            .then(data => {
-                ctx.setResultsList([...data])
-                ctx.setIsSearchBtnClicked(true)
-                ctx.setResultsTitle(ctx.categoryName)
-                ctx.setIsLoading(false)
-            })
-            .catch(err => { // if we catch an error that means zip code was "invalid"
-                ctx.setIsLoading(false) // if there is an error, set isLoading to false
-
-            })
-    }
 
     return (
         <Modal
