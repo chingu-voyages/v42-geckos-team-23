@@ -8,7 +8,7 @@ import mobileLogo from '../assets/goPup_mobile-logo.png';
 import logo from '../assets/goPup_logo.png';
 import searchIcon from '../assets/search-icon.svg';
 import { Context } from '../../Context'
-import { getBusinessesFromYelpApi } from  '../api/yelpAPI'
+import { getBusinessesHandler } from '../utils/utils'
 
 const Navbar = () => {
     const ctx = useContext(Context)
@@ -19,21 +19,6 @@ const Navbar = () => {
         if (location.pathname !== '/') {
             navigate('/')
         }
-    }
-
-    const getBusinessesHandler = (e, ctx) => {
-        e.preventDefault()
-        ctx.setIsLoading(true);
-
-        getBusinessesFromYelpApi(ctx.location, ctx.category)
-            .then(data => {
-                ctx.setResultsList([...data])
-                ctx.setIsSearchBtnClicked(true)
-                ctx.setResultsTitle(ctx.categoryName)
-                ctx.setIsLoading(false);
-
-            })
-            .catch(err => console.log(err))
     }
 
     return (
