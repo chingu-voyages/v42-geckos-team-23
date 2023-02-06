@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 
-import { Context } from '../../Context'
 import RadioButton from './RadioButton'
+import { InputContext } from '../contexts/InputProvider'
 
 const CategoryInputs = ({ variant }) => {
-    const ctx = useContext(Context)
+    const { setCategory, categoryName, setCategoryName } = useContext(InputContext)
 
     const navbarInputsClasses = 'flex flex-col sm:flex-row sm:items-center'
     const navbarContainerClasses =
@@ -20,30 +20,30 @@ const CategoryInputs = ({ variant }) => {
         variant === 'navbar' ? navbarContainerClasses : popUpContainerClasses
 
     const changeHandler = (e) => {
-        ctx.setCategoryName(e.target.getAttribute('data-category-name'))
-        ctx.setCategory(e.target.getAttribute('data-category'))
+        setCategoryName(e.target.getAttribute('data-category-name'))
+        setCategory(e.target.getAttribute('data-category'))
     }
 
     return (
         <div className={`${containerClasses} text-black`}>
             <div className={`${inputClasses}`}>
-                <RadioButton label="Restaurants" category="restaurants%2Cfood" value={ctx.categoryName === "Restaurants"} onChange={changeHandler} />
+                <RadioButton label="Restaurants" category="restaurants%2Cfood" value={categoryName === "Restaurants"} onChange={changeHandler} />
             </div>
 
             <div className={`${inputClasses}`}>
-                <RadioButton label="Cafés" category="cafes%2Ccoffee" value={ctx.categoryName === "Cafés"} onChange={changeHandler} />
+                <RadioButton label="Cafés" category="cafes%2Ccoffee" value={categoryName === "Cafés"} onChange={changeHandler} />
             </div>
 
             <div className={`${inputClasses}`}>
-                <RadioButton label="Activities" category="active" value={ctx.categoryName === "Activities"} onChange={changeHandler} />
+                <RadioButton label="Activities" category="active" value={categoryName === "Activities"} onChange={changeHandler} />
             </div>
 
             <div className={`${inputClasses}`}>
-                <RadioButton label="Hotels & Travel" category="hotelstravel" value={ctx.categoryName === "Hotels & Travel"} onChange={changeHandler} />
+                <RadioButton label="Hotels & Travel" category="hotelstravel" value={categoryName === "Hotels & Travel"} onChange={changeHandler} />
             </div>
 
             <div className={`${inputClasses}`}>
-                <RadioButton label="Shopping" category="shopping" value={ctx.categoryName === "Shopping"} onChange={changeHandler} />
+                <RadioButton label="Shopping" category="shopping" value={categoryName === "Shopping"} onChange={changeHandler} />
             </div>
         </div>
     )

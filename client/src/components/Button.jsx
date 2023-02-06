@@ -1,8 +1,6 @@
 import React from 'react'
 
-const Button = ({ variant, color = 'red', children}) => {
-
-
+const Button = ({ variant, color = 'red', children, ...delegated }) => {
     const classes = []
     if (color === 'red') {
         classes.push('bg-red-500', 'text-white')
@@ -30,7 +28,7 @@ const Button = ({ variant, color = 'red', children}) => {
     }
 
     return (
-        <button className={`${btnClasses} ${classes.join(' ')}`}>
+        <button className={`${btnClasses} ${classes.join(' ')}`} {...delegated}>
             {children}
         </button>
     )
