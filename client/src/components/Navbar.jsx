@@ -17,7 +17,9 @@ const Navbar = () => {
     const ctx = useContext(Context)
     const location = useLocation()
     const navigate = useNavigate()
-    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const { modalIsOpen, setModalIsOpen } = ctx
+
+
     const { category, categoryName, zipCode } = useContext(InputContext)
     const isHomePage = '/' === location.pathname
 

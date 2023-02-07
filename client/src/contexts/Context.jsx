@@ -19,7 +19,7 @@ const ContextProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [resultsTitle, setResultsTitle] = useState('')
     const [hasBeenCalled, setHasBeenCalled] = useState(false)
-
+    const [modalIsOpen, setModalIsOpen] = useState(false)
 
     return (
         <Context.Provider
@@ -33,6 +33,8 @@ const ContextProvider = ({ children }) => {
                 setResultsTitle,
                 hasBeenCalled,
                 setHasBeenCalled,
+                modalIsOpen,
+                setModalIsOpen,
                 resetState,
             }}
         >
