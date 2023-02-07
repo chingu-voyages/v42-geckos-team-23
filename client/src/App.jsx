@@ -10,6 +10,7 @@ import { InputProvider } from './contexts/InputProvider'
 
 const App = () => {
   const ctx = useContext(Context)
+  const isModalOpen = ctx.isLoading && !ctx.modalIsOpen;
 
   return (
       <div className="flex min-h-screen flex-col font-nunito">
@@ -17,7 +18,7 @@ const App = () => {
               <Navbar />
           </InputProvider>
           <Hero />
-          {ctx.isLoading && <Spinner />}
+          {isModalOpen && <Spinner />}
           {!ctx.isLoading && <Results />}
           <Footer />
       </div>
