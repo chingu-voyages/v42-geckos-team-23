@@ -1,4 +1,5 @@
 import React from 'react'
+
 import defaultUserProfile from '../assets/goPup_dog.png'
 
 const ReviewCard = ({ user, text, time_created }) => {

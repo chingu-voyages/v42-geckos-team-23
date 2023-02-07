@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import Modal from 'react-modal'
 
 import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
 import Button from './Button'
-import { Context } from '../../Context'
+import { Context } from '../contexts/Context'
 import Spinner from './Spinner'
-import { getBusinessesFromYelpApi } from  '../api/yelpAPI'
-import { getBusinessesHandler } from '../utils/utils'
+import Form from './Form'
 
 const customStyles = {
     content: {
@@ -24,25 +23,12 @@ const customStyles = {
     },
 }
 
-const PopUp = () => {
-    const [modalIsOpen, setModalIsOpen] = useState(false)
-    const [hasBeenCalled, setHasBeenCalled] = useState(false)
+const PopUp = ({
+    getBusinessesHandler,
+    closeModal,
+    modalIsOpen,
+}) => {
     const ctx = useContext(Context)
-
-    const closeModal = () => {
-        setModalIsOpen(false)
-    }
-
-    const openModal = () => {
-        setModalIsOpen(true)
-    }
-
-    useEffect(() => {
-        if (!hasBeenCalled) {
-            setHasBeenCalled(true)
-            openModal()
-        }
-    }, [])
 
     return (
         <Modal
@@ -51,7 +37,7 @@ const PopUp = () => {
             style={customStyles}
             contentLabel="Zipcode Modal"
         >
-            <form onSubmit={(e) => getBusinessesHandler(e, ctx)}>
+            <Form onSubmit={getBusinessesHandler}>
                 <h1 className="pb-8 text-center text-4xl font-semibold text-black">
                     Welcome to GoPup!
                 </h1>
@@ -61,19 +47,16 @@ const PopUp = () => {
                         <h2 className="py-5 font-semibold text-black">
                             What are you looking for?
                         </h2>
-                        <CategoryInputs
-                            variant="popup"
-                            setCategoryName={ctx.setCategoryName}
-                        />
+                        <CategoryInputs variant="popup" />
                     </div>
                     {ctx.isLoading && <Spinner />}
                     {!ctx.isLoading && (
-                        <Button variant="popup" categoryName={ctx.categoryName}>
+                        <Button variant="popup">
                             <span>Search</span>
                         </Button>
                     )}
                 </div>
-            </form>
+            </Form>
         </Modal>
     )
 }

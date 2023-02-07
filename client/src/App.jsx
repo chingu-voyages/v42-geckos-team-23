@@ -2,24 +2,25 @@ import React, { useContext } from 'react'
 
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
-import PopUp from './components/PopUp'
 import Results from './components/Results'
 import Spinner from './components/Spinner'
 import Footer from './components/Footer'
-import { Context } from '../Context'
+import { Context } from './contexts/Context'
+import { InputProvider } from './contexts/InputProvider'
 
 const App = () => {
   const ctx = useContext(Context)
 
   return (
-    <div className="min-h-screen font-nunito flex flex-col">
-      <Navbar />
-      <Hero />
-      {!ctx.isSearchBtnClicked && <PopUp />}
-      {ctx.isLoading && <Spinner />}
-      {!ctx.isLoading && <Results />}
-      <Footer />
-    </div>
+      <div className="flex min-h-screen flex-col font-nunito">
+          <InputProvider>
+              <Navbar />
+          </InputProvider>
+          <Hero />
+          {ctx.isLoading && <Spinner />}
+          {!ctx.isLoading && <Results />}
+          <Footer />
+      </div>
   )
 }
 
