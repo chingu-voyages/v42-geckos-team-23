@@ -11,6 +11,7 @@ import { InputProvider } from './contexts/InputProvider'
 
 const App = () => {
   const ctx = useContext(Context)
+  console.log(ctx)
 
   return (
       <div className="flex min-h-screen flex-col font-nunito">

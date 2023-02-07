@@ -32,15 +32,9 @@ const PopUp = ({
     closeModal,
     modalIsOpen,
 }) => {
-    const [hasBeenCalled, setHasBeenCalled] = useState(false)
     const ctx = useContext(Context)
 
-    useEffect(() => {
-        if (!hasBeenCalled) {
-            setHasBeenCalled(true)
-            openModal()
-        }
-    }, [])
+
 
     return (
         <Modal

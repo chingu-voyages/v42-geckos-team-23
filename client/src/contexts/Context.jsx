@@ -15,6 +15,8 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
     const [isSearchBtnClicked, setIsSearchBtnClicked] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [resultsTitle, setResultsTitle] = useState('')
+    const [hasBeenCalled, setHasBeenCalled] = useState(false)
+    console.log(hasBeenCalled)
 
     return (
         <Context.Provider value={{
@@ -32,7 +34,9 @@ function ContextProvider({ children }) { // children refers to: <App />, from ma
             isLoading,
             setIsLoading,
             resultsTitle,
-            setResultsTitle
+            setResultsTitle,
+            hasBeenCalled,
+            setHasBeenCalled
         }}>
             {children}
         </Context.Provider>

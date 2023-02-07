@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import Button from './Button'
@@ -19,7 +19,9 @@ const Navbar = () => {
     const navigate = useNavigate()
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const { category, categoryName, zipCode } = useContext(InputContext)
-    
+    const isHomePage = '/' === location.pathname;
+    const isListEmpty = ctx.resultsList.length === 0;
+
     const closeModal = () => {
         setModalIsOpen(false)
     }
@@ -33,6 +35,14 @@ const Navbar = () => {
             navigate('/')
         }
     }
+
+    useEffect(() => {
+        if (!ctx.hasBeenCalled && isHomePage) {
+            ctx.setHasBeenCalled(true)
+            openModal()
+        }
+    }, [])
+
 
     const getBusinessesHandler = (e) => {
         e.preventDefault()
@@ -54,6 +64,8 @@ const Navbar = () => {
             })
     }
 
+
+
     return (
         <div className="bg-red-50 font-nunito">
             <div className="flex items-center justify-between px-3 py-3 md:flex-row lg:px-8 lg:py-8">
@@ -70,7 +82,7 @@ const Navbar = () => {
                     onClick={goHome}
                 />
 
-                {'/' === location.pathname && (
+                {isHomePage && (
                     <>
                         <Form
                             className="hidden flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:flex lg:gap-4"
@@ -102,7 +114,7 @@ const Navbar = () => {
                     </>
                 )}
             </div>
-            <PopUp getBusinessesHandler={getBusinessesHandler} modalIsOpen={modalIsOpen} closeModal={closeModal} openModal={openModal} />
+            {<PopUp getBusinessesHandler={getBusinessesHandler} modalIsOpen={modalIsOpen} closeModal={closeModal} openModal={openModal} />}
         </div>
     )
 }
