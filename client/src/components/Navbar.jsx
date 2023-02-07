@@ -40,7 +40,9 @@ const Navbar = () => {
                 {
                     '/' === location.pathname &&
                     <>
-                        <form className="hidden lg:flex flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:gap-4" onSubmit={(e) => getBusinessesHandler(e, ctx)}>
+                        <form className="hidden lg:flex flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:gap-4"
+                            onSubmit={(e) => getBusinessesHandler(e, ctx)}
+                        >
                             <ZipCodeInput variant="navbar" />
                             <CategoryInputs variant="navbar" setCategoryName={ctx.setCategoryName} />
                             <Button variant="navbar" categoryName={ctx.categoryName}>

@@ -6,7 +6,6 @@ import CategoryInputs from './CategoryInputs'
 import Button from './Button'
 import { Context } from '../../Context'
 import Spinner from './Spinner'
-import { getBusinessesFromYelpApi } from  '../api/yelpAPI'
 import { getBusinessesHandler } from '../utils/utils'
 
 const customStyles = {
