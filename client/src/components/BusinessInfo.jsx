@@ -35,20 +35,28 @@ const BusinessInfo = ({ id }) => {
     }, [])
 
     return (
-        <section className='m-10 font-nunito'>
-            <h1 className='text-4xl md:text-5xl font-nunito font-bold'>{details.name}</h1>
+        <section className="m-10 font-nunito">
+            <h1 className="font-nunito text-4xl font-bold md:text-5xl">
+                {details.name}
+            </h1>
             <h1 className="mb-7 text-3xl font-bold">Contact</h1>
-            <div className='lg:flex mt-7'>
-                <div className='border h-80 lg:w-2/5 rounded-2xl' ref={mapContainer}></div>
+            <div className="mt-7 lg:flex">
+                <div
+                    className="h-80 rounded-2xl border lg:w-2/5"
+                    ref={mapContainer}
+                ></div>
 
-                <div className='lg:ml-20 text-2xl md:text-3xl font-semibold'>
-                    <div className='my-5 flex items-center'>
-                        <FaFlag className='shrink-0' />
-                        <Address className='ml-3 sm:ml-7' location={details.location} />
+                <div className="text-2xl font-semibold md:text-3xl lg:ml-20">
+                    <div className="my-5 flex items-center">
+                        <FaFlag className="shrink-0" />
+                        <Address
+                            className="ml-3 sm:ml-7"
+                            location={details.location}
+                        />
                     </div>
-                    <div className='my-5 flex items-center'>
-                        <BsTelephoneFill className='shrink-0' />
-                        <a className='ml-3 sm:ml-7' href="tel:#">
+                    <div className="my-5 flex items-center">
+                        <BsTelephoneFill className="shrink-0" />
+                        <a className="ml-3 sm:ml-7" href="#">
                             {details.phone}
                         </a>
                     </div>
