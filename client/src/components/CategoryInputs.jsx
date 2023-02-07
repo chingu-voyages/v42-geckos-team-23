@@ -27,23 +27,23 @@ const CategoryInputs = ({ variant }) => {
     return (
         <div className={`${containerClasses} text-black`}>
             <div className={`${inputClasses}`}>
-                <RadioButton label="Restaurants" category="restaurants%2Cfood" value={categoryName === "Restaurants"} onChange={changeHandler} />
+                <RadioButton label="Restaurants" name="category" category="restaurants%2Cfood" value={categoryName === "Restaurants"} onChange={changeHandler} />
             </div>
 
             <div className={`${inputClasses}`}>
-                <RadioButton label="Cafés" category="cafes%2Ccoffee" value={categoryName === "Cafés"} onChange={changeHandler} />
+                <RadioButton label="Cafés" name="category" category="cafes%2Ccoffee" value={categoryName === "Cafés"} onChange={changeHandler} />
             </div>
 
             <div className={`${inputClasses}`}>
-                <RadioButton label="Activities" category="active" value={categoryName === "Activities"} onChange={changeHandler} />
+                <RadioButton label="Activities" name="category" category="active" value={categoryName === "Activities"} onChange={changeHandler} />
             </div>
 
             <div className={`${inputClasses}`}>
-                <RadioButton label="Hotels & Travel" category="hotelstravel" value={categoryName === "Hotels & Travel"} onChange={changeHandler} />
+                <RadioButton label="Hotels & Travel" name="category" category="hotelstravel" value={categoryName === "Hotels & Travel"} onChange={changeHandler} />
             </div>
 
             <div className={`${inputClasses}`}>
-                <RadioButton label="Shopping" category="shopping" value={categoryName === "Shopping"} onChange={changeHandler} />
+                <RadioButton label="Shopping" name="category" category="shopping" value={categoryName === "Shopping"} onChange={changeHandler} />
             </div>
         </div>
     )

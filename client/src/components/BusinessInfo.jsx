@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { FaYelp } from 'react-icons/fa'
 import { FaFlag } from 'react-icons/fa'
 import { BsTelephoneFill } from 'react-icons/bs'
+
 import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
 import Address from './Address'
 

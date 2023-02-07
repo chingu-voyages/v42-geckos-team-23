@@ -19,8 +19,14 @@ const Navbar = () => {
     const navigate = useNavigate()
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const { category, categoryName, zipCode } = useContext(InputContext)
-    const isHomePage = '/' === location.pathname;
-    const isListEmpty = ctx.resultsList.length === 0;
+    const isHomePage = '/' === location.pathname
+
+    useEffect(() => {
+        if (!ctx.hasBeenCalled && isHomePage) {
+            ctx.setHasBeenCalled(true)
+            openModal()
+        }
+    }, [ctx.hasBeenCalled])
 
     const closeModal = () => {
         setModalIsOpen(false)
@@ -34,15 +40,8 @@ const Navbar = () => {
         if (location.pathname !== '/') {
             navigate('/')
         }
+        ctx.resetState()
     }
-
-    useEffect(() => {
-        if (!ctx.hasBeenCalled && isHomePage) {
-            ctx.setHasBeenCalled(true)
-            openModal()
-        }
-    }, [])
-
 
     const getBusinessesHandler = (e) => {
         e.preventDefault()
@@ -51,7 +50,7 @@ const Navbar = () => {
         getBusinessesFromYelpApi(zipCode, category)
             .then((data) => {
                 ctx.setResultsList([...data])
-                ctx.setIsSearchBtnClicked(true)
+                // ctx.setIsSearchBtnClicked(true)
                 ctx.setResultsTitle(categoryName)
                 ctx.setIsLoading(false)
                 closeModal()
@@ -63,7 +62,6 @@ const Navbar = () => {
                 ctx.setResultsTitle('')
             })
     }
-
 
 
     return (
@@ -89,12 +87,8 @@ const Navbar = () => {
                             onSubmit={getBusinessesHandler}
                         >
                             <ZipCodeInput variant="navbar" />
-                            <CategoryInputs
-                                variant="navbar"
-                            />
-                            <Button
-                                variant="navbar"
-                            >
+                            <CategoryInputs variant="navbar" />
+                            <Button variant="navbar">
                                 <img
                                     className="pr-1 md:pr-0"
                                     src={searchIcon}
@@ -103,10 +97,7 @@ const Navbar = () => {
                         </Form>
                         {/* mobile */}
                         <div className="lg:hidden">
-                            <Button
-                                variant="navbar-mobile"
-                                onClick={openModal}
-                            >
+                            <Button variant="navbar-mobile" onClick={openModal}>
                                 <p className="mr-2 font-semibold">New Search</p>
                                 <img className="pr-0" src={searchIcon} />
                             </Button>
@@ -114,7 +105,14 @@ const Navbar = () => {
                     </>
                 )}
             </div>
-            {<PopUp getBusinessesHandler={getBusinessesHandler} modalIsOpen={modalIsOpen} closeModal={closeModal} openModal={openModal} />}
+            <PopUp
+                {...{
+                    getBusinessesHandler,
+                    modalIsOpen,
+                    closeModal,
+                    openModal,
+                }}
+            />
         </div>
     )
 }

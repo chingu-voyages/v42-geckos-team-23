@@ -1,9 +1,9 @@
 import { useNavigate, useRouteError } from 'react-router-dom'
+
 import errorpup from '../assets/errorpup.jpg'
 
 const ErrorPage = () => {
     const error = useRouteError()
-
     const navigate = useNavigate()
 
     return (
@@ -15,7 +15,7 @@ const ErrorPage = () => {
                 <p className='flex md:text-lg'>
                     <i>404 Page {error.statusText || error.message}</i>
                     <p className='ml-5 px-2 rounded bg-blue-500 hover:cursor-pointer active:text-gray-400' onClick={() => navigate('/')}>Back to GoPup</p>
-                </p> 
+                </p>
             </div>
         </div>
     )

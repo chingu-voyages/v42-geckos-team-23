@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { useParams } from 'react-router-dom'
+
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ArrowButton from '../components/ArrowButton'
-import { useParams } from 'react-router-dom'
 import Reviews from '../components/Reviews'
 import BusinessInfo from '../components/BusinessInfo'
 import BusinessPhotos from '../components/BusinessPhtos'
-import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
 import { InputProvider } from '../contexts/InputProvider'
 
 const Details = () => {

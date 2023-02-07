@@ -1,3 +1,5 @@
+import React from 'react'
+
 import PriceRating from './PriceRating'
 import BoneRating from './BoneRating'
 import Address from './Address'

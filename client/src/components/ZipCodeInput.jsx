@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+
 import { InputContext } from '../contexts/InputProvider'
 
 const ZipCodeInput = ({ variant = 'popup' }) => {

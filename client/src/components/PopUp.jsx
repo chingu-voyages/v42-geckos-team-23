@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import Modal from 'react-modal'
 
 import ZipCodeInput from './ZipCodeInput'
@@ -6,10 +6,7 @@ import CategoryInputs from './CategoryInputs'
 import Button from './Button'
 import { Context } from '../contexts/Context'
 import Spinner from './Spinner'
-import { getBusinessesFromYelpApi } from '../api/yelpAPI'
-import { getBusinessesHandler } from '../utils/utils'
 import Form from './Form'
-import { InputContext } from '../contexts/InputProvider'
 
 const customStyles = {
     content: {
@@ -28,13 +25,10 @@ const customStyles = {
 
 const PopUp = ({
     getBusinessesHandler,
-    openModal,
     closeModal,
     modalIsOpen,
 }) => {
     const ctx = useContext(Context)
-
-
 
     return (
         <Modal

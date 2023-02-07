@@ -2,42 +2,40 @@ import React, { useState, createContext } from 'react';
 
 const Context = createContext()
 
-function ContextProvider({ children }) { // children refers to: <App />, from main.jsx
+const ContextProvider = ({ children }) => {
+    // children refers to: <App />, from main.jsx
     // variables:
 
     // functions:
 
     // state:
-    const [location, setLocation] = useState('')
-    const [category, setCategory] = useState('restaurants%2Cfood')
-    const [categoryName, setCategoryName] = useState('Restaurants')
     const [resultsList, setResultsList] = useState([])
-    const [isSearchBtnClicked, setIsSearchBtnClicked] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [resultsTitle, setResultsTitle] = useState('')
     const [hasBeenCalled, setHasBeenCalled] = useState(false)
-    console.log(hasBeenCalled)
+
+    const resetState = () => {
+        setResultsList([])
+        setIsLoading(false)
+        setResultsTitle('')
+        setHasBeenCalled(false)
+    }
 
     return (
-        <Context.Provider value={{
-            // insert functions/variables/state you want to use in other components/files:
-            location,
-            setLocation,
-            category,
-            setCategory,
-            categoryName,
-            setCategoryName,
-            resultsList,
-            setResultsList,
-            isSearchBtnClicked,
-            setIsSearchBtnClicked,
-            isLoading,
-            setIsLoading,
-            resultsTitle,
-            setResultsTitle,
-            hasBeenCalled,
-            setHasBeenCalled
-        }}>
+        <Context.Provider
+            value={{
+                // insert functions/variables/state you want to use in other components/files:
+                resultsList,
+                setResultsList,
+                isLoading,
+                setIsLoading,
+                resultsTitle,
+                setResultsTitle,
+                hasBeenCalled,
+                setHasBeenCalled,
+                resetState,
+            }}
+        >
             {children}
         </Context.Provider>
     )
