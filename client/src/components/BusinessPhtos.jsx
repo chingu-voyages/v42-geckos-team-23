@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
 
 const BusinessPhotos = ({ id }) => {

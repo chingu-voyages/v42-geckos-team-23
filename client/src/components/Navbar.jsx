@@ -1,71 +1,118 @@
-import React, { useContext } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import Button from './Button'
 import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
-import mobileLogo from '../assets/goPup_mobile-logo.png';
-import logo from '../assets/goPup_logo.png';
-import searchIcon from '../assets/search-icon.svg';
-import { Context } from '../../Context'
-import { getBusinessesHandler } from '../utils/utils'
+import mobileLogo from '../assets/goPup_mobile-logo.png'
+import logo from '../assets/goPup_logo.png'
+import searchIcon from '../assets/search-icon.svg'
+import { Context } from '../contexts/Context'
+import Form from './Form'
+import PopUp from './PopUp'
+import { getBusinessesFromYelpApi } from '../api/yelpAPI'
+import { InputContext } from '../contexts/InputProvider'
 
 const Navbar = () => {
     const ctx = useContext(Context)
     const location = useLocation()
     const navigate = useNavigate()
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const { category, categoryName, zipCode } = useContext(InputContext)
+    const isHomePage = '/' === location.pathname
+
+    useEffect(() => {
+        if (!ctx.hasBeenCalled && isHomePage) {
+            ctx.setHasBeenCalled(true)
+            openModal()
+        }
+    }, [ctx.hasBeenCalled])
+
+    const closeModal = () => {
+        setModalIsOpen(false)
+    }
+
+    const openModal = () => {
+        setModalIsOpen(true)
+    }
 
     const goHome = () => {
         if (location.pathname !== '/') {
             navigate('/')
         }
+        ctx.resetState()
     }
+
+    const getBusinessesHandler = (e) => {
+        e.preventDefault()
+        ctx.setIsLoading(true)
+
+        getBusinessesFromYelpApi(zipCode, category)
+            .then((data) => {
+                ctx.setResultsList([...data])
+                // ctx.setIsSearchBtnClicked(true)
+                ctx.setResultsTitle(categoryName)
+                ctx.setIsLoading(false)
+                closeModal()
+            })
+            .catch((err) => {
+                // if we catch an error that means zip code was "invalid"
+                ctx.setIsLoading(false) // if there is an error, set isLoading to false
+                ctx.setResultsList([]) // if there is an error, set resultsList to empty array
+                ctx.setResultsTitle('')
+            })
+    }
+
 
     return (
         <div className="bg-red-50 font-nunito">
-            <div className="flex px-3 py-3 lg:px-8 lg:py-8 items-center justify-between md:flex-row">
+            <div className="flex items-center justify-between px-3 py-3 md:flex-row lg:px-8 lg:py-8">
                 <img
-                    className="w-[55px] sm:hidden hover:cursor-pointer"
+                    className="w-[55px] hover:cursor-pointer sm:hidden"
                     src={mobileLogo}
                     alt="logo"
                     onClick={goHome}
                 />
                 <img
-                    className="sm:w-[150px] hidden sm:block hover:cursor-pointer"
+                    className="hidden hover:cursor-pointer sm:block sm:w-[150px]"
                     src={logo}
                     alt="logo"
                     onClick={goHome}
                 />
 
-                {
-                    '/' === location.pathname &&
+                {isHomePage && (
                     <>
-                        <form className="hidden lg:flex flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:gap-4"
-                            onSubmit={(e) => getBusinessesHandler(e, ctx)}
+                        <Form
+                            className="hidden flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:flex lg:gap-4"
+                            onSubmit={getBusinessesHandler}
                         >
                             <ZipCodeInput variant="navbar" />
-                            <CategoryInputs variant="navbar" setCategoryName={ctx.setCategoryName} />
-                            <Button variant="navbar" categoryName={ctx.categoryName}>
+                            <CategoryInputs variant="navbar" />
+                            <Button variant="navbar">
                                 <img
                                     className="pr-1 md:pr-0"
                                     src={searchIcon}
                                 />
                             </Button>
-                        </form>
-
+                        </Form>
                         {/* mobile */}
                         <div className="lg:hidden">
-                            <Button variant="navbar-mobile" categoryName={ctx.categoryName} type="submit">
-                                <p className='mr-2 font-semibold'>New Search</p>
-                                <img
-                                    className="pr-0"
-                                    src={searchIcon}
-                                />
+                            <Button variant="navbar-mobile" onClick={openModal}>
+                                <p className="mr-2 font-semibold">New Search</p>
+                                <img className="pr-0" src={searchIcon} />
                             </Button>
                         </div>
                     </>
-                }
+                )}
             </div>
+            <PopUp
+                {...{
+                    getBusinessesHandler,
+                    modalIsOpen,
+                    closeModal,
+                    openModal,
+                }}
+            />
         </div>
     )
 }
