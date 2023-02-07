@@ -50,7 +50,6 @@ const Navbar = () => {
         getBusinessesFromYelpApi(zipCode, category)
             .then((data) => {
                 ctx.setResultsList([...data])
-                // ctx.setIsSearchBtnClicked(true)
                 ctx.setResultsTitle(categoryName)
                 ctx.setIsLoading(false)
                 closeModal()
