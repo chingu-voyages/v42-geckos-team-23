@@ -14,12 +14,15 @@ const BusinessPhotos = ({ id }) => {
     }, [])
 
     return (
-        <section className='m-10 font-nunito'>
+        <section className="m-10 font-nunito">
             <h1 className="mb-7 text-3xl font-bold">Photos</h1>
-            <div className="my-10 flex flex-col sm:items-baseline gap-4 sm:gap-6 sm:grid sm:grid-cols-3">
+            <div className="my-10 flex flex-col gap-4 sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-6">
                 {details.photos?.map((photo) => (
-                    <div key={photo} className="flex-1 shadow-xl md:w-full ">
-                        <figure className="relative h-72">
+                    <div
+                        key={photo}
+                        className="flex-1 overflow-clip rounded-2xl shadow-2xl md:w-full"
+                    >
+                        <figure className="relative h-72  ">
                             <img
                                 className="h-full w-full object-cover"
                                 src={photo}
