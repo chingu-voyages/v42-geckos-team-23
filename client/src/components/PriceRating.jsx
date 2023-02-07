@@ -2,12 +2,18 @@ import React, { useState } from 'react'
 
 import { range } from '../utils/utils'
 
-const PriceRating = ({ rating = 0, max = 5 }) => {
-    const [ratingValue] = useState(rating)
+const PriceRating = ({ rating = '', max = 5 }) => {
+    const [ratingValue] = useState(rating.length)
     const percentage = Math.round((ratingValue / max) * 100)
 
     return (
-        <div className="relative inline-flex items-center">
+        <div
+            className={
+                rating.length === 0
+                    ? 'hidden'
+                    : 'relative inline-flex items-center'
+            }
+        >
             {range(max).map((_, index) => (
                 <Price
                     key={index}

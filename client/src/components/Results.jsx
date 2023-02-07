@@ -12,7 +12,7 @@ const Results = () => {
     const indexOfLastCard = currentPage * cardsPerPage
     const indexOfFirstCard = indexOfLastCard - cardsPerPage
     const numberOfPages = Math.ceil(ctx.resultsList.length / cardsPerPage)
-    
+
     return (
         <div className="grid place-content-center space-y-4 py-8">
             <h2 className="text-center text-5xl lg:text-left lg:text-7xl">
