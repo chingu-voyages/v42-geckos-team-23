@@ -60,9 +60,14 @@ const BusinessInfo = ({ id }) => {
                             {details.phone}
                         </a>
                     </div>
-                    <div className='my-5 flex items-center'>
-                        <FaYelp className='shrink-0' />
-                        <a className='ml-3 sm:ml-7' href={details?.url}>
+                    <div className="my-5 flex items-center">
+                        <FaYelp className="shrink-0" />
+                        <a
+                            className="ml-3 sm:ml-7"
+                            href={details?.url}
+                            target="_blank"
+                            rel="noopener"
+                        >
                             Go to Yelp page
                         </a>
                     </div>
