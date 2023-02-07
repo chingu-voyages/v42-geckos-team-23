@@ -37,7 +37,7 @@ const Navbar = () => {
     }
 
     const goHome = () => {
-        if (location.pathname !== '/') {
+        if (!isHomePage) {
             navigate('/')
         }
         ctx.resetState()

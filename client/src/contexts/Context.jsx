@@ -7,6 +7,12 @@ const ContextProvider = ({ children }) => {
     // variables:
 
     // functions:
+    const resetState = () => {
+        setResultsList([])
+        setIsLoading(false)
+        setResultsTitle('')
+        setHasBeenCalled(false)
+    }
 
     // state:
     const [resultsList, setResultsList] = useState([])
@@ -14,12 +20,6 @@ const ContextProvider = ({ children }) => {
     const [resultsTitle, setResultsTitle] = useState('')
     const [hasBeenCalled, setHasBeenCalled] = useState(false)
 
-    const resetState = () => {
-        setResultsList([])
-        setIsLoading(false)
-        setResultsTitle('')
-        setHasBeenCalled(false)
-    }
 
     return (
         <Context.Provider
