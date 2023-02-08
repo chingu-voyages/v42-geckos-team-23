@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build && cd .. && cd server && npm install && npm start",
+        "build": "vite build",
         "preview": "vite preview"
     },
     "dependencies": {
