@@ -10,7 +10,7 @@ import searchIcon from '../assets/search-icon.svg'
 import { Context } from '../contexts/Context'
 import Form from './Form'
 import PopUp from './PopUp'
-import { getBusinessesFromYelpApi } from '../api/yelpAPI'
+import { getBusinessesFromYelpApi } from '../api/YelpAPI'
 import { InputContext } from '../contexts/InputProvider'
 
 const Navbar = () => {
