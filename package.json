@@ -1,0 +1,26 @@
+{
+  "name": "v42-geckos-team-23",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"cd server && npm start\" \"cd client && npm run dev\" ",
+    "start": "concurrently \"cd client && npm install && npm run dev\" \"cd server && npm install && npm start\" ",
+    "build": "npm install && cd server && npm install && npm run build "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/AaronoKwok/v42-geckos-team-23.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AaronoKwok/v42-geckos-team-23/issues"
+  },
+  "homepage": "https://github.com/AaronoKwok/v42-geckos-team-23#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20"
+  }
+}
