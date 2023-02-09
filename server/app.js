@@ -24,6 +24,10 @@ require('dotenv').config();
 //   res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
 // });
 
+app.get("/", (req, res) => {
+  res.json({ message: "Hello from server!" });
+});
+
 app.get('/api/yelp', (req, res) => {
   const term = req.query.term;
   const categories = req.query.categories;
