@@ -62,7 +62,6 @@ const Navbar = () => {
                 ctx.setResultsList([]) // if there is an error, set resultsList to empty array
                 ctx.setResultsTitle('')
                 console.log(err)
-                console.log('Failed')
             })
     }
 
