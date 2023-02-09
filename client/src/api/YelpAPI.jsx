@@ -1,7 +1,7 @@
 const getBusinessesFromYelpApi = (location, category) => {
     return fetch(`/api/yelp?location=${location}&term=dog+friendly&categories=${category}`)
         .then((res) => res.json())
-        .catch((err) => console.log(err))
+    // .catch((err) => console.log(err))
 }
 
 const getDetailsByIdFromYelpApi = (id) => {
