@@ -14,9 +14,9 @@ const App = () => {
 
   return (
       <div className="flex min-h-screen flex-col font-nunito">
-          <InputProvider>
+          {/* <InputProvider>
               <Navbar />
-          </InputProvider>
+          </InputProvider> */}
           <Hero />
           {isModalOpen && <Spinner />}
           {!ctx.isLoading && <Results />}
