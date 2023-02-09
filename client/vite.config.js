@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://gopup.onrender.com',
+        target: 'http://localhost:10000',
         changeOrigin: true,
       }
     }
