@@ -7,11 +7,13 @@ const getBusinessesFromYelpApi = (location, category) => {
 const getDetailsByIdFromYelpApi = (id) => {
     return fetch(`/api/yelp/${id}`)
         .then((res) => res.json())
+        .catch((err) => console.log(err))
 }
 
 const getReviewsFromYelpApi = (id) => {
     return fetch(`/api/yelp/${id}/reviews`)
         .then((res => res.json()))
+        .catch((err) => console.log(err))
 }
 
 export { getBusinessesFromYelpApi, getDetailsByIdFromYelpApi, getReviewsFromYelpApi }
