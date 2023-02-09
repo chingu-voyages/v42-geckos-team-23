@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "build": "cd .. && cd client && npm install && npm run build"
+    "start": "nodemon app.js"
   },
   "engines": {
     "node": "18.13.0"
