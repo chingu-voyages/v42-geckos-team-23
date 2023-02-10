@@ -47,7 +47,7 @@ Photos, contact info, reviews, and location of a business are displayed on a bus
 - [Daisy UI](https://daisyui.com/)
 
 ## Contributors 
-- Jiyun [Github](https://github.com/jiyunnoh) [add-your-LinkedIn]()
+- Jiyun [Github](https://github.com/jiyunnoh) [LinkedIn](https://www.linkedin.com/in/jiyun-noh-kim/)
 - Ronald [Github](https://github.com/ronaldpaek) [add-your-LinkedIn]()
 - Joy [Github](https://github.com/jlu9d2) [add-your-LinkedIn]()
 - Aaron [Github](https://github.com/AaronoKwok) [LinkedIn](https://www.linkedin.com/in/aaronkwok1/)
