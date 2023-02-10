@@ -45,12 +45,12 @@ const Navbar = () => {
         ctx.resetState()
     }
 
-    const getBusinessesHandler = async (e) => {
+    const getBusinessesHandler = (e) => {
         e.preventDefault()
         ctx.setIsLoading(true)
 
-        await fetch(
-            '/.netlify/functions/get-yelp-businesses',
+        fetch(
+            '/.netlify/functions/search',
             {
                 method: 'POST',
                 body: JSON.stringify({

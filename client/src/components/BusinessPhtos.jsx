@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react'
 
-import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
 
 const BusinessPhotos = ({ id }) => {
     const [details, setDetails] = useState({})
 
     useEffect(() => {
-        getDetailsByIdFromYelpApi(id)
-            .then(data => {
-                setDetails({ ...data })
-            })
-            .catch(err => console.log(err))
+        fetch('/.netlify/functions/details', {
+            method: 'POST',
+            body: JSON.stringify({
+                id,
+            }),
+        })
+            .then((response) =>
+                response.json().then((data) => {
+                    setDetails({ ...data })
+                    console.log(data)
+                    console.log(details)
+                })
+            )
+            .catch((err) => console.log(err))
     }, [])
 
     return (

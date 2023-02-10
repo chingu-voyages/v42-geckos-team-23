@@ -3,7 +3,6 @@ import { FaYelp } from 'react-icons/fa'
 import { FaFlag } from 'react-icons/fa'
 import { BsTelephoneFill } from 'react-icons/bs'
 
-import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
 import Address from './Address'
 
 const BusinessInfo = ({ id }) => {
@@ -11,27 +10,33 @@ const BusinessInfo = ({ id }) => {
 
     const MAPBOX = import.meta.env.VITE_MAPBOX_API_KEY
 
-    mapboxgl.accessToken = MAPBOX;
+    mapboxgl.accessToken = MAPBOX
 
     const mapContainer = useRef(null)
     const map = useRef(null)
 
     useEffect(() => {
-        getDetailsByIdFromYelpApi(id)
-            .then(data => {
+        fetch('/.netlify/functions/details', {
+            method: 'POST',
+            body: JSON.stringify({
+                id,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
                 setDetails({ ...data })
 
                 let lng = data.coordinates.longitude
                 let lat = data.coordinates.latitude
-                if (map.current) return;
+                if (map.current) return
                 map.current = new mapboxgl.Map({
                     container: mapContainer.current,
                     style: 'mapbox://styles/mapbox/streets-v12',
                     center: [lng, lat],
-                    zoom: 17
+                    zoom: 17,
                 })
             })
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err))
     }, [])
 
     return (
