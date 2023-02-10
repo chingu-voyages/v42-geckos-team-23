@@ -1,7 +1,7 @@
-const path = require('path');
+// const path = require('path');
 const express = require('express');
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 3001;
 
 const axios = require('axios');
 
@@ -9,12 +9,12 @@ const app = express();
 
 require('dotenv').config();
 
-if (process.env.NODE_ENV === 'production') {
-  //*Set static folder up in production
-  app.use(express.static('../client/dist'));
+// if (process.env.NODE_ENV === 'production') {
+//   //*Set static folder up in production
+//   app.use(express.static('../client/dist'));
 
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html')));
-}
+//   app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html')));
+// }
 
 // Have Node serve the files for our built React app
 // app.use(express.static(path.resolve(__dirname, '../client/dist')));
