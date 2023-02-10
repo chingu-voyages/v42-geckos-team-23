@@ -14,8 +14,6 @@ const BusinessPhotos = ({ id }) => {
             .then((response) =>
                 response.json().then((data) => {
                     setDetails({ ...data })
-                    console.log(data)
-                    console.log(details)
                 })
             )
             .catch((err) => console.log(err))
