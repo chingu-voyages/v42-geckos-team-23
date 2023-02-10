@@ -4,12 +4,13 @@ import { FaFlag } from 'react-icons/fa'
 import { BsTelephoneFill } from 'react-icons/bs'
 
 import Address from './Address'
+import MAPBOX_API_KEY from '../../apikey'
 
 const BusinessInfo = ({ id }) => {
     const [details, setDetails] = useState({})
 
-    const mapContainer = useRef(null)
-    const map = useRef(null)
+    const mapContainerRef = useRef(null)
+    const mapRef = useRef(null)
 
     useEffect(() => {
         fetch('/.netlify/functions/details', {
@@ -21,14 +22,11 @@ const BusinessInfo = ({ id }) => {
             .then((response) => response.json())
             .then((data) => {
                 setDetails({ ...data })
-                const MAPBOX = data.mapboxAPIKey
+                const MAPBOX = MAPBOX_API_KEY
                 mapboxgl.accessToken = MAPBOX
-
-                let lng = data.coordinates.longitude
-                let lat = data.coordinates.latitude
-                if (map.current) return
+                if (mapRef.current) return
                 map.current = new mapboxgl.Map({
-                    container: mapContainer.current,
+                    container: mapContainerRef.current,
                     style: 'mapbox://styles/mapbox/streets-v12',
                     center: [lng, lat],
                     zoom: 17,
@@ -46,7 +44,7 @@ const BusinessInfo = ({ id }) => {
             <div className="mt-7 lg:flex">
                 <div
                     className="h-80 rounded-2xl border lg:w-2/5"
-                    ref={mapContainer}
+                    ref={mapContainerRef}
                 ></div>
 
                 <div className="text-2xl font-semibold md:text-3xl lg:ml-20">

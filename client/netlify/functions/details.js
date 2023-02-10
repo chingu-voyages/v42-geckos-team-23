@@ -16,7 +16,7 @@ export const handler = async (event, context) => {
         })
 
         const data = await response.json()
-        data.mapboxAPIKey = process.env.MAPBOX_API_KEY
+        
         return {
             statusCode: 200,
             body: JSON.stringify(data),
