@@ -5,10 +5,6 @@ import { BsTelephoneFill } from 'react-icons/bs'
 
 import Address from './Address'
 
-const MAPBOX = import.meta.env.VITE_MAPBOX_API_KEY || process.env.MAPBOX_API_KEY
-
-mapboxgl.accessToken = MAPBOX
-
 const BusinessInfo = ({ id }) => {
     const [details, setDetails] = useState({})
 
@@ -27,6 +23,7 @@ const BusinessInfo = ({ id }) => {
                 setDetails({ ...data })
                 if (map.current) return
                 const { longitude, latitude } = data.coordinates
+                mapboxgl.accessToken = data.apiKey
                 map.current = new mapboxgl.Map({
                     container: mapContainer.current,
                     style: 'mapbox://styles/mapbox/streets-v12',
