@@ -1,0 +1,8 @@
+[build]
+  base = "client/"
+  command = "npm run build"
+  functions = "netlify/functions"
+
+
+[functions]
+  node_bundler = "esbuild"

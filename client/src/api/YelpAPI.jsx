@@ -10,7 +10,7 @@ const getBusinessesFromYelpApi = async (location, category) => {
       .map(([key, value]) => `${key}=${value}`)
       .join('&');
 
-    const url = `/.netlify/functions/yelpAPI${queryString}`;
+    const url = `/.netlify/functions/get-yelp${queryString}`;
 
     try {
       const res = await fetch(url);

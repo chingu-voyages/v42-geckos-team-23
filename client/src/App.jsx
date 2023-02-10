@@ -11,12 +11,13 @@ import { InputProvider } from './contexts/InputProvider'
 const App = () => {
   const ctx = useContext(Context)
   const isModalOpen = ctx.isLoading && !ctx.modalIsOpen;
+  console.log(ctx)
 
   return (
       <div className="flex min-h-screen flex-col font-nunito">
-          {/* <InputProvider>
+          <InputProvider>
               <Navbar />
-          </InputProvider> */}
+          </InputProvider>
           <Hero />
           {isModalOpen && <Spinner />}
           {!ctx.isLoading && <Results />}

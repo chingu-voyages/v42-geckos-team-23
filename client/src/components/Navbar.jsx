@@ -45,11 +45,21 @@ const Navbar = () => {
         ctx.resetState()
     }
 
-    const getBusinessesHandler = (e) => {
+    const getBusinessesHandler = async (e) => {
         e.preventDefault()
         ctx.setIsLoading(true)
 
-        getBusinessesFromYelpApi(zipCode, category)
+        await fetch(
+            '/.netlify/functions/get-yelp-businesses',
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    location: zipCode,
+                    category,
+                }),
+            }
+        )
+            .then((response) => response.json())
             .then((data) => {
                 ctx.setResultsList([...data])
                 ctx.setResultsTitle(categoryName)
@@ -63,6 +73,7 @@ const Navbar = () => {
                 ctx.setResultsTitle('')
             })
     }
+
 
 
     return (
