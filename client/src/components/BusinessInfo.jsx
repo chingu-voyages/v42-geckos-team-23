@@ -4,68 +4,36 @@ import { FaFlag } from 'react-icons/fa'
 import { BsTelephoneFill } from 'react-icons/bs'
 
 import Address from './Address'
+import MAPBOX_API_KEY from '../../apikey'
 
 const BusinessInfo = ({ id }) => {
     const [details, setDetails] = useState({})
-
-    const MAPBOX =
-        import.meta.env.VITE_MAPBOX_API_KEY || process.env.MAPBOX_API_KEY
-
-    mapboxgl.accessToken = MAPBOX
 
     const mapContainerRef = useRef(null)
     const mapRef = useRef(null)
 
     useEffect(() => {
-        const fetchData = async (id) => {
-            try {
-                const response = await fetch('/.netlify/functions/details', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        id,
-                    }),
-                })
-                const data = await response.json()
+        fetch('/.netlify/functions/details', {
+            method: 'POST',
+            body: JSON.stringify({
+                id,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
                 setDetails({ ...data })
-                const { longitude, latitude } = data.coordinates
+                const MAPBOX = MAPBOX_API_KEY
+                mapboxgl.accessToken = MAPBOX
                 if (mapRef.current) return
-                mapRef.current = new mapboxgl.Map({
+                map.current = new mapboxgl.Map({
                     container: mapContainerRef.current,
                     style: 'mapbox://styles/mapbox/streets-v12',
-                    center: [longitude, latitude],
+                    center: [lng, lat],
                     zoom: 17,
                 })
-            } catch (error) {
-                console.error(error)
-            }
-        }
-        fetchData(id)
+            })
+            .catch((err) => console.log(err))
     }, [])
-
-    // const getMap = async (data) => {
-    //     const { longitude: lng, latitude: lat } = data.coordinates
-    //     fetch('/.netlify/functions/mapbox', {
-    //         method: 'POST',
-    //         body: JSON.stringify({ lng, lat }),
-    //     })
-    //         .then((response) => response.json())
-    //         .then((data) => console.log(data))
-    // }
-
-    // const getDetails = async (id) => {
-    //     await fetch('/.netlify/functions/details', {
-    //         method: 'POST',
-    //         body: JSON.stringify({
-    //             id,
-    //         }),
-    //     })
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             setDetails({ ...data })
-    //             return data
-    //         })
-    //         .catch((err) => console.log(err))
-    // }
 
     return (
         <section className="m-10 font-nunito">
