@@ -8,10 +8,6 @@ import Address from './Address'
 const BusinessInfo = ({ id }) => {
     const [details, setDetails] = useState({})
 
-    const MAPBOX = process.env.MAPBOX_API_KEY
-
-    mapboxgl.accessToken = MAPBOX
-
     const mapContainer = useRef(null)
     const map = useRef(null)
 
@@ -25,6 +21,8 @@ const BusinessInfo = ({ id }) => {
             .then((response) => response.json())
             .then((data) => {
                 setDetails({ ...data })
+                const MAPBOX = data.mapboxAPIKey
+                mapboxgl.accessToken = MAPBOX
 
                 let lng = data.coordinates.longitude
                 let lat = data.coordinates.latitude

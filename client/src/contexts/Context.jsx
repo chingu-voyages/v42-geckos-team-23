@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 
 const Context = createContext()
 
@@ -20,6 +20,7 @@ const ContextProvider = ({ children }) => {
     const [resultsTitle, setResultsTitle] = useState('')
     const [hasBeenCalled, setHasBeenCalled] = useState(false)
     const [modalIsOpen, setModalIsOpen] = useState(false)
+
 
     return (
         <Context.Provider
