@@ -8,7 +8,7 @@ import Address from './Address'
 const BusinessInfo = ({ id }) => {
     const [details, setDetails] = useState({})
 
-    const MAPBOX = import.meta.env.VITE_MAPBOX_API_KEY
+    const MAPBOX = process.env.MAPBOX_API_KEY
 
     mapboxgl.accessToken = MAPBOX
 
