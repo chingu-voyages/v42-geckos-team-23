@@ -35,6 +35,7 @@ const PopUp = ({
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             style={customStyles}
+            shouldCloseOnOverlayClick={false}
             contentLabel="Zipcode Modal"
         >
             <Form onSubmit={getBusinessesHandler}>
