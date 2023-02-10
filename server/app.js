@@ -10,19 +10,13 @@ const app = express();
 require('dotenv').config();
 
 if (process.env.NODE_ENV === 'production') {
-  //*Set static folder up in production
+  // Have Node serve the files for our built React app
+  // Set static folder up in production
   app.use(express.static('../client/dist'));
 
+  // All other GET requests not handled before will return our React app
   app.get('/home', (req, res) => res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html')));
 }
-
-// Have Node serve the files for our built React app
-// app.use(express.static(path.resolve(__dirname, '../client/dist')));
-
-// All other GET requests not handled before will return our React app
-// app.get('*', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
-// });
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello from server!" });
