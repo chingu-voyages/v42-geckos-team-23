@@ -10,7 +10,7 @@ import searchIcon from '../assets/search-icon.svg'
 import { Context } from '../contexts/Context'
 import Form from './Form'
 import PopUp from './PopUp'
-// import { getBusinessesFromYelpApi } from '../api/yelpAPI'
+
 import { InputContext } from '../contexts/InputProvider'
 
 const Navbar = () => {
@@ -50,7 +50,7 @@ const Navbar = () => {
         ctx.setIsLoading(true)
 
         fetch(
-            '/.netlify/functions/search',
+            '/.netlify/functions/getYelpSearchResults',
             {
                 method: 'POST',
                 body: JSON.stringify({
