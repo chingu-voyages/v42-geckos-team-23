@@ -15,7 +15,7 @@ const Card = ({ id, name, location, rating, image_url, price }) => {
 
     return (
         <a onClick={clickHandler}>
-            <div className="card max-w-[384px] cursor-pointer bg-base-100 shadow-xl duration-300 ease-in-out hover:scale-105 hover:transform">
+            <div className="card max-w-[384px] h-[382px] cursor-pointer bg-base-100 border hover:shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:transform">
                 <figure className="relative h-72">
                     <img
                         className="h-full w-full object-cover"
