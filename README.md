@@ -2,7 +2,7 @@
 
 ## Overview
 
-This app allows users to find pet-friendly businesses and activities. It makes use of Yelp's [Fusion API](https://fusion.yelp.com/) and [Mapbox](https://www.mapbox.com/) to gather information on such businesses and activities.
+This app allows users to find dog-friendly businesses and activities. It makes use of Yelp's [Fusion API](https://fusion.yelp.com/) and [Mapbox](https://www.mapbox.com/) to gather information on such businesses and activities.
 
 Live: [GoPup (netlify)](https://gopup.netlify.app/) [Gopup (render)](https://gopup.onrender.com/)
 
