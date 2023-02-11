@@ -86,6 +86,26 @@
     display: block;
   }
 
+  .tooltip {
+    display: none;
+    position: absolute;
+    transform: translateX(-100%);
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    max-width: 200px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .rating:hover .tooltip {
+    display: inline-block;
+    z-index: 1;
+  }
+
+
 @layer base {
     h1 {
         @apply text-2xl;
