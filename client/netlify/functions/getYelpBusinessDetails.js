@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 export const handler = async (event, context) => {
     try {
-        const apiKey = process.env.YELP_API_KEY
+        const API_KEY = process.env.YELP_API_KEY
         const eventBody = JSON.parse(event.body)
         const { id } = eventBody
 
@@ -11,7 +11,7 @@ export const handler = async (event, context) => {
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                Authorization: `Bearer ${apiKey}`,
+                Authorization: `Bearer ${API_KEY}`,
             },
         })
 

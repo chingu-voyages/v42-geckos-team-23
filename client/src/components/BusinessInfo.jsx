@@ -12,7 +12,7 @@ const BusinessInfo = ({ id }) => {
     const map = useRef(null)
 
     useEffect(() => {
-        fetch('/.netlify/functions/details', {
+        fetch('/.netlify/functions/getYelpBusinessDetails', {
             method: 'POST',
             body: JSON.stringify({
                 id,

@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 
 import { range } from '../utils/utils'
 
-const BoneRating = ({ rating, max = 5 }) => {
+const StarRating2 = ({ rating, max = 5 }) => {
     const [ratingValue] = useState(rating)
     const percentage = Math.round((ratingValue / max) * 100)
 
     return (
         <div className="relative inline-flex items-center rating">
             {range(max).map((_, index) => (
-                <Bone
+                <Star
                     key={index}
                     className="flex w-4 space-x-0.5"
                     width={16}
@@ -25,18 +25,25 @@ const BoneRating = ({ rating, max = 5 }) => {
     )
 }
 
-const Bone = ({ size = 18, color = '#ef4444' }) => {
+const Star = ({ size = 18, color = '#EF4444' }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 50 50"
+            viewBox="0 0 512 512"
             width={size}
             height={size}
             fill={color}
         >
-            <path d="M 16 50 C 11.515625 50 8 46.484375 8 42 C 3.515625 42 0 38.484375 0 34 C 0 29.515625 3.515625 26 8 26 C 9.835938 26 11.53125 26.59375 12.960938 27.726563 L 27.730469 12.957031 C 26.621094 11.535156 26 9.777344 26 8 C 26 3.515625 29.515625 0 34 0 C 38.484375 0 42 3.515625 42 8 C 46.484375 8 50 11.515625 50 16 C 50 20.484375 46.484375 24 42 24 C 40.164063 24 38.46875 23.40625 37.039063 22.273438 L 22.269531 37.042969 C 23.378906 38.464844 24 40.222656 24 42 C 24 46.484375 20.484375 50 16 50 Z" />
+            <path
+                fill="#E5AA17"
+                d="M7.9,256C7.9,119,119,7.9,256,7.9C393,7.9,504.1,119,504.1,256c0,137-111.1,248.1-248.1,248.1C119,504.1,7.9,393,7.9,256z"
+            />
+            <path
+                fill="#FFF"
+                d="M256 97.9L304.8 196.7 413.8 212.6 334.9 289.5 353.5 398.1 256 346.8 158.4 398.1 177.1 289.5 98.2 212.6 207.2 196.7z"
+            />
         </svg>
     )
 }
 
-export default BoneRating
+export default StarRating2
