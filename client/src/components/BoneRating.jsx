@@ -7,7 +7,7 @@ const BoneRating = ({ rating, max = 5 }) => {
     const percentage = Math.round((ratingValue / max) * 100)
 
     return (
-        <div className="relative inline-flex items-center">
+        <div className="relative inline-flex items-center rating">
             {range(max).map((_, index) => (
                 <Bone
                     key={index}
@@ -20,11 +20,12 @@ const BoneRating = ({ rating, max = 5 }) => {
                 className="overlay"
                 style={{ width: `${100 - percentage}%` }}
             />
+            <span className="tooltip">Review rating</span>
         </div>
     )
 }
 
-const Bone = ({ size = 16, color = 'red' }) => {
+const Bone = ({ size = 18, color = '#ef4444' }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
