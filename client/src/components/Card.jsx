@@ -2,9 +2,10 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import PriceRating from './PriceRating'
-import BoneRating from './BoneRating'
 import Address from './Address'
 import defaultCardImage from '../assets/goPup_logo_card.png'
+import StarRating from './StarRating'
+
 
 const Card = ({ id, name, location, rating, image_url, price }) => {
     const navigate = useNavigate()
@@ -30,7 +31,8 @@ const Card = ({ id, name, location, rating, image_url, price }) => {
                     </div>
                     <div className="flex w-3/12 flex-col items-end space-y-2">
                         <PriceRating rating={price} />
-                        <BoneRating rating={rating} />
+                        <StarRating rating={rating} />
+
                     </div>
 
                     <div className="card-actions absolute top-4  right-4 hidden justify-end" />
