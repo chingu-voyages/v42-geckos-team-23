@@ -1,15 +1,10 @@
-import { useNavigate, useRouteError, useRouteMatch } from 'react-router-dom'
+import { useNavigate, useRouteError } from 'react-router-dom'
 
 import errorpup from '../assets/errorpup.jpg'
 
 const ErrorPage = () => {
     const error = useRouteError()
     const navigate = useNavigate()
-    const match = useRouteMatch()
-
-    if (!match) {
-        return <div>Page Not Found</div>
-    }
 
     return (
         <div className="relative font-nunito text-white">
