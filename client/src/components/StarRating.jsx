@@ -20,7 +20,7 @@ const StarRating = ({ rating, max = 5 }) => {
                 className="overlay"
                 style={{ width: `${100 - percentage}%` }}
             />
-            <span className="tooltip rating">Review rating</span>
+            <span className="description rating">Review rating</span>
         </div>
     )
 }
@@ -44,4 +44,3 @@ const Star = ({ size = 18, color = '#EF4444' }) => {
 
 export default StarRating
 
-// "#FFCA28" is the color of the star in the original SVG file
