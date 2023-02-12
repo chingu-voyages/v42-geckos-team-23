@@ -14,6 +14,9 @@ const BusinessInfo = ({ id }) => {
     useEffect(() => {
         fetch('/.netlify/functions/getYelpBusinessDetails', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
                 id,
             }),

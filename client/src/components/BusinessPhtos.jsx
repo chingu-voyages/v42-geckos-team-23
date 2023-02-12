@@ -7,6 +7,9 @@ const BusinessPhotos = ({ id }) => {
     useEffect(() => {
         fetch('/.netlify/functions/getYelpBusinessDetails', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
                 id,
             }),
@@ -27,8 +30,9 @@ const BusinessPhotos = ({ id }) => {
                     <div
                         key={photo}
                         className="flex-1 overflow-clip rounded-2xl shadow-2xl md:w-full"
+                        tabIndex="0"
                     >
-                        <figure className="relative h-72  ">
+                        <figure className="relative h-72">
                             <img
                                 className="h-full w-full object-cover"
                                 src={photo}

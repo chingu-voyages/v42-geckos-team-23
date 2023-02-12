@@ -18,6 +18,9 @@ const Reviews = ({ id }) => {
     useEffect(() => {
       fetch('/.netlify/functions/getYelpBusinessReviews', {
           method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
           body: JSON.stringify({
               id,
           }),
