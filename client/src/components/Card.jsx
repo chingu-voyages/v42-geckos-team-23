@@ -14,9 +14,10 @@ const Card = ({ id, name, location, rating, image_url, price }) => {
         navigate(`details/${id}`)
     }
 
+
     return (
-        <a onClick={clickHandler}>
-            <div className="card max-w-[384px] h-[382px] cursor-pointer bg-base-100 border hover:shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:transform">
+        <a onClick={clickHandler} tabIndex="0">
+            <div className="card h-[382px] max-w-[384px] cursor-pointer border bg-base-100 transition duration-300 ease-in-out hover:scale-105 hover:transform hover:shadow-lg">
                 <figure className="relative h-72">
                     <img
                         className="h-full w-full object-cover"
@@ -32,7 +33,6 @@ const Card = ({ id, name, location, rating, image_url, price }) => {
                     <div className="flex w-3/12 flex-col items-end space-y-2">
                         <PriceRating rating={price} />
                         <StarRating rating={rating} />
-
                     </div>
 
                     <div className="card-actions absolute top-4  right-4 hidden justify-end" />

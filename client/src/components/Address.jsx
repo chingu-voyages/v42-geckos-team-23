@@ -12,7 +12,7 @@ const Address = ({ location, className, row = 1 }) => {
     }
 
     return (
-        <address className={className}>
+        <address className={className} tabIndex="0">
             {row === 1 ? (
                 <p>{address.join(', ')}</p>
             ) : (
