@@ -31,6 +31,7 @@ const BusinessPhotos = ({ id }) => {
                         key={photo}
                         className="flex-1 overflow-clip rounded-2xl shadow-2xl md:w-full"
                         tabIndex="0"
+                        style={{ borderRadius: "1.5rem" }}
                     >
                         <figure className="relative h-72">
                             <img
