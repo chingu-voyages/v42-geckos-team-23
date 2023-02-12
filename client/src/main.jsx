@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createHashRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Modal from 'react-modal'
 
 import { ContextProvider } from './contexts/Context'
@@ -11,7 +11,7 @@ import './index.css'
 
 Modal.setAppElement('#root')
 
-const router = createHashRouter([
+const router = createBrowserRouter([
     {
         path: "/", // "home page"
         element: <App />,

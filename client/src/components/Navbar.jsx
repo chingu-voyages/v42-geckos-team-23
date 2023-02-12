@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import Button from './Button'
@@ -18,9 +18,10 @@ const Navbar = () => {
     const location = useLocation()
     const navigate = useNavigate()
     const { modalIsOpen, setModalIsOpen } = ctx
+    const [zipCode, setZipCode] = useState('')
 
 
-    const { category, categoryName, zipCode } = useContext(InputContext)
+    const { category, categoryName } = useContext(InputContext)
     const isHomePage = '/' === location.pathname
 
     useEffect(() => {
@@ -47,12 +48,14 @@ const Navbar = () => {
 
     const getBusinessesHandler = (e) => {
         e.preventDefault()
-        ctx.setIsLoading(true)
-
+        ctx.setIsDataLoading(true)
         fetch(
             '/.netlify/functions/getYelpSearchResults',
             {
                 method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+              },
                 body: JSON.stringify({
                     location: zipCode,
                     category,
@@ -63,12 +66,13 @@ const Navbar = () => {
             .then((data) => {
                 ctx.setResultsList([...data])
                 ctx.setResultsTitle(categoryName)
-                ctx.setIsLoading(false)
+                ctx.setIsDataLoading(false)
                 closeModal()
             })
             .catch((err) => {
                 // if we catch an error that means zip code was "invalid"
-                ctx.setIsLoading(false) // if there is an error, set isLoading to false
+                console.log(err)
+                ctx.setIsDataLoading(false) // if there is an error, set isLoading to false
                 ctx.setResultsList([]) // if there is an error, set resultsList to empty array
                 ctx.setResultsTitle('')
             })
@@ -98,7 +102,7 @@ const Navbar = () => {
                             className="hidden flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:flex lg:gap-4"
                             onSubmit={getBusinessesHandler}
                         >
-                            <ZipCodeInput variant="navbar" />
+                            <ZipCodeInput variant="navbar" zipCode={zipCode} setZipCode={setZipCode} />
                             <CategoryInputs variant="navbar" />
                             <Button variant="navbar">
                                 <img
@@ -123,6 +127,8 @@ const Navbar = () => {
                     modalIsOpen,
                     closeModal,
                     openModal,
+                    zipCode,
+                    setZipCode
                 }}
             />
         </div>

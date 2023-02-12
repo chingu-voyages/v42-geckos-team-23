@@ -9,13 +9,13 @@ const Button = ({ variant, color = 'red', children, ...delegated }) => {
     }
 
     const navbarBtnClasses =
-        'flex items-center rounded-full px-10 py-2 md:px-3 md:py-3'
+        'flex items-center rounded-full px-10 py-2 md:px-3 md:py-3 transition duration-150 ease-in-out button'
     const navbarMobileBtnClasses =
-        'flex items-center rounded-full px-5 py-2 md:px-3 md:py-3'
+        'flex items-center rounded-full px-5 py-2 md:px-3 md:py-3 transition duration-150 ease-in-out button'
     const defaultBtnClasses =
-        'flex items-center rounded-full px-10 py-2 md:px-3 md:py-3'
+        'flex items-center rounded-full px-10 py-2 md:px-3 md:py-3 transition duration-150 ease-in-out button'
     const popupBtnClasses =
-        'flex items-center justify-center mx-auto rounded-full py-3 w-full'
+        'flex items-center justify-center mx-auto rounded-full py-3 w-full transition duration-150 ease-in-out button'
 
     let btnClasses = defaultBtnClasses
 

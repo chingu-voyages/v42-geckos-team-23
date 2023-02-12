@@ -9,20 +9,20 @@ import { Context } from './contexts/Context'
 import { InputProvider } from './contexts/InputProvider'
 
 const App = () => {
-  const ctx = useContext(Context)
-  const isModalOpen = ctx.isLoading && !ctx.modalIsOpen;
+    const ctx = useContext(Context)
+    const isModalOpen = ctx.isDataLoading && !ctx.modalIsOpen
 
-  return (
-      <div className="flex min-h-screen flex-col font-nunito">
-          <InputProvider>
-              <Navbar />
-          </InputProvider>
-          <Hero />
-          {isModalOpen && <Spinner />}
-          {!ctx.isLoading && <Results />}
-          <Footer />
-      </div>
-  )
+    return (
+        <div className="flex min-h-screen flex-col font-nunito">
+            <InputProvider>
+                <Navbar />
+            </InputProvider>
+            <Hero />
+            {isModalOpen && <Spinner />}
+            {!ctx.isDataLoading && <Results />}
+            <Footer />
+        </div>
+    )
 }
 
 export default App

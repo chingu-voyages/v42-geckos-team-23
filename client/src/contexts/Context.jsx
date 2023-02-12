@@ -1,4 +1,6 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext } from 'react'
+
+import useGetCurrentPosition from '../hooks/useGetCurrentPosition'
 
 const Context = createContext()
 
@@ -9,18 +11,19 @@ const ContextProvider = ({ children }) => {
     // functions:
     const resetState = () => {
         setResultsList([])
-        setIsLoading(false)
+        setIsDataLoading(false)
         setResultsTitle('')
         setHasBeenCalled(false)
     }
 
     // state:
     const [resultsList, setResultsList] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+    const [isDataLoading, setIsDataLoading] = useState(false)
     const [resultsTitle, setResultsTitle] = useState('')
     const [hasBeenCalled, setHasBeenCalled] = useState(false)
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
+    const { location, isLocationLoading } = useGetCurrentPosition()
 
     return (
         <Context.Provider
@@ -28,8 +31,8 @@ const ContextProvider = ({ children }) => {
                 // insert functions/variables/state you want to use in other components/files:
                 resultsList,
                 setResultsList,
-                isLoading,
-                setIsLoading,
+                isDataLoading,
+                setIsDataLoading,
                 resultsTitle,
                 setResultsTitle,
                 hasBeenCalled,
@@ -37,6 +40,8 @@ const ContextProvider = ({ children }) => {
                 modalIsOpen,
                 setModalIsOpen,
                 resetState,
+                location,
+                isLocationLoading,
             }}
         >
             {children}

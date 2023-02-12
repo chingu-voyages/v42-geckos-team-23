@@ -7,7 +7,7 @@ const ReviewCard = ({ user, text, time_created }) => {
     user.image_url === null && (user.image_url = defaultUserProfile)
 
     return (
-        <section className='font-nunito space-y-3'>
+        <section className='font-nunito space-y-3' tabIndex="0">
             <div className='flex items-center'>
                 <img className='w-12 h-12 rounded-full'
                     src={user.image_url}

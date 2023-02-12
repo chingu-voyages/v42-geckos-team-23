@@ -26,7 +26,7 @@ const PriceRating = ({ rating = '', max = 5 }) => {
                 className="overlay"
                 style={{ width: `${100 - percentage}%` }}
             />
-            <span className="tooltip">Price rating</span>
+            <span className="description">Price rating</span>
         </div>
     )
 }
@@ -64,11 +64,3 @@ const Price = ({ size = 18 }) => {
 
 export default PriceRating
 
-{
-    /* <stop offset=".278" stop-color="#4adb2e"/><stop offset=".554" stop-color="#43ce21"/><stop offset="1" stop-color="#33b004"/> */
-}
-{
-    /* <stop offset=".278" stopColor="rgba(180,58,73,1)" />
-<stop offset=".554" stopColor="rgba(242,72,20,1)" />
-<stop offset="1" stopColor="rgba(252,69,69,1)" /> */
-}
