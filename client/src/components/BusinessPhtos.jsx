@@ -33,7 +33,7 @@ const BusinessPhotos = ({ id }) => {
                         tabIndex="0"
 
                     >
-                        <figure className="relative h-72">
+                        <figure className="relative h-72 overflow-hidden">
                             <img
                                 className="h-full w-full object-cover"
                                 src={photo}

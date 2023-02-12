@@ -87,8 +87,9 @@
   display: block;
 }
 
-.mapboxgl-canvas {
+.mapboxgl-canvas, .gapboxgl-control-container {
   overflow: hidden;
+  border-radius: 1rem;
 }
 
 
