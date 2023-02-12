@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { FaLessThan } from 'react-icons/fa'
 
-const ArrowButton = ({ id, className = '' }) => {
+const ArrowButton = ({ className = '' }) => {
     const navigate = useNavigate()
 
     const clickHandler = () => {
