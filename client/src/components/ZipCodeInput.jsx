@@ -19,7 +19,7 @@ const ZipCodeInput = ({ variant = 'popup', zipCode, setZipCode }) => {
     }, [location, isLocationLoading])
 
     const navbarClasses =
-        'bg-gray-200 rounded-full px-4 py-2 w-[150px] md:mr-1 lg:mr-0 relative focus:ring-1 invalid:text-slate-500'
+        'bg-gray-200 rounded-full px-4 py-2 w-[130px] placeholder:text-[14px] xl:w-[150px] xl:placeholder:text-[16px] md:mr-1 lg:mr-0 relative focus:ring-1 invalid:text-slate-500'
 
     const popUpClasses =
         'bg-gray-200 rounded-full py-3 pl-4 w-full mx-auto relative focus:ring-1 invalid:text-slate-500'
