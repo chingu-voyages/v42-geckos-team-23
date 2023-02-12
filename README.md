@@ -23,6 +23,8 @@ Photos, contact info, reviews, and location of a business are displayed on a bus
 
 ## Running Locally
 
+This app requires ```node >= 16```.
+
 ### From this repository:
 
 1. Clone this project locally.
