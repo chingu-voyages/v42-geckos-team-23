@@ -35,7 +35,7 @@ const BusinessPhotos = ({ id }) => {
                     >
                         <figure className="relative h-72 overflow-hidden">
                             <img
-                                className="h-full w-full object-cover"
+                                className="h-full w-full object-cover rounded-2xl overflow-hidden"
                                 src={photo}
                                 alt={details.name}
                             />
