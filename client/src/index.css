@@ -87,6 +87,10 @@
   display: block;
 }
 
+.mapboxgl-canvas {
+  overflow: hidden;
+}
+
 
 
 .description {
