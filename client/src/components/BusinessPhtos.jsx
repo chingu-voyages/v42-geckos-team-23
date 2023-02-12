@@ -29,13 +29,12 @@ const BusinessPhotos = ({ id }) => {
                 {details.photos?.map((photo) => (
                     <div
                         key={photo}
-                        className="flex-1 overflow-hidden rounded-2xl active:rounded-2xl active:overflow-hidden shadow-2xl md:w-full"
+                        className="webkit-border-radius flex-1 overflow-hidden shadow-2xl md:w-full"
                         tabIndex="0"
-
                     >
-                        <figure className="relative h-72 overflow-hidden rounded-2xl">
+                        <figure className="webkit-border-radius relative h-72 overflow-hidden">
                             <img
-                                className="h-full w-full object-cover rounded-2xl overflow-hidden"
+                                className="webkit-border-radius h-full w-full overflow-hidden object-cover"
                                 src={photo}
                                 alt={details.name}
                             />

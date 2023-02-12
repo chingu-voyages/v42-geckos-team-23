@@ -90,8 +90,13 @@
 .mapboxgl-canvas, .gapboxgl-control-container {
   overflow: hidden;
   border-radius: 1rem;
+  -webkit-border-radius: 1rem;
 }
 
+.webkit-border-radius {
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+}
 
 
 .description {

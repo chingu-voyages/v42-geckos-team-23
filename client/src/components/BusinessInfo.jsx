@@ -45,7 +45,7 @@ const BusinessInfo = ({ id }) => {
             <h1 className="mb-7 text-3xl font-bold">Contact</h1>
             <div className="mt-7 lg:flex">
                 <div
-                    className="h-80 overflow-hidden rounded-2xl border lg:w-2/5"
+                    className="h-80 overflow-hidden webkit-border-radius border lg:w-2/5"
                     ref={mapContainer}
                 />
 
