@@ -146,16 +146,15 @@
   transform: scale(1)
 }
 
+.button:active {
+  transform: scale(0.9);
+}
+
 .jump {
-  animation: jump 1.5s linear infinite;
+  animation: jump 1s linear infinite;
   margin: 4rem;
   margin-right: 6rem;
   background: 'transparent';
-}
-
-
-.button:active {
-    transform: scale(0.9);
 }
 
 @keyframes jump {
