@@ -8,8 +8,6 @@ Live: [GoPup (netlify)](https://gopup.netlify.app/) [Gopup (render)](https://gop
 
 Github Repo: [Repo](https://github.com/chingu-voyages/v42-geckos-team-23)
 
-Add gif. <------
-
 ## Features
 
 GoPup accepts a zip code and a choice of one category.
@@ -50,6 +48,6 @@ This app requires ```node >= 16```.
 
 ## Contributors 
 - Jiyun [Github](https://github.com/jiyunnoh) [LinkedIn](https://www.linkedin.com/in/jiyun-noh-kim/)
-- Ronald [Github](https://github.com/ronaldpaek) [add-your-LinkedIn]()
-- Joy [Github](https://github.com/jlu9d2) [add-your-LinkedIn]()
+- Ronald [Github](https://github.com/ronaldpaek) 
+- Joy [Github](https://github.com/jlu9d2) 
 - Aaron [Github](https://github.com/AaronoKwok) [LinkedIn](https://www.linkedin.com/in/aaronkwok1/)
