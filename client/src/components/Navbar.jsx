@@ -6,10 +6,10 @@ import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
 import mobileLogo from '../assets/goPup_mobile-logo.png'
 import logo from '../assets/goPup_logo.png'
-import searchIcon from '../assets/search-icon.svg'
 import { Context } from '../contexts/Context'
 import Form from './Form'
 import PopUp from './PopUp'
+import SearchIcon from './SearchIcon'
 
 import { InputContext } from '../contexts/InputProvider'
 
@@ -102,20 +102,21 @@ const Navbar = () => {
                             className="hidden flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:flex lg:gap-4"
                             onSubmit={getBusinessesHandler}
                         >
-                            <ZipCodeInput variant="navbar" zipCode={zipCode} setZipCode={setZipCode} />
+                            <ZipCodeInput
+                                variant="navbar"
+                                zipCode={zipCode}
+                                setZipCode={setZipCode}
+                            />
                             <CategoryInputs variant="navbar" />
                             <Button variant="navbar">
-                                <img
-                                    className="pr-1 md:pr-0"
-                                    src={searchIcon}
-                                />
+                                <SearchIcon className="pr-1 md:pr-0" />
                             </Button>
                         </Form>
                         {/* mobile */}
                         <div className="lg:hidden">
                             <Button variant="navbar-mobile" onClick={openModal}>
                                 <p className="mr-2 font-semibold">New Search</p>
-                                <img className="pr-0" src={searchIcon} />
+                                <SearchIcon className="pr-0" />
                             </Button>
                         </div>
                     </>
