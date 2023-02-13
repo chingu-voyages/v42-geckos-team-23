@@ -10,8 +10,8 @@ const PriceRating = ({ rating = '', max = 5 }) => {
         <div
             className={
                 rating.length === 0
-                    ? 'hidden'
-                    : 'relative inline-flex items-center'
+                    ? 'hidden rating'
+                    : 'relative inline-flex items-center rating'
             }
         >
             {range(max).map((_, index) => (
@@ -26,18 +26,18 @@ const PriceRating = ({ rating = '', max = 5 }) => {
                 className="overlay"
                 style={{ width: `${100 - percentage}%` }}
             />
+            <span className="description">Price rating</span>
         </div>
     )
 }
 
-const Price = ({ size = 16, color = 'red' }) => {
+const Price = ({ size = 18 }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 48 48"
             width={size}
             height={size}
-            fill={color}
         >
             <defs>
                 <linearGradient
@@ -48,9 +48,9 @@ const Price = ({ size = 16, color = 'red' }) => {
                     y2="44"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset=".278" stopColor="rgba(180,58,73,1)" />
-                    <stop offset=".554" stopColor="rgba(242,72,20,1)" />
-                    <stop offset="1" stopColor="rgba(252,69,69,1)" />
+                    <stop offset=".278" stopColor="#ef4444" />
+                    <stop offset=".554" stopColor="#f25050" />
+                    <stop offset="1" stopColor="#f45b5b" />
                 </linearGradient>
             </defs>
             <path
@@ -63,3 +63,4 @@ const Price = ({ size = 16, color = 'red' }) => {
 }
 
 export default PriceRating
+

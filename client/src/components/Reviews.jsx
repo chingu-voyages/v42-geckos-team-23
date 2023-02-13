@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 
 import ReviewCard from '../components/ReviewCard'
-import { getReviewsFromYelpApi } from '../api/YelpAPI'
 
 const Reviews = ({ id }) => {
     const [reviews, setReviews] = useState('')
@@ -17,9 +16,21 @@ const Reviews = ({ id }) => {
     }
 
     useEffect(() => {
-        getReviewsFromYelpApi(id)
-            .then(data => setReviews(renderReviews(data)))
-            .catch(err => console.log(err))
+      fetch('/.netlify/functions/getYelpBusinessReviews', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              id,
+          }),
+      })
+          .then((response) =>
+              response.json().then((data) => {
+                  setReviews(renderReviews(data))
+              })
+          )
+          .catch((err) => console.log(err))
     }, [])
 
     return (
@@ -30,7 +41,7 @@ const Reviews = ({ id }) => {
             </div>
             {3 === reviews.length && (
                 <a
-                    className="absolute right-0 rounded-full border-2 border-solid border-red-500 px-7 py-2 text-red-500 hover:cursor-pointer active:bg-red-200 active:text-white"
+                    className="absolute right-0 rounded-full border-2 border-solid border-red-500 hover:border-red-300 px-7 py-2 text-red-500 transition duration-200 ease-in-out  hover:cursor-pointer hover:bg-red-300 hover:text-white active:scale-95"
                     href={reviews[0]?.props.url}
                     target="_blank"
                     rel="noopener"

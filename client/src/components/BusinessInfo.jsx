@@ -3,36 +3,43 @@ import { FaYelp } from 'react-icons/fa'
 import { FaFlag } from 'react-icons/fa'
 import { BsTelephoneFill } from 'react-icons/bs'
 
-import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
 import Address from './Address'
 
 const BusinessInfo = ({ id }) => {
     const [details, setDetails] = useState({})
 
-    const MAPBOX = import.meta.env.VITE_MAPBOX_API_KEY
-
-    mapboxgl.accessToken = MAPBOX;
-
     const mapContainer = useRef(null)
     const map = useRef(null)
 
     useEffect(() => {
-        getDetailsByIdFromYelpApi(id)
-            .then(data => {
+        fetch('/.netlify/functions/getYelpBusinessDetails', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
                 setDetails({ ...data })
-
-                let lng = data.coordinates.longitude
-                let lat = data.coordinates.latitude
-                if (map.current) return;
+                if (map.current) return
+                const { longitude, latitude } = data.coordinates
+                mapboxgl.accessToken = data.apiKey
                 map.current = new mapboxgl.Map({
                     container: mapContainer.current,
                     style: 'mapbox://styles/mapbox/streets-v12',
-                    center: [lng, lat],
-                    zoom: 17
+                    center: [longitude, latitude],
+                    zoom: 17,
                 })
             })
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err))
     }, [])
+
+    const address = `${details?.location?.address1} ${details?.location?.city} ${details?.location?.state} ${details?.location?.zip_code}`
+
+    const link = `https://www.google.com/maps/place/${address}`
 
     return (
         <section className="m-10 font-nunito">
@@ -42,28 +49,35 @@ const BusinessInfo = ({ id }) => {
             <h1 className="mb-7 text-3xl font-bold">Contact</h1>
             <div className="mt-7 lg:flex">
                 <div
-                    className="h-80 rounded-2xl border lg:w-2/5"
+                    className="webkit-border-radius h-80 overflow-hidden border lg:w-2/5"
                     ref={mapContainer}
-                ></div>
+                />
 
                 <div className="text-2xl font-semibold md:text-3xl lg:ml-20">
                     <div className="my-5 flex items-center">
                         <FaFlag className="shrink-0" />
-                        <Address
-                            className="ml-3 sm:ml-7"
-                            location={details.location}
-                        />
+                        <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener"
+                            className="ml-3 hover:underline sm:ml-7"
+                        >
+                            <Address location={details.location} />
+                        </a>
                     </div>
                     <div className="my-5 flex items-center">
                         <BsTelephoneFill className="shrink-0" />
-                        <a className="ml-3 sm:ml-7" href="#">
+                        <a
+                            className="ml-3 hover:underline sm:ml-7"
+                            href={`tel:${details.phone}`}
+                        >
                             {details.phone}
                         </a>
                     </div>
                     <div className="my-5 flex items-center">
                         <FaYelp className="shrink-0" />
                         <a
-                            className="ml-3 sm:ml-7"
+                            className="ml-3 hover:underline sm:ml-7"
                             href={details?.url}
                             target="_blank"
                             rel="noopener"

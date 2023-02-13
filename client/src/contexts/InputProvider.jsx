@@ -1,10 +1,10 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 
 export const InputContext = createContext()
 
 export const InputProvider = ({ children }) => {
-    const [category, setCategory] = useState('')
-    const [categoryName, setCategoryName] = useState('')
+    const [category, setCategory] = useState('restaurants%2Cfood') // 'restaurants%2Cfood'
+    const [categoryName, setCategoryName] = useState('Restaurants') // 'Restaurants'
     const [zipCode, setZipCode] = useState('')
 
     return (

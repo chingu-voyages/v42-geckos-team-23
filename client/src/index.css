@@ -46,7 +46,8 @@
 .swiper-slide img {
     display: block;
     width: 100%;
-    height: 30rem;
+    /* height: 40vh; */
+    height: 100vh;
     object-fit: cover;
 }
 
@@ -67,24 +68,140 @@
 }
 
 @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-  .spinner {
-    display: block;
-    width: max-content;
-    margin: auto;
-    color: rgba(180,58,73,1);
-    animation: spin 1000ms linear infinite;
+.spinner {
+  display: block;
+  width: max-content;
+  margin: auto;
+  color: rgba(180,58,73,1);
+  animation: spin 1000ms linear infinite;
+}
+.spinner svg {
+  display: block;
+}
+
+.mapboxgl-canvas, .gapboxgl-control-container {
+  overflow: hidden;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+}
+
+.webkit-border-radius {
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+}
+
+.webkit-touch-callout {
+  -webkit-touch-callout: none;
+}
+
+
+.description {
+  display: none;
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  max-width: 200px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.rating:hover .description {
+  display: inline-block;
+  z-index: 1;
+  transform: translateX(-100%);
+}
+
+.location-top:hover .description {
+  display: inline-block;
+  z-index: 1;
+  transform: translate(-100%, -100%);
+}
+
+.location-left:hover .description {
+  display: inline-block;
+  z-index: 1;
+  transform: translateX(-100%);
+}
+
+.icon {
+  background: transparent;
+  fill: #ef4444;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  transform: scale(1);
+}
+
+.icon:hover {
+  fill: #b91c1c;
+}
+
+.icon:active {
+  fill: #b91c1c;
+  transform: scale(0.95)
+}
+
+.jump {
+  animation: jump 1s linear infinite;
+  margin: 4rem;
+  margin-right: 6rem;
+  background: 'transparent';
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
   }
-  .spinner svg {
-    display: block;
+  20% {
+    transform: translate(10px, -15px);
   }
+  40% {
+    transform: translate(20px, -30px);
+  }
+  60% {
+    transform: translate(30px, -15px)
+  }
+  80% {
+    transform: translate(40px, 0px)
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.icon-button {
+  background-color: #ef4444; /* default background color */
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  transform: scale(1);
+}
+
+.icon-button:hover {
+  background-color: #b91c1c/* hover background color */
+}
+
+.icon-button:active {
+  background-color: #b91c1c;/* active background color */
+  transform: scale(0.95);
+}
+
+
+
 
 @layer base {
     h1 {

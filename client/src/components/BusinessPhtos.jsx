@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from 'react'
 
-import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
+import Image from './Image'
 
 const BusinessPhotos = ({ id }) => {
     const [details, setDetails] = useState({})
 
     useEffect(() => {
-        getDetailsByIdFromYelpApi(id)
-            .then(data => {
-                setDetails({ ...data })
-            })
-            .catch(err => console.log(err))
+        fetch('/.netlify/functions/getYelpBusinessDetails', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id,
+            }),
+        })
+            .then((response) =>
+                response.json().then((data) => {
+                    setDetails({ ...data })
+                })
+            )
+            .catch((err) => console.log(err))
     }, [])
 
     return (
@@ -20,13 +30,15 @@ const BusinessPhotos = ({ id }) => {
                 {details.photos?.map((photo) => (
                     <div
                         key={photo}
-                        className="flex-1 overflow-clip rounded-2xl shadow-2xl md:w-full"
+                        className="webkit-border-radius flex-1 overflow-hidden shadow-2xl md:w-full"
+                        tabIndex="0"
                     >
-                        <figure className="relative h-72  ">
-                            <img
-                                className="h-full w-full object-cover"
+                        <figure className="webkit-border-radius relative h-72 overflow-hidden">
+                            <Image
+                                className="webkit-border-radius webkit-touch-callout h-full w-full overflow-hidden object-cover"
                                 src={photo}
                                 alt={details.name}
+                                variant="rounded"
                             />
                         </figure>
                     </div>

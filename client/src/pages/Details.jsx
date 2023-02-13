@@ -11,15 +11,6 @@ import { InputProvider } from '../contexts/InputProvider'
 
 const Details = () => {
     let { id } = useParams()
-    // const [details, setDetails] = useState({})
-
-    // useEffect(() => {
-    //     getDetailsByIdFromYelpApi(id)
-    //         .then(data => {
-    //             setDetails({ ...data })
-    //         })
-    //         .catch(err => console.log(err))
-    // }, [])
 
     return (
         <>

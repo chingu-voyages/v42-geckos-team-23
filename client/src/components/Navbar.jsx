@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import Button from './Button'
@@ -6,21 +6,20 @@ import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
 import mobileLogo from '../assets/goPup_mobile-logo.png'
 import logo from '../assets/goPup_logo.png'
-import searchIcon from '../assets/search-icon.svg'
 import { Context } from '../contexts/Context'
 import Form from './Form'
 import PopUp from './PopUp'
-import { getBusinessesFromYelpApi } from '../api/yelpAPI'
+import SearchIcon from './SearchIcon'
+
 import { InputContext } from '../contexts/InputProvider'
 
 const Navbar = () => {
     const ctx = useContext(Context)
     const location = useLocation()
     const navigate = useNavigate()
-    const { modalIsOpen, setModalIsOpen } = ctx
+    const [zipCode, setZipCode] = useState('')
 
-
-    const { category, categoryName, zipCode } = useContext(InputContext)
+    const { category, categoryName } = useContext(InputContext)
     const isHomePage = '/' === location.pathname
 
     useEffect(() => {
@@ -31,11 +30,11 @@ const Navbar = () => {
     }, [ctx.hasBeenCalled])
 
     const closeModal = () => {
-        setModalIsOpen(false)
+        ctx.setModalIsOpen(false)
     }
 
     const openModal = () => {
-        setModalIsOpen(true)
+        ctx.setModalIsOpen(true)
     }
 
     const goHome = () => {
@@ -45,25 +44,33 @@ const Navbar = () => {
         ctx.resetState()
     }
 
-    const getBusinessesHandler = (e) => {
+    const getBusinessesHandler = async (e) => {
         e.preventDefault()
-        ctx.setIsLoading(true)
-
-        getBusinessesFromYelpApi(zipCode, category)
-            .then((data) => {
-                ctx.setResultsList([...data])
-                ctx.setResultsTitle(categoryName)
-                ctx.setIsLoading(false)
-                closeModal()
-            })
-            .catch((err) => {
-                // if we catch an error that means zip code was "invalid"
-                ctx.setIsLoading(false) // if there is an error, set isLoading to false
-                ctx.setResultsList([]) // if there is an error, set resultsList to empty array
-                ctx.setResultsTitle('')
-            })
+        ctx.setIsDataLoading(true)
+        try {
+            const response = await fetch(
+                '/.netlify/functions/getYelpSearchResults',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        location: zipCode,
+                        category,
+                    }),
+                }
+            )
+            const data = await response.json()
+            ctx.setResultsList([...data])
+            ctx.setResultsTitle(categoryName)
+            closeModal()
+        } catch (err) {
+            console.log(err)
+        } finally {
+            ctx.setIsDataLoading(false)
+        }
     }
-
 
     return (
         <div className="bg-red-50 font-nunito">
@@ -87,20 +94,21 @@ const Navbar = () => {
                             className="hidden flex-col items-center gap-4 md:ml-10 md:flex-row md:gap-1 lg:flex lg:gap-4"
                             onSubmit={getBusinessesHandler}
                         >
-                            <ZipCodeInput variant="navbar" />
+                            <ZipCodeInput
+                                variant="navbar"
+                                zipCode={zipCode}
+                                setZipCode={setZipCode}
+                            />
                             <CategoryInputs variant="navbar" />
                             <Button variant="navbar">
-                                <img
-                                    className="pr-1 md:pr-0"
-                                    src={searchIcon}
-                                />
+                                <SearchIcon className="pr-1 md:pr-0" />
                             </Button>
                         </Form>
                         {/* mobile */}
                         <div className="lg:hidden">
                             <Button variant="navbar-mobile" onClick={openModal}>
                                 <p className="mr-2 font-semibold">New Search</p>
-                                <img className="pr-0" src={searchIcon} />
+                                <SearchIcon className="pr-0" />
                             </Button>
                         </div>
                     </>
@@ -109,9 +117,11 @@ const Navbar = () => {
             <PopUp
                 {...{
                     getBusinessesHandler,
-                    modalIsOpen,
+                    modalIsOpen: ctx.modalIsOpen,
                     closeModal,
                     openModal,
+                    zipCode,
+                    setZipCode,
                 }}
             />
         </div>
