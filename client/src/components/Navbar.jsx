@@ -17,9 +17,7 @@ const Navbar = () => {
     const ctx = useContext(Context)
     const location = useLocation()
     const navigate = useNavigate()
-    const { modalIsOpen, setModalIsOpen } = ctx
     const [zipCode, setZipCode] = useState('')
-
 
     const { category, categoryName } = useContext(InputContext)
     const isHomePage = '/' === location.pathname
@@ -32,11 +30,11 @@ const Navbar = () => {
     }, [ctx.hasBeenCalled])
 
     const closeModal = () => {
-        setModalIsOpen(false)
+        ctx.setModalIsOpen(false)
     }
 
     const openModal = () => {
-        setModalIsOpen(true)
+        ctx.setModalIsOpen(true)
     }
 
     const goHome = () => {
@@ -46,39 +44,33 @@ const Navbar = () => {
         ctx.resetState()
     }
 
-    const getBusinessesHandler = (e) => {
+    const getBusinessesHandler = async (e) => {
         e.preventDefault()
         ctx.setIsDataLoading(true)
-        fetch(
-            '/.netlify/functions/getYelpSearchResults',
-            {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-              },
-                body: JSON.stringify({
-                    location: zipCode,
-                    category,
-                }),
-            }
-        )
-            .then((response) => response.json())
-            .then((data) => {
-                ctx.setResultsList([...data])
-                ctx.setResultsTitle(categoryName)
-                ctx.setIsDataLoading(false)
-                closeModal()
-            })
-            .catch((err) => {
-                // if we catch an error that means zip code was "invalid"
-                console.log(err)
-                ctx.setIsDataLoading(false) // if there is an error, set isLoading to false
-                ctx.setResultsList([]) // if there is an error, set resultsList to empty array
-                ctx.setResultsTitle('')
-            })
+        try {
+            const response = await fetch(
+                '/.netlify/functions/getYelpSearchResults',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        location: zipCode,
+                        category,
+                    }),
+                }
+            )
+            const data = await response.json()
+            ctx.setResultsList([...data])
+            ctx.setResultsTitle(categoryName)
+            closeModal()
+        } catch (err) {
+            console.log(err)
+        } finally {
+            ctx.setIsDataLoading(false)
+        }
     }
-
-
 
     return (
         <div className="bg-red-50 font-nunito">
@@ -125,11 +117,11 @@ const Navbar = () => {
             <PopUp
                 {...{
                     getBusinessesHandler,
-                    modalIsOpen,
+                    modalIsOpen: ctx.modalIsOpen,
                     closeModal,
                     openModal,
                     zipCode,
-                    setZipCode
+                    setZipCode,
                 }}
             />
         </div>
