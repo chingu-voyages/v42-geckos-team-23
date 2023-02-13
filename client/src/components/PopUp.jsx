@@ -5,7 +5,6 @@ import ZipCodeInput from './ZipCodeInput'
 import CategoryInputs from './CategoryInputs'
 import Button from './Button'
 import { Context } from '../contexts/Context'
-import Spinner from './Spinner'
 import Form from './Form'
 
 import DogLoader from './DogLoader'
@@ -27,7 +26,7 @@ const dogLoader = {
     border: 'hidden',
 }
 
-const spinnerLoader = {
+const content = {
     top: '50%',
     left: '50%',
     right: 'auto',
@@ -48,12 +47,12 @@ const PopUp = ({
     setZipCode,
 }) => {
     const ctx = useContext(Context)
-    const { isLocationLoading } = ctx
+    const { isDataLoading } = ctx
 
-    if (isLocationLoading) {
+    if (isDataLoading) {
         customStyles.content = dogLoader
     } else {
-        customStyles.content = spinnerLoader
+        customStyles.content = content
     }
 
     return (
@@ -64,7 +63,7 @@ const PopUp = ({
             shouldCloseOnOverlayClick={false}
             contentLabel="Zipcode modal"
         >
-            {isLocationLoading ? (
+            {isDataLoading ? (
                 <DogLoader />
             ) : (
                 <Form onSubmit={getBusinessesHandler}>
@@ -82,12 +81,10 @@ const PopUp = ({
                             </h2>
                             <CategoryInputs variant="popup" />
                         </div>
-                        {ctx.isDataLoading && <Spinner />}
-                        {!ctx.isDataLoading && (
-                            <Button variant="popup">
-                                <span>Search</span>
-                            </Button>
-                        )}
+
+                        <Button variant="popup">
+                            <span>Search</span>
+                        </Button>
                     </div>
                 </Form>
             )}
