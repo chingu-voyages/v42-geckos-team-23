@@ -17,7 +17,7 @@ const Image = (props) => {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             style={{
-                borderRadius: isPressed ? 0 : '1rem',
+                borderRadius: isPressed ? '0px' : '16px',
                 transition: 'border-radius 0.2s ease-in-out',
             }}
             className={props.className}

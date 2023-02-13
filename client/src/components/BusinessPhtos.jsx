@@ -34,7 +34,11 @@ const BusinessPhotos = ({ id }) => {
                         tabIndex="0"
                     >
                         <figure className="webkit-border-radius relative h-72 overflow-hidden">
-                            <Image className="h-full w-full overflow-hidden object-cover rounded-2xl" src={photo} alt={details.name} />
+                            <Image
+                                className="webkit-border-radius h-full w-full overflow-hidden object-cover"
+                                src={photo}
+                                alt={details.name}
+                            />
                         </figure>
                     </div>
                 ))}
