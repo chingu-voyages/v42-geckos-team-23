@@ -23,7 +23,7 @@ const ContextProvider = ({ children }) => {
     const [hasBeenCalled, setHasBeenCalled] = useState(false)
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
-    const { location, isLocationLoading } = useGetCurrentPosition()
+    const { location, isLocationLoading, handleButtonClick, isButtonClicked } = useGetCurrentPosition()
 
     return (
         <Context.Provider
@@ -42,6 +42,8 @@ const ContextProvider = ({ children }) => {
                 resetState,
                 location,
                 isLocationLoading,
+                handleButtonClick,
+                isButtonClicked
             }}
         >
             {children}
