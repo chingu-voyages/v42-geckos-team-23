@@ -19,7 +19,7 @@ const ErrorPage = () => {
                 <p className="flex md:text-lg">
                     <i>404 Page {error.statusText || error.message}</i>
                     <button
-                        className="ml-5 rounded bg-red-500 px-2 hover:cursor-pointer active:text-gray-400 button"
+                        className="ml-5 rounded bg-red-500 px-2 transition duration-200 ease-in-out hover:cursor-pointer hover:bg-red-700 active:scale-95  active:bg-red-700"
                         onClick={() => navigate('/')}
                     >
                         Back to GoPup
