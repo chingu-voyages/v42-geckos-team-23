@@ -41,7 +41,7 @@ const Reviews = ({ id }) => {
             </div>
             {3 === reviews.length && (
                 <a
-                    className="absolute right-0 rounded-full border-2 border-solid border-red-500 px-7 py-2 text-red-500 transition duration-200 ease-in-out  hover:cursor-pointer hover:border-red-700 hover:text-red-700 active:scale-95"
+                    className="absolute right-0 rounded-full border-2 border-solid border-red-500 px-7 py-2 text-red-500 transition duration-200 ease-in-out  hover:cursor-pointer hover:bg-red-300 hover:text-white active:scale-95"
                     href={reviews[0]?.props.url}
                     target="_blank"
                     rel="noopener"
