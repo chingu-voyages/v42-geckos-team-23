@@ -10,7 +10,7 @@ const ScrollUpButton = ({ size = 24 }) => {
 
     return (
         <button
-            className="absolute right-0 top-1/2 -translate-y-1/2 icon-button bg-red-500"
+            className="icon-button absolute right-0"
             onClick={handleClick}
         >
             <FaArrowUp size={size} fill="#fff" />
@@ -19,4 +19,3 @@ const ScrollUpButton = ({ size = 24 }) => {
 }
 
 export default ScrollUpButton
-
