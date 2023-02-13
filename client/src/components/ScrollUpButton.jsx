@@ -1,6 +1,6 @@
-import { FaArrowAltCircleUp } from 'react-icons/fa'
+import { FaArrowUp } from 'react-icons/fa'
 
-const ScrollUpButton = ({ size = 43 }) => {
+const ScrollUpButton = ({ size = 24 }) => {
     const handleClick = () => {
         window.scrollTo({
             top: 0,
@@ -10,12 +10,13 @@ const ScrollUpButton = ({ size = 43 }) => {
 
     return (
         <button
-            className="absolute right-0 top-1/2 -translate-y-1/2"
+            className="absolute right-0 top-1/2 -translate-y-1/2 icon-button bg-red-500"
             onClick={handleClick}
         >
-            <FaArrowAltCircleUp className="icon" size={size} fill="#ef4444" />
+            <FaArrowUp size={size} fill="#fff" />
         </button>
     )
 }
 
 export default ScrollUpButton
+
