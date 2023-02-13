@@ -37,6 +37,10 @@ const BusinessInfo = ({ id }) => {
             .catch((err) => console.log(err))
     }, [])
 
+    const address = `${details?.location?.address1} ${details?.location?.city} ${details?.location?.state} ${details?.location?.zip_code}`
+
+    const link = `https://www.google.com/maps/place/${address}`
+
     return (
         <section className="m-10 font-nunito">
             <h1 className="font-nunito text-4xl font-bold md:text-5xl">
@@ -52,15 +56,19 @@ const BusinessInfo = ({ id }) => {
                 <div className="text-2xl font-semibold md:text-3xl lg:ml-20">
                     <div className="my-5 flex items-center">
                         <FaFlag className="shrink-0" />
-                        <Address
-                            className="ml-3 sm:ml-7"
-                            location={details.location}
-                        />
+                        <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener"
+                            className="ml-3 hover:underline sm:ml-7"
+                        >
+                            <Address location={details.location} />
+                        </a>
                     </div>
                     <div className="my-5 flex items-center">
                         <BsTelephoneFill className="shrink-0" />
                         <a
-                            className="ml-3 sm:ml-7"
+                            className="ml-3 hover:underline sm:ml-7"
                             href={`tel:${details.phone}`}
                         >
                             {details.phone}
