@@ -1,10 +1,10 @@
 import React from 'react'
-import { Loader } from 'react-feather'
+import { FiLoader  } from "react-icons/fi";
 
-const Spinner = ({ size = 48 }) => {
+const Spinner = ({ size = 36 }) => {
     return (
         <span className="spinner">
-            <Loader size={size} />
+            <FiLoader size={size} />
         </span>
     )
 }
