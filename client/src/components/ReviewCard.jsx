@@ -9,7 +9,7 @@ const ReviewCard = ({ user, text, time_created }) => {
     return (
         <section className='font-nunito space-y-3' tabIndex="0">
             <div className='flex items-center'>
-                <img className='w-12 h-12 rounded-full'
+                <img className='w-12 h-12 rounded-full object-cover'
                     src={user.image_url}
                     alt={`${user.name}'s profile picture on Yelp`} />
                 <div className='ml-5'>
