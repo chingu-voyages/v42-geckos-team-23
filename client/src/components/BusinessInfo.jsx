@@ -45,7 +45,7 @@ const BusinessInfo = ({ id }) => {
             <h1 className="mb-7 text-3xl font-bold">Contact</h1>
             <div className="mt-7 lg:flex">
                 <div
-                    className="h-80 overflow-hidden webkit-border-radius border lg:w-2/5"
+                    className="webkit-border-radius h-80 overflow-hidden border lg:w-2/5"
                     ref={mapContainer}
                 />
 
@@ -59,14 +59,17 @@ const BusinessInfo = ({ id }) => {
                     </div>
                     <div className="my-5 flex items-center">
                         <BsTelephoneFill className="shrink-0" />
-                        <a className="ml-3 sm:ml-7" href="#">
+                        <a
+                            className="ml-3 sm:ml-7"
+                            href={`tel:${details.phone}`}
+                        >
                             {details.phone}
                         </a>
                     </div>
                     <div className="my-5 flex items-center">
                         <FaYelp className="shrink-0" />
                         <a
-                            className="ml-3 sm:ml-7"
+                            className="ml-3 hover:underline sm:ml-7"
                             href={details?.url}
                             target="_blank"
                             rel="noopener"
