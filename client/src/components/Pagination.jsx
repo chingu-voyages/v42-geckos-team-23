@@ -1,9 +1,10 @@
 import React from "react"
 
-const Pagination = ({ numberOfPages, currentPage, setCurrentPage }) => {
+const Pagination = ({ numberOfPages, currentPage, setCurrentPage, resultsRef  }) => {
     const prevPage = () => {
         if (currentPage !== 1) {
             setCurrentPage(currentPage - 1)
+            resultsRef.current.scrollIntoView({ behavior: 'smooth' })
         }
     }
 

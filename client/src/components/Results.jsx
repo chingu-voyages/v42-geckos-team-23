@@ -19,7 +19,7 @@ const Results = () => {
         if (ctx.resultsList.length > 0) {
             resultsRef.current.scrollIntoView({ behavior: 'smooth' })
         }
-    }, [ctx.resultsList])
+    }, [ctx.resultsList, currentPage])
 
     return (
         <div
