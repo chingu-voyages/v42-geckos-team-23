@@ -16,14 +16,14 @@ Github Repo: [Repo](https://github.com/chingu-voyages/v42-geckos-team-23)
 
 ## Features
 
-[x] Modal with geolocation and category shows up on load <br>
-[x] User can input zipcode and choice of activity category <br>
-[x] Spinner is displayed while data is retrieved from Yelp's Fusion API <br>
-[x] App bypasses Yelp's CORS policy via use of Netlify's serverless functions <br>
-[x] Results page shows cards with business' details
-[x] Pagination implemented on results page
-[x] Business page retrieves location from Mapbox as well as contact information <br>
-[x] App is responsive via Tailwindcss <br>
+- [x] Modal with geolocation and category shows up on load <br>
+- [x] User can input zipcode and choice of activity category <br>
+- [x] Spinner is displayed while data is retrieved from Yelp's Fusion API <br>
+- [x] App bypasses Yelp's CORS policy via use of Netlify's serverless functions <br>
+- [x] Results page shows cards with business' details
+- [x] Pagination implemented on results page
+- [x] Business page retrieves location from Mapbox as well as contact information <br>
+- [x] App is responsive via Tailwindcss <br>
 
 ## Contributors 
 
@@ -45,9 +45,9 @@ Github Repo: [Repo](https://github.com/chingu-voyages/v42-geckos-team-23)
     │   │   └── ...
     │   ├── components/
     │   ├── contexts/
-    │   └── pages/
-    |   |__ hooks/
-    |   |__ pages/
+    │   ├── pages/
+    │   ├── hooks/
+    │   ├── pages/
     │   │   └── Details.jsx
     │   │   └── Error.jsx
     │   │   └── ...
