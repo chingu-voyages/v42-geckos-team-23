@@ -5,6 +5,7 @@ import PriceRating from './PriceRating'
 import Address from './Address'
 import defaultCardImage from '../assets/goPup_logo_card.png'
 import StarRating from './StarRating'
+import Image from './Image'
 
 
 const Card = ({ id, name, location, rating, image_url, price }) => {
@@ -19,7 +20,7 @@ const Card = ({ id, name, location, rating, image_url, price }) => {
         <a onClick={clickHandler} tabIndex="0">
             <div className="card h-[382px] max-w-[384px] cursor-pointer border bg-base-100 transition duration-300 ease-in-out hover:scale-105 hover:transform hover:shadow-lg">
                 <figure className="relative h-72">
-                    <img
+                    <Image
                         className="h-full w-full object-cover"
                         src={image_url || defaultCardImage}
                         alt={name}

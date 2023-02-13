@@ -11,15 +11,20 @@ const Image = (props) => {
         setIsPressed(false)
     }
 
+    const style =
+        props.variant === 'rounded'
+            ? {
+                  borderRadius: isPressed ? '0px' : '16px',
+                  transition: 'border-radius 0.2s ease-in-out',
+              }
+            : {}
+
     return (
         <img
             src={props.src}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            style={{
-                borderRadius: isPressed ? '0px' : '16px',
-                transition: 'border-radius 0.2s ease-in-out',
-            }}
+            style={style}
             className={props.className}
             alt={props.alt}
         />
