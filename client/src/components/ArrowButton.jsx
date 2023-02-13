@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { FaLessThan } from 'react-icons/fa'
+import { FaArrowLeft } from 'react-icons/fa'
 
 const ArrowButton = ({ className = '' }) => {
     const navigate = useNavigate()
@@ -8,12 +8,12 @@ const ArrowButton = ({ className = '' }) => {
         navigate(-1)
     }
 
-    const baseStyles = 'btn-primary btn-circle btn'
+    const baseStyles = 'icon-button'
     const arrowButtonClassName = `${baseStyles} ${className}`
 
     return (
         <button className={arrowButtonClassName} onClick={clickHandler}>
-            <FaLessThan />
+            <FaArrowLeft fill="#fff" size={24} />
         </button>
     )
 }
