@@ -96,6 +96,9 @@
 .webkit-border-radius {
   border-radius: 1rem;
   -webkit-border-radius: 1rem;
+}
+
+.webkit-touch-callout {
   -webkit-touch-callout: none;
 }
 

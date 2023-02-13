@@ -21,7 +21,7 @@ const Card = ({ id, name, location, rating, image_url, price }) => {
             <div className="card h-[382px] max-w-[384px] cursor-pointer border bg-base-100 transition duration-300 ease-in-out hover:scale-105 hover:transform hover:shadow-lg">
                 <figure className="relative h-72">
                     <Image
-                        className="h-full w-full object-cover"
+                        className="webkit-touch-callout h-full w-full object-cover"
                         src={image_url || defaultCardImage}
                         alt={name}
                     />
