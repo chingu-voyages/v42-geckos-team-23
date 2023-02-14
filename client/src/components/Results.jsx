@@ -47,7 +47,7 @@ const Results = () => {
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                     />
-                    <ScrollUpButton />
+                    <ScrollUpButton className="icon-button absolute right-0" />
                 </div>
             )}
         </div>

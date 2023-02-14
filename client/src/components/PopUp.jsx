@@ -60,7 +60,6 @@ const PopUp = ({
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             style={customStyles}
-            shouldCloseOnOverlayClick={false}
             contentLabel="Zipcode modal"
         >
             {isDataLoading ? (
