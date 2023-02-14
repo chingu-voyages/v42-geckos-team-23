@@ -1,6 +1,6 @@
 import { FaArrowUp } from 'react-icons/fa'
 
-const ScrollUpButton = ({ size = 24 }) => {
+const ScrollUpButton = ({ size = 24, className = '' }) => {
     const handleClick = () => {
         window.scrollTo({
             top: 0,
@@ -10,7 +10,7 @@ const ScrollUpButton = ({ size = 24 }) => {
 
     return (
         <button
-            className="icon-button absolute right-0"
+            className={className}
             onClick={handleClick}
         >
             <FaArrowUp size={size} fill="#fff" />
