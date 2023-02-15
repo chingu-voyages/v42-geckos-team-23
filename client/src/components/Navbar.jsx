@@ -88,11 +88,11 @@ const Navbar = () => {
                     category: categoryName
                 })
             })
-            // .then(res => res.json())
-            // .then(data => {
-            //     console.log(data)
-            //     return JSON.stringify(data)})
-            console.log(response)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                return JSON.stringify(data)})
+            //console.log(response)
         } catch (err) {
             console.log(err)
         }        
