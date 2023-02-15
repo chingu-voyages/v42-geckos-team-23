@@ -8,7 +8,6 @@ export const handler = async (event, context) => { // function must be named 'ha
     const category = eventBody.category
 
     const url = `https://api.yelp.com/v3/businesses/search?location=${zipCode}&term=${category}&radius=2000&sort_by=best_match&limit=5`
-
     const API_KEY = process.env.YELP_API_KEY
 
     const options = {
@@ -28,7 +27,6 @@ export const handler = async (event, context) => { // function must be named 'ha
     const data = await response.json()
 
     console.log({data})       
-
 
     return {
         statusCode: 200, 

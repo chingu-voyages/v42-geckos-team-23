@@ -80,9 +80,6 @@ const Navbar = () => {
         try {
             const response = await fetch('/.netlify/functions/getBusinessesFromYelpApi', {
                 method: 'POST', 
-                headers: {
-                    'Content-Type': 'application/json'
-                },
                 body: JSON.stringify({ 
                     zipCode: zipCode, 
                     category: categoryName
@@ -90,10 +87,17 @@ const Navbar = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                ctx.setResultsList([data])
+                ctx.setResultsTitle(categoryName)
+                ctx.setIsLoading(false)
+                closeModal()
+                console.log({data})
                 return JSON.stringify(data)})
             //console.log(response)
         } catch (err) {
+            ctx.setIsLoading(false) // if there is an error, set isLoading to false
+            ctx.setResultsList([]) // if there is an error, set resultsList to empty array
+            ctx.setResultsTitle('')
             console.log(err)
         }        
     }
