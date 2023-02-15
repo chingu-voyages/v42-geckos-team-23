@@ -10,7 +10,6 @@ import searchIcon from '../assets/search-icon.svg'
 import { Context } from '../contexts/Context'
 import Form from './Form'
 import PopUp from './PopUp'
-import { getBusinessesFromYelpApi } from '../api/YelpAPI'
 import { InputContext } from '../contexts/InputProvider'
 
 const Navbar = () => {
@@ -45,10 +44,54 @@ const Navbar = () => {
         ctx.resetState()
     }
 
-    const getBusinessesHandler = (e) => {
+    const getBusinessesHandler = async (e) => {
         e.preventDefault()
-        ctx.setIsLoading(true)
+        try {
+            const response = await fetch(
+                '/.netlify/functions/getBusinessesFromYelpApi',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        location: zipCode,
+                        category,
+                    }),
+                }
+            )
+            const data = await response.json()
+            ctx.setResultsList([...data])
+            ctx.setResultsTitle(categoryName)
+            closeModal()
+        } catch (err) {
+            console.log(err)
+        } 
+    }
 
+    // const getBusinessesHandler = async (e) => {
+    //     e.preventDefault()
+    //     ctx.setIsLoading(true)
+
+    //     console.log(zipCode)
+    //     console.log(category)
+    //     console.log(categoryName)
+
+    //     const response = await fetch('/getBusinessesFromYelpApi', {
+    //         method: 'POST', 
+    //         body: JSON.stringify({ 
+    //             zipCode: zipCode, 
+    //             category: categoryName
+    //          })
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             return JSON.stringify(data)})
+    //         console.log(response)
+    // }
+
+        /* 
         getBusinessesFromYelpApi(zipCode, category)
             .then((data) => {
                 ctx.setResultsList([...data])
@@ -62,8 +105,7 @@ const Navbar = () => {
                 ctx.setResultsList([]) // if there is an error, set resultsList to empty array
                 ctx.setResultsTitle('')
                 console.log(err)
-            })
-    }
+            }) */
 
     return (
         <div className="bg-red-50 font-nunito">
