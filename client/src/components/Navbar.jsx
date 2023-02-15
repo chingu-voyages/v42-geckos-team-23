@@ -101,7 +101,6 @@ const Navbar = () => {
             console.log(err)
         }        
     }
-    
 
         /* 
         getBusinessesFromYelpApi(zipCode, category)

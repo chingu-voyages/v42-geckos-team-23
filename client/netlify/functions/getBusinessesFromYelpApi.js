@@ -16,7 +16,7 @@ export const handler = async (event, context) => { // function must be named 'ha
             accept: 'application/json',
             Authorization: `Bearer ${API_KEY}`
         }
-    };
+    }
 
     const response = await fetch(url, options)
 
