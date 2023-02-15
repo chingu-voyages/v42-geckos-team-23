@@ -1,11 +1,13 @@
 import fetch from 'node-fetch' 
 
 export const getBusinessesFromYelpApi = async (event, context) => {
-    console.log({ event })
+    console.log('business ran')
 
+    console.log({ event })
     const eventBody = JSON.parse(event.body)
-    const zipCode = JSON.parse(eventBody.zipCode)
-    const category = JSON.parse(eventBody.category)
+
+    const zipCode = eventBody.zipCode
+    const category = eventBody.category
 
     const url = `https://api.yelp.com/v3/businesses/search?location=${zipCode}&term=${category}&radius=2000&sort_by=best_match&limit=5`
 
@@ -21,6 +23,10 @@ export const getBusinessesFromYelpApi = async (event, context) => {
     };
 
     const response = await fetch(url, options)
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+    }
 
     const data = await response.json()
 
