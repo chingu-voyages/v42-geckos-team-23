@@ -12,8 +12,6 @@ import { InputProvider } from '../contexts/InputProvider'
 const Details = () => {
     let { id } = useParams()
 
-    console.log("current business", id)
-
     return (
         <>
             <InputProvider>
