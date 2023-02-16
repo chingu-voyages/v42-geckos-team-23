@@ -10,7 +10,6 @@ import searchIcon from '../assets/search-icon.svg'
 import { Context } from '../contexts/Context'
 import Form from './Form'
 import PopUp from './PopUp'
-import { getBusinessesFromYelpApi } from '../api/YelpAPI'
 import { InputContext } from '../contexts/InputProvider'
 
 const Navbar = () => {
@@ -45,24 +44,28 @@ const Navbar = () => {
         ctx.resetState()
     }
 
-    const getBusinessesHandler = (e) => {
+    const getBusinessesHandler = async (e) => {
         e.preventDefault()
-        ctx.setIsLoading(true)
 
-        getBusinessesFromYelpApi(zipCode, category)
-            .then((data) => {
-                ctx.setResultsList([...data])
-                ctx.setResultsTitle(categoryName)
-                ctx.setIsLoading(false)
-                closeModal()
+        try {
+            const response = await fetch('/.netlify/functions/getBusinessesFromYelpApi', {
+                method: 'POST', 
+                body: JSON.stringify({ 
+                    zipCode: zipCode, 
+                    category: categoryName
+                })
             })
-            .catch((err) => {
-                // if we catch an error that means zip code was "invalid"
-                ctx.setIsLoading(false) // if there is an error, set isLoading to false
-                ctx.setResultsList([]) // if there is an error, set resultsList to empty array
-                ctx.setResultsTitle('')
-                console.log(err)
-            })
+            const data = await response.json()
+            ctx.setResultsList([...data])
+            ctx.setResultsTitle(categoryName)
+            ctx.setIsLoading(false)
+            closeModal()
+        } catch (err) {
+            ctx.setIsLoading(false) // if there is an error, set isLoading to false
+            ctx.setResultsList([]) // if there is an error, set resultsList to empty array
+            ctx.setResultsTitle('')
+            console.log(err)
+        }        
     }
 
     return (

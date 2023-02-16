@@ -1,18 +1,33 @@
 import React, { useEffect, useState } from 'react'
 
-import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
-
 const BusinessPhotos = ({ id }) => {
     const [details, setDetails] = useState({})
 
     useEffect(() => {
-        getDetailsByIdFromYelpApi(id)
-            .then(data => {
+        let getPhotos = async () => {
+            try {
+                const response = await fetch('/.netlify/functions/getDetailsByIdFromYelpApi', {
+                    method: 'POST', 
+                    body: JSON.stringify({ id })
+                })
+                const data = await response.json()
                 setDetails({ ...data })
-            })
-            .catch(err => console.log(err))
+                let lng = data.coordinates.longitude
+                let lat = data.coordinates.latitude
+                if (map.current) return;
+                map.current = new mapboxgl.Map({
+                    container: mapContainer.current,
+                    style: 'mapbox://styles/mapbox/streets-v12',
+                    center: [lng, lat],
+                    zoom: 17
+                })
+            } catch (err) {
+                err => console.log(err)
+            }
+        }
+        getPhotos()
     }, [])
-
+    
     return (
         <section className="m-10 font-nunito">
             <h1 className="mb-7 text-3xl font-bold">Photos</h1>

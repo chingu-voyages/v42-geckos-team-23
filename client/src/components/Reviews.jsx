@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 
 import ReviewCard from '../components/ReviewCard'
-import { getReviewsFromYelpApi } from '../api/YelpAPI'
 
 const Reviews = ({ id }) => {
     const [reviews, setReviews] = useState('')
@@ -17,11 +16,21 @@ const Reviews = ({ id }) => {
     }
 
     useEffect(() => {
-        getReviewsFromYelpApi(id)
-            .then(data => setReviews(renderReviews(data)))
-            .catch(err => console.log(err))
+        let getReviews = async () => {
+            try {
+                const response = await fetch('/.netlify/functions/getReviewsFromYelpApi', {
+                    method: 'POST', 
+                    body: JSON.stringify({ id })
+                })
+                const data = await response.json()
+                setReviews(renderReviews(data))
+            } catch (err) {
+                err => console.log(err)
+            }
+        }
+        getReviews()
     }, [])
-
+    
     return (
         <section className="relative mx-10 mt-10 mb-20 font-nunito">
             <h1 className="mb-7 text-3xl font-bold">Reviews</h1>
