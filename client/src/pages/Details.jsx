@@ -6,20 +6,13 @@ import Footer from '../components/Footer'
 import ArrowButton from '../components/ArrowButton'
 import Reviews from '../components/Reviews'
 import BusinessInfo from '../components/BusinessInfo'
-import BusinessPhotos from '../components/BusinessPhtos'
+import BusinessPhotos from '../components/BusinessPhotos'
 import { InputProvider } from '../contexts/InputProvider'
 
 const Details = () => {
     let { id } = useParams()
-    // const [details, setDetails] = useState({})
 
-    // useEffect(() => {
-    //     getDetailsByIdFromYelpApi(id)
-    //         .then(data => {
-    //             setDetails({ ...data })
-    //         })
-    //         .catch(err => console.log(err))
-    // }, [])
+    console.log("current business", id)
 
     return (
         <>

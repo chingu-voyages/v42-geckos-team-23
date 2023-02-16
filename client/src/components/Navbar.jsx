@@ -44,38 +44,8 @@ const Navbar = () => {
         ctx.resetState()
     }
 
-    // const getBusinessesHandler = async (e) => {
-    //     e.preventDefault()
-    //     try {
-    //         const response = await fetch(
-    //             '/.netlify/functions/getBusinessesFromYelpApi',
-    //             {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                 },
-    //                 body: JSON.stringify({
-    //                     location: zipCode,
-    //                     category,
-    //                 }),
-    //             }
-    //         )
-    //         const data = await response.json()
-    //         ctx.setResultsList([...data])
-    //         ctx.setResultsTitle(categoryName)
-    //         closeModal()
-    //     } catch (err) {
-    //         console.log(err)
-    //     } 
-    // }
-
     const getBusinessesHandler = async (e) => {
         e.preventDefault()
-        // ctx.setIsLoading(true)
-
-        // console.log(zipCode)
-        // console.log(category)
-        // console.log(categoryName)
 
         try {
             const response = await fetch('/.netlify/functions/getBusinessesFromYelpApi', {
@@ -85,14 +55,12 @@ const Navbar = () => {
                     category: categoryName
                 })
             })
-            .then(res => res.json())
-            .then(data => {
-                ctx.setResultsList([data])
-                ctx.setResultsTitle(categoryName)
-                ctx.setIsLoading(false)
-                closeModal()
-                console.log({data})
-                return JSON.stringify(data)})
+            const data = await response.json()
+            ctx.setResultsList([...data])
+            ctx.setResultsTitle(categoryName)
+            ctx.setIsLoading(false)
+            closeModal()
+            console.log({data})
             //console.log(response)
         } catch (err) {
             ctx.setIsLoading(false) // if there is an error, set isLoading to false

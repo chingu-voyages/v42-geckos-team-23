@@ -3,7 +3,6 @@ import { FaYelp } from 'react-icons/fa'
 import { FaFlag } from 'react-icons/fa'
 import { BsTelephoneFill } from 'react-icons/bs'
 
-import { getDetailsByIdFromYelpApi } from '../api/YelpAPI'
 import Address from './Address'
 
 const BusinessInfo = ({ id }) => {
@@ -17,10 +16,15 @@ const BusinessInfo = ({ id }) => {
     const map = useRef(null)
 
     useEffect(() => {
-        getDetailsByIdFromYelpApi(id)
-            .then(data => {
+        let getInfo = async () => {
+            try {
+                const response = await fetch('/.netlify/functions/getDetailsByIdFromYelpApi', {
+                    method: 'POST', 
+                    body: JSON.stringify({ id })
+                })
+                const data = await response.json()
+                //console.log(data)
                 setDetails({ ...data })
-
                 let lng = data.coordinates.longitude
                 let lat = data.coordinates.latitude
                 if (map.current) return;
@@ -30,9 +34,30 @@ const BusinessInfo = ({ id }) => {
                     center: [lng, lat],
                     zoom: 17
                 })
-            })
-            .catch(err => console.log(err))
+                //console.log(response)
+            } catch (err) {
+                err => console.log(err)
+            }
+        }
+        getInfo()
     }, [])
+    
+
+        // getDetailsByIdFromYelpApi(id)
+        //     .then(data => {
+        //         setDetails({ ...data })
+
+        //         let lng = data.coordinates.longitude
+        //         let lat = data.coordinates.latitude
+        //         if (map.current) return;
+        //         map.current = new mapboxgl.Map({
+        //             container: mapContainer.current,
+        //             style: 'mapbox://styles/mapbox/streets-v12',
+        //             center: [lng, lat],
+        //             zoom: 17
+        //         })
+        //     })
+        //     .catch(err => console.log(err))
 
     return (
         <section className="m-10 font-nunito">

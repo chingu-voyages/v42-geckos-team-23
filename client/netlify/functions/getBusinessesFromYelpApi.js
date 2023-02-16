@@ -30,7 +30,7 @@ export const handler = async (event, context) => { // function must be named 'ha
 
     return {
         statusCode: 200, 
-        body: JSON.stringify( data.businesses[0] ) //function response must be a string per netlify
+        body: JSON.stringify( data.businesses ) //function response must be a string per netlify
     }
 }
 
