@@ -23,7 +23,6 @@ const BusinessInfo = ({ id }) => {
                     body: JSON.stringify({ id })
                 })
                 const data = await response.json()
-                //console.log(data)
                 setDetails({ ...data })
                 let lng = data.coordinates.longitude
                 let lat = data.coordinates.latitude
@@ -34,7 +33,6 @@ const BusinessInfo = ({ id }) => {
                     center: [lng, lat],
                     zoom: 17
                 })
-                //console.log(response)
             } catch (err) {
                 err => console.log(err)
             }
@@ -42,23 +40,6 @@ const BusinessInfo = ({ id }) => {
         getInfo()
     }, [])
     
-
-        // getDetailsByIdFromYelpApi(id)
-        //     .then(data => {
-        //         setDetails({ ...data })
-
-        //         let lng = data.coordinates.longitude
-        //         let lat = data.coordinates.latitude
-        //         if (map.current) return;
-        //         map.current = new mapboxgl.Map({
-        //             container: mapContainer.current,
-        //             style: 'mapbox://styles/mapbox/streets-v12',
-        //             center: [lng, lat],
-        //             zoom: 17
-        //         })
-        //     })
-        //     .catch(err => console.log(err))
-
     return (
         <section className="m-10 font-nunito">
             <h1 className="font-nunito text-4xl font-bold md:text-5xl">

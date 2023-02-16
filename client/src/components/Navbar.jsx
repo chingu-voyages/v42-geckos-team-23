@@ -60,8 +60,6 @@ const Navbar = () => {
             ctx.setResultsTitle(categoryName)
             ctx.setIsLoading(false)
             closeModal()
-            console.log({data})
-            //console.log(response)
         } catch (err) {
             ctx.setIsLoading(false) // if there is an error, set isLoading to false
             ctx.setResultsList([]) // if there is an error, set resultsList to empty array
@@ -69,22 +67,6 @@ const Navbar = () => {
             console.log(err)
         }        
     }
-
-        /* 
-        getBusinessesFromYelpApi(zipCode, category)
-            .then((data) => {
-                ctx.setResultsList([...data])
-                ctx.setResultsTitle(categoryName)
-                ctx.setIsLoading(false)
-                closeModal()
-            })
-            .catch((err) => {
-                // if we catch an error that means zip code was "invalid"
-                ctx.setIsLoading(false) // if there is an error, set isLoading to false
-                ctx.setResultsList([]) // if there is an error, set resultsList to empty array
-                ctx.setResultsTitle('')
-                console.log(err)
-            }) */
 
     return (
         <div className="bg-red-50 font-nunito">

@@ -1,10 +1,8 @@
 import fetch from 'node-fetch' 
 
 export const handler = async (event, context) => {
-    console.log('fetch details by id ran')
 
     const eventBody = JSON.parse(event.body)
-    console.log({ eventBody })
     const id = eventBody.id
     
     const url = `https://api.yelp.com/v3/businesses/${id}`
@@ -25,8 +23,6 @@ export const handler = async (event, context) => {
     }
 
     const data = await response.json()
-
-    console.log({data})
 
     return {
         statusCode: 200, 

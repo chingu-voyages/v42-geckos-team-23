@@ -11,7 +11,6 @@ const BusinessPhotos = ({ id }) => {
                     body: JSON.stringify({ id })
                 })
                 const data = await response.json()
-                // console.log(data)
                 setDetails({ ...data })
                 let lng = data.coordinates.longitude
                 let lat = data.coordinates.latitude
@@ -29,13 +28,6 @@ const BusinessPhotos = ({ id }) => {
         getPhotos()
     }, [])
     
-
-        // getDetailsByIdFromYelpApi(id)
-        //     .then(data => {
-        //         setDetails({ ...data })
-        //     })
-        //     .catch(err => console.log(err))
-
     return (
         <section className="m-10 font-nunito">
             <h1 className="mb-7 text-3xl font-bold">Photos</h1>

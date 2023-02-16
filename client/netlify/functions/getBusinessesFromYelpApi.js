@@ -1,7 +1,6 @@
 import fetch from 'node-fetch' 
 
 export const handler = async (event, context) => { // function must be named 'handler', any other name will return 500 intenal server error
-    console.log('fetchBusiness handler ran')
 
     const eventBody = JSON.parse(event.body)
     const zipCode = eventBody.zipCode
@@ -25,8 +24,6 @@ export const handler = async (event, context) => { // function must be named 'ha
     }
 
     const data = await response.json()
-
-    console.log({data})       
 
     return {
         statusCode: 200, 

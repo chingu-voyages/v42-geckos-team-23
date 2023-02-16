@@ -16,7 +16,6 @@ const Reviews = ({ id }) => {
     }
 
     useEffect(() => {
-        console.log('Review: effect ran')
         let getReviews = async () => {
             try {
                 const response = await fetch('/.netlify/functions/getReviewsFromYelpApi', {
@@ -24,9 +23,7 @@ const Reviews = ({ id }) => {
                     body: JSON.stringify({ id })
                 })
                 const data = await response.json()
-                console.log("reviews", data)
                 setReviews(renderReviews(data))
-                //console.log(response)
             } catch (err) {
                 err => console.log(err)
             }
@@ -34,11 +31,6 @@ const Reviews = ({ id }) => {
         getReviews()
     }, [])
     
-
-        // getReviewsFromYelpApi(id)
-        //     .then(data => setReviews(renderReviews(data)))
-        //     .catch(err => console.log(err))
-
     return (
         <section className="relative mx-10 mt-10 mb-20 font-nunito">
             <h1 className="mb-7 text-3xl font-bold">Reviews</h1>
