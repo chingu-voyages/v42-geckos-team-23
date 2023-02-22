@@ -32,6 +32,7 @@ const BusinessInfo = ({ id }) => {
                     style: 'mapbox://styles/mapbox/streets-v12',
                     center: [longitude, latitude],
                     zoom: 17,
+                    scrollZoom: false
                 })
             })
             .catch((err) => console.log(err))

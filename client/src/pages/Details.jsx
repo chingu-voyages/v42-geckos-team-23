@@ -8,6 +8,7 @@ import Reviews from '../components/Reviews'
 import BusinessInfo from '../components/BusinessInfo'
 import BusinessPhotos from '../components/BusinessPhtos'
 import { InputProvider } from '../contexts/InputProvider'
+import ScrollUpButton from '../components/ScrollUpButton'
 
 const Details = () => {
     let { id } = useParams()
@@ -17,11 +18,11 @@ const Details = () => {
             <InputProvider>
                 <Navbar />
             </InputProvider>
-            <div className="xl:container xl:mx-auto">
-                <ArrowButton className="mt-5 ml-10" />
+            <div className="relative min-h-screen xl:container xl:mx-auto">
                 <BusinessPhotos id={id} />
                 <Reviews id={id} />
                 <BusinessInfo id={id} />
+                <ArrowButton className="icon-button absolute right-0 bottom-0 mr-8 lg:bottom-8 xl:bottom-16" />
             </div>
             <Footer />
         </>
